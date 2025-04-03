@@ -8,3 +8,7 @@ def product_detail(request, pk):
 def product_list(request):
     products = Product.objects.all()
     return render(request, 'store/product_list.html', {'products': products})
+
+def shop_view(request):
+    products = Product.objects.all()
+    return render(request, 'store/shop.html', {'products': products})
