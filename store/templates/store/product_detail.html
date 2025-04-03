@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+  <div class="row">
+    <div class="col-md-6">
+      {% if product.image %}
+        <img src="{{ product.image.url }}" class="img-fluid" alt="{{ product.name }}">
+      {% else %}
+        <p>No image available.</p>
+      {% endif %}
+    </div>
+    <div class="col-md-6">
+      <h2>{{ product.name }}</h2>
+      <p><strong>Price:</strong> €{{ product.price }}</p>
+      <p><strong>Category:</strong> {{ product.category }}</p>
+      <p><strong>Color:</strong> {{ product.color }}</p>
+      <p><strong>Size:</strong> {{ product.size }}</p>
+      <p>{{ product.description }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
