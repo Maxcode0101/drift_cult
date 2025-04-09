@@ -13,6 +13,7 @@ urlpatterns = [
     path('favicon.ico', RedirectView.as_view(url=static('favicon.ico'), permanent=True)),
     path('product/', include('store.urls')),
     path('store/', include('store.urls')),
+    path('', include('core.urls')),
 ]
 
 # Serve media files during development

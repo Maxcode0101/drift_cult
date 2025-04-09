@@ -4,6 +4,13 @@
 {% block content %}
 <div class="container mt-5 pt-5">
   <h2 class="text-center mb-4">Shop All</h2>
+
+  <!-- Search Bar -->
+  <form method="GET" class="form-inline justify-content-center mb-4">
+    <input type="text" name="q" class="form-control mr-2" placeholder="Search products..." value="{{ request.GET.q }}">
+    <button type="submit" class="btn btn-dark">Search</button>
+  </form>
+
   <div class="row">
     {% for product in products %}
     <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
