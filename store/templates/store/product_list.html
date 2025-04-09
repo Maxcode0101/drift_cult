@@ -5,6 +5,20 @@
 <div class="container mt-5 pt-5">
   <h2 class="text-center mb-4">Shop All</h2>
 
+  <!-- Search + Filter -->
+  <form method="GET" class="form-inline justify-content-center mb-4">
+    <input type="text" name="q" class="form-control mr-2" placeholder="Search products..." value="{{ request.GET.q }}">
+
+    <select name="category" class="form-control mr-2">
+      <option value="">All Categories</option>
+      {% for cat in categories %}
+        <option value="{{ cat }}" {% if request.GET.category == cat %}selected{% endif %}>{{ cat }}</option>
+      {% endfor %}
+    </select>
+
+    <button type="submit" class="btn btn-dark">Apply</button>
+  </form>
+
   <!-- Search Bar -->
   <form method="GET" class="form-inline justify-content-center mb-4">
     <input type="text" name="q" class="form-control mr-2" placeholder="Search products..." value="{{ request.GET.q }}">
