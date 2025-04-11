@@ -19,12 +19,6 @@
     <button type="submit" class="btn btn-dark">Apply</button>
   </form>
 
-  {% comment %} <!-- Search Bar -->
-  <form method="GET" class="form-inline justify-content-center mb-4">
-    <input type="text" name="q" class="form-control mr-2" placeholder="Search products..." value="{{ request.GET.q }}">
-    <button type="submit" class="btn btn-dark">Search</button>
-  </form> {% endcomment %}
-
   <!-- Product Grid -->
   <div class="row">
     {% for product in products %}
