@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Product
 from django.views.generic import ListView
 from django.db.models import Q
+
+from .models import Product
 
 
 def product_detail(request, pk):
@@ -45,10 +46,11 @@ class ProductListView(ListView):
         if category:
             queryset = queryset.filter(category__iexact=category)
 
-
-        return queryset
+        return queryset.order_by('name')  # Stable pagination ordering!
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['categories'] = Product.objects.values_list('category', flat=True).distinct()
+        context['categories'] = Product.objects.values_list(
+            'category', flat=True
+        ).distinct()
         return context
