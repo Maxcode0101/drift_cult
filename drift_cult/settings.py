@@ -86,16 +86,18 @@ LOGIN_REDIRECT_URL = '/'
 WSGI_APPLICATION = 'drift_cult.wsgi.application'
 
 # Database
-if os.environ.get('DATABASE_URL'):
-    DATABASES = {
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-    }
-else:
+if os.environ.get('DEVELOPMENT') == 'True':
+    print('Running in DEVELOPMENT mode using SQLite3')
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
+    }
+else:
+    print('Running in PRODUCTION mode using Postgres')
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 
 # AWS S3 Storage
@@ -143,5 +145,6 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-import django_heroku
-django_heroku.settings(locals())
+if os.environ.get('DEVELOPMENT') != 'True':
+    import django_heroku
+    django_heroku.settings(locals())
