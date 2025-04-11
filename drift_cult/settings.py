@@ -113,6 +113,10 @@ if os.environ.get('USE_AWS'):
         'CacheControl': 'max-age=94608000',
     }
 
+    # Disable ACLs (since bucket blocks ACLs)
+    AWS_DEFAULT_ACL = None
+    AWS_QUERYSTRING_AUTH = False  # Public read via bucket policy
+
     STATICFILES_LOCATION = 'static'
     MEDIAFILES_LOCATION = 'media'
 
