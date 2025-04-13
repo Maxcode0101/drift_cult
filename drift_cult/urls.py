@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from core.views import home
+from core import views as core_views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import RedirectView
@@ -14,6 +15,7 @@ urlpatterns = [
     path('product/', include('store.urls')),
     path('store/', include('store.urls')),
     path('', include('core.urls')),
+    path('', core_views.home, name='home'),
 ]
 
 # Serve media files during development

@@ -1,9 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
 from django.db.models import Q
+from django.contrib import messages
 
-from .models import Product
+from .models import Product, ProductSize, CartItem
 
 
 def product_detail(request, pk):
@@ -46,7 +47,7 @@ class ProductListView(ListView):
         if category:
             queryset = queryset.filter(category__iexact=category)
 
-        return queryset.order_by('name')  # Stable pagination ordering!
+        return queryset.order_by('name')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -54,3 +55,39 @@ class ProductListView(ListView):
             'category', flat=True
         ).distinct()
         return context
+
+
+@login_required
+def view_cart(request):
+    cart_items = CartItem.objects.filter(user=request.user)
+    total = sum(item.product_size.product.price * item.quantity for item in cart_items)
+    context = {
+        'cart_items': cart_items,
+        'total': total,
+    }
+    return render(request, 'store/cart.html', context)
+
+
+@login_required
+def add_to_cart(request, product_id, size_id):
+    product = get_object_or_404(Product, pk=product_id)
+    product_size = get_object_or_404(ProductSize, pk=size_id, product=product)
+
+    cart_item, created = CartItem.objects.get_or_create(
+        user=request.user,
+        product_size=product_size,
+    )
+    if not created:
+        cart_item.quantity += 1
+        cart_item.save()
+
+    messages.success(request, 'Item added to cart!')
+    return redirect('view_cart')
+
+
+@login_required
+def remove_from_cart(request, item_id):
+    item = get_object_or_404(CartItem, id=item_id, user=request.user)
+    item.delete()
+    messages.success(request, 'Item removed from cart.')
+    return redirect('view_cart')
