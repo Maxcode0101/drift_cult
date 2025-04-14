@@ -4,7 +4,8 @@ from django.views.generic import ListView
 from django.db.models import Q
 from django.contrib import messages
 
-from .models import Product, ProductSize, CartItem
+from .models import Product, ProductSize, CartItem, Order, OrderItem
+
 
 
 def product_detail(request, pk):
@@ -91,3 +92,35 @@ def remove_from_cart(request, item_id):
     item.delete()
     messages.success(request, 'Item removed from cart.')
     return redirect('view_cart')
+
+
+@login_required
+def checkout(request):
+    cart_items = CartItem.objects.filter(user=request.user)
+
+    if not cart_items.exists():
+        messages.info(request, "Your cart is empty.")
+        return redirect('view_cart')
+
+    if request.method == "POST":
+        # Create order
+        order = Order.objects.create(user=request.user)
+
+        # Move cart items to order
+        for item in cart_items:
+            OrderItem.objects.create(
+                order=order,
+                product_size=item.product_size,
+                quantity=item.quantity
+            )
+        cart_items.delete()
+        messages.success(request, "Order placed successfully!")
+        return redirect('product_list')
+
+    total = sum(item.product_size.product.price * item.quantity for item in cart_items)
+
+    context = {
+        'cart_items': cart_items,
+        'total': total,
+    }
+    return render(request, 'store/checkout.html', context)

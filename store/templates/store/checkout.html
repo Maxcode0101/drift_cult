@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h1>Checkout</h1>
+
+<ul>
+    {% for item in cart_items %}
+    <li>{{ item.product_size.product.name }} ({{ item.product_size.size }}) - Qty: {{ item.quantity }}</li>
+    {% endfor %}
+</ul>
+
+<p>Total: €{{ total }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Place Order</button>
+</form>
+
+<a href="{% url 'view_cart' %}">Back to Cart</a>
+{% endblock %}
