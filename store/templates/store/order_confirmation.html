@@ -1,20 +1,28 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 <div class="container">
-    <h2>Thank you for your order!</h2>
+    <h1>Thank you for your order!</h1>
 
-    <p>Your order has been placed successfully.</p>
+    <p>Your order has been placed successfully. You will receive a confirmation email shortly.</p>
 
-    <h4>Order Summary:</h4>
+    <h3>Order Summary:</h3>
     <ul>
         {% for item in order.items.all %}
-            <li>{{ item.quantity }} x {{ item.product_size.product.name }} ({{ item.product_size.size }})</li>
+            <li>
+                {{ item.quantity }} x {{ item.product_size.product.name }} 
+                (Size: {{ item.product_size.size }})
+            </li>
         {% endfor %}
     </ul>
 
-    <p><strong>Total:</strong> €{{ order.items.all|sum:"product_size.product.price"|floatformat:2 }}</p>
+    <p><strong>Total Paid:</strong> €{{ total }}</p>
 
-    <a href="{% url 'product_list' %}" class="btn btn-primary">Back to Shop</a>
+    <div class="mt-4">
+        <a href="{% url 'product_list' %}" class="btn btn-primary">
+            Continue Shopping
+        </a>
+    </div>
 </div>
 {% endblock %}

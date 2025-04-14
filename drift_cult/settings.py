@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 import dj_database_url
+import stripe
 
 # Load environment variables
 if os.path.exists('env.py'):
@@ -151,3 +152,10 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+# Stripe settings
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+
+stripe.api_key = STRIPE_SECRET_KEY

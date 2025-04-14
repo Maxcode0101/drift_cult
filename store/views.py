@@ -3,6 +3,9 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
 from django.db.models import Q
 from django.contrib import messages
+from django.conf import settings
+from django.http import JsonResponse, HttpResponseRedirect
+import stripe
 
 from .models import Product, ProductSize, CartItem, Order, OrderItem
 
@@ -101,31 +104,65 @@ def checkout(request):
         messages.info(request, "Your cart is empty.")
         return redirect('view_cart')
 
-    if request.method == "POST":
-        # Create order
-        order = Order.objects.create(user=request.user)
-
-        # Move cart items to order
-        for item in cart_items:
-            OrderItem.objects.create(
-                order=order,
-                product_size=item.product_size,
-                quantity=item.quantity
-            )
-        cart_items.delete()
-        messages.success(request, "Order placed successfully!")
-        return redirect('order_confirmation', order_id=order.id)
-
     total = sum(item.product_size.product.price * item.quantity for item in cart_items)
 
     context = {
         'cart_items': cart_items,
         'total': total,
+        'stripe_public_key': settings.STRIPE_PUBLIC_KEY
     }
     return render(request, 'store/checkout.html', context)
 
 
 @login_required
-def order_confirmation(request, order_id):
-    order = get_object_or_404(Order, id=order_id, user=request.user)
+def create_checkout_session(request):
+    cart_items = CartItem.objects.filter(user=request.user)
+
+    if not cart_items.exists():
+        messages.info(request, "Your cart is empty.")
+        return redirect('view_cart')
+
+    line_items = []
+
+    for item in cart_items:
+        line_items.append({
+            'price_data': {
+                'currency': 'eur',
+                'product_data': {
+                    'name': f'{item.product_size.product.name} ({item.product_size.size})',
+                },
+                'unit_amount': int(item.product_size.product.price * 100),
+            },
+            'quantity': item.quantity,
+        })
+
+    session = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+        line_items=line_items,
+        mode='payment',
+        success_url=request.build_absolute_uri('/store/order-confirmation/'),
+        cancel_url=request.build_absolute_uri('/store/cart/'),
+    )
+
+    return JsonResponse({'id': session.id})
+
+
+@login_required
+def order_confirmation(request):
+    cart_items = CartItem.objects.filter(user=request.user)
+
+    if not cart_items.exists():
+        return redirect('product_list')
+
+    order = Order.objects.create(user=request.user)
+
+    for item in cart_items:
+        OrderItem.objects.create(
+            order=order,
+            product_size=item.product_size,
+            quantity=item.quantity
+        )
+    cart_items.delete()
+    messages.success(request, "Order placed successfully!")
+
     return render(request, 'store/order_confirmation.html', {'order': order})
