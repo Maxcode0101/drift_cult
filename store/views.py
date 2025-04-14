@@ -7,7 +7,6 @@ from django.contrib import messages
 from .models import Product, ProductSize, CartItem, Order, OrderItem
 
 
-
 def product_detail(request, pk):
     product = get_object_or_404(Product, pk=pk)
     return render(request, 'store/product_detail.html', {'product': product})
@@ -115,7 +114,7 @@ def checkout(request):
             )
         cart_items.delete()
         messages.success(request, "Order placed successfully!")
-        return redirect('product_list')
+        return redirect('order_confirmation', order_id=order.id)
 
     total = sum(item.product_size.product.price * item.quantity for item in cart_items)
 
@@ -124,3 +123,9 @@ def checkout(request):
         'total': total,
     }
     return render(request, 'store/checkout.html', context)
+
+
+@login_required
+def order_confirmation(request, order_id):
+    order = get_object_or_404(Order, id=order_id, user=request.user)
+    return render(request, 'store/order_confirmation.html', {'order': order})
