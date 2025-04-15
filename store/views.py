@@ -5,6 +5,7 @@ from django.db.models import Q
 from django.contrib import messages
 from django.conf import settings
 from django.http import JsonResponse, HttpResponseRedirect
+from django.urls import reverse
 import stripe
 
 from .models import Product, ProductSize, CartItem, Order, OrderItem
@@ -12,7 +13,14 @@ from .models import Product, ProductSize, CartItem, Order, OrderItem
 
 def product_detail(request, pk):
     product = get_object_or_404(Product, pk=pk)
-    return render(request, 'store/product_detail.html', {'product': product})
+
+    if request.method == "POST":
+        size_id = request.POST.get('size_id')
+        return redirect('add_to_cart', product_id=product.id, size_id=size_id)
+
+    return render(request, 'store/product_detail.html', {
+        'product': product
+    })
 
 
 def product_list(request):
@@ -128,10 +136,10 @@ def create_checkout_session(request):
         line_items.append({
             'price_data': {
                 'currency': 'eur',
-                'product_data': {
-                    'name': f'{item.product_size.product.name} ({item.product_size.size})',
-                },
                 'unit_amount': int(item.product_size.product.price * 100),
+                'product_data': {
+                    'name': f"{item.product_size.product.name} (Size: {item.product_size.size})",
+                },
             },
             'quantity': item.quantity,
         })
@@ -140,11 +148,11 @@ def create_checkout_session(request):
         payment_method_types=['card'],
         line_items=line_items,
         mode='payment',
-        success_url=request.build_absolute_uri('/store/order-confirmation/'),
-        cancel_url=request.build_absolute_uri('/store/cart/'),
+        success_url=request.build_absolute_uri(reverse('order_confirmation')),
+        cancel_url=request.build_absolute_uri(reverse('view_cart')),
     )
 
-    return JsonResponse({'id': session.id})
+    return HttpResponseRedirect(session.url)
 
 
 @login_required
