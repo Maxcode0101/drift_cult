@@ -9,7 +9,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('product/', include('store.urls')),
     path('store/', include('store.urls')),
-    path('', home, name='home'),
+    path('', include('store.urls')),
 ]
 
 # Serve media files in development
