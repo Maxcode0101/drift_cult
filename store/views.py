@@ -174,3 +174,7 @@ def order_confirmation(request):
     messages.success(request, "Order placed successfully!")
 
     return render(request, 'store/order_confirmation.html', {'order': order})
+
+
+def home_view(request):
+    return render(request, 'store/home.html')
