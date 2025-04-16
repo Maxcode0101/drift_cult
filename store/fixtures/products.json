@@ -1,0 +1,2960 @@
+[
+{
+    "model": "store.product",
+    "pk": 4,
+    "fields": {
+        "name": "Arctic_parka",
+        "price": "99.99",
+        "color": "Brown",
+        "size": "M",
+        "description": "The Arctic Parka offers serious style and weather protection in one. Rugged, durable, and street-approved.",
+        "category": "JACKETS",
+        "image": "products/arctic_parka.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 5,
+    "fields": {
+        "name": "Black_and_yellow_t",
+        "price": "29.99",
+        "color": "Black",
+        "size": "M",
+        "description": "The Black And Yellow T is a comfortable everyday tee, crafted for those who live for freedom and style. Perfect fit and soft cotton for all-day comfort.",
+        "category": "T-SHIRTS",
+        "image": "products/black_and_yellow_t.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 6,
+    "fields": {
+        "name": "Black_classic_trunks",
+        "price": "59.99",
+        "color": "Black",
+        "size": "M",
+        "description": "Ride the waves or chill by the shore in the Black Classic Trunks. Quick-drying, durable, and styled to stand out.",
+        "category": "TRUNKS",
+        "image": "products/black_classic_trunks.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 7,
+    "fields": {
+        "name": "Black_knit_sweater",
+        "price": "59.99",
+        "color": "Black",
+        "size": "M",
+        "description": "The Black Knit Sweater is a unique piece in the Drift Cult collection, crafted with detail and built for daily wear.",
+        "category": "SWEATERS",
+        "image": "products/black_knit_sweater.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 8,
+    "fields": {
+        "name": "Brown_hoodie",
+        "price": "59.99",
+        "color": "Brown",
+        "size": "M",
+        "description": "The Brown Hoodie is a unique piece in the Drift Cult collection, crafted with detail and built for daily wear.",
+        "category": "SWEATERS",
+        "image": "products/brown_hoodie.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 9,
+    "fields": {
+        "name": "Brown_hoodie_two",
+        "price": "59.99",
+        "color": "Brown",
+        "size": "M",
+        "description": "The Brown Hoodie Two is a unique piece in the Drift Cult collection, crafted with detail and built for daily wear.",
+        "category": "SWEATERS",
+        "image": "products/brown_hoodie_two.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 10,
+    "fields": {
+        "name": "Chillout_fleece_suit",
+        "price": "69.99",
+        "color": "Grey",
+        "size": "M",
+        "description": "Stay toasty in the Chillout Fleece Suit, crafted from ultra-soft fleece for chill days and colder nights.",
+        "category": "FLEECE",
+        "image": "products/chillout_fleece_suit.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 11,
+    "fields": {
+        "name": "Classic_black_t",
+        "price": "29.99",
+        "color": "Black",
+        "size": "M",
+        "description": "The Classic Black T is a comfortable everyday tee, crafted for those who live for freedom and style. Perfect fit and soft cotton for all-day comfort.",
+        "category": "T-SHIRTS",
+        "image": "products/classic_black_t.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 12,
+    "fields": {
+        "name": "Classic_white_t",
+        "price": "29.99",
+        "color": "Black",
+        "size": "M",
+        "description": "The Classic White T is a comfortable everyday tee, crafted for those who live for freedom and style. Perfect fit and soft cotton for all-day comfort.",
+        "category": "T-SHIRTS",
+        "image": "products/classic_white_t.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 13,
+    "fields": {
+        "name": "Cobles_t",
+        "price": "29.99",
+        "color": "White",
+        "size": "M",
+        "description": "The Cobles T is a comfortable everyday tee, crafted for those who live for freedom and style. Perfect fit and soft cotton for all-day comfort.",
+        "category": "T-SHIRTS",
+        "image": "products/cobles_t.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 14,
+    "fields": {
+        "name": "Comfy_cush_pants",
+        "price": "89.99",
+        "color": "Brown",
+        "size": "M",
+        "description": "The Comfy Cush Pants are built for movement and style, offering a tailored silhouette with just the right stretch. Ready for the street or trail.",
+        "category": "PANTS",
+        "image": "products/comfy_cush_pants.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 15,
+    "fields": {
+        "name": "Deus_t",
+        "price": "29.99",
+        "color": "White",
+        "size": "M",
+        "description": "The Deus T is a comfortable everyday tee, crafted for those who live for freedom and style. Perfect fit and soft cotton for all-day comfort.",
+        "category": "T-SHIRTS",
+        "image": "products/deus_t.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 16,
+    "fields": {
+        "name": "Distressed_baggy_pants",
+        "price": "89.99",
+        "color": "Blue",
+        "size": "M",
+        "description": "The Distressed Baggy Pants are built for movement and style, offering a tailored silhouette with just the right stretch. Ready for the street or trail.",
+        "category": "PANTS",
+        "image": "products/distressed_baggy_pants.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 17,
+    "fields": {
+        "name": "Dusty_walk_shorts",
+        "price": "59.99",
+        "color": "Grey",
+        "size": "M",
+        "description": "The Dusty Walk Shorts bring skate park vibes and casual comfort together. Lightweight and versatile for everyday wear.",
+        "category": "WALK SHORTS",
+        "image": "products/dusty_walk_shorts.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 18,
+    "fields": {
+        "name": "Get_lost_t",
+        "price": "29.99",
+        "color": "White",
+        "size": "M",
+        "description": "The Get Lost T is a comfortable everyday tee, crafted for those who live for freedom and style. Perfect fit and soft cotton for all-day comfort.",
+        "category": "T-SHIRTS",
+        "image": "products/get_lost_t.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 19,
+    "fields": {
+        "name": "Girls_basic_black_jeans",
+        "price": "89.99",
+        "color": "Black",
+        "size": "M",
+        "description": "The Girls Basic Black Jeans are built for movement and style, offering a tailored silhouette with just the right stretch. Ready for the street or trail.",
+        "category": "PANTS",
+        "image": "products/girls_basic_black_jeans.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 20,
+    "fields": {
+        "name": "Girls_disney_jeans",
+        "price": "89.99",
+        "color": "Blue",
+        "size": "M",
+        "description": "The Girls Disney Jeans are built for movement and style, offering a tailored silhouette with just the right stretch. Ready for the street or trail.",
+        "category": "PANTS",
+        "image": "products/girls_disney_jeans.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 21,
+    "fields": {
+        "name": "Girls_grey_basic_shorts",
+        "price": "59.99",
+        "color": "Grey",
+        "size": "M",
+        "description": "The Girls Grey Basic Shorts bring skate park vibes and casual comfort together. Lightweight and versatile for everyday wear.",
+        "category": "WALK SHORTS",
+        "image": "products/girls_grey_basic_shorts.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 22,
+    "fields": {
+        "name": "Girls_high_waist_shorts",
+        "price": "59.99",
+        "color": "Blue",
+        "size": "M",
+        "description": "The Girls High Waist Shorts bring skate park vibes and casual comfort together. Lightweight and versatile for everyday wear.",
+        "category": "WALK SHORTS",
+        "image": "products/girls_high_waist_shorts.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 23,
+    "fields": {
+        "name": "Girls_italy_jeans",
+        "price": "89.99",
+        "color": "Blue",
+        "size": "M",
+        "description": "The Girls Italy Jeans are built for movement and style, offering a tailored silhouette with just the right stretch. Ready for the street or trail.",
+        "category": "PANTS",
+        "image": "products/girls_italy_jeans.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 24,
+    "fields": {
+        "name": "Girls_red_polar_fleece",
+        "price": "69.99",
+        "color": "Red",
+        "size": "M",
+        "description": "Stay toasty in the Girls Red Polar Fleece, crafted from ultra-soft fleece for chill days and colder nights.",
+        "category": "FLEECE",
+        "image": "products/girls_red_polar_fleece.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 25,
+    "fields": {
+        "name": "Girls_rugged_shirt",
+        "price": "49.99",
+        "color": "Brown",
+        "size": "M",
+        "description": "The Girls Rugged Shirt is a relaxed button-up with a clean finish — ideal for layering or rocking solo.",
+        "category": "SHIRTS",
+        "image": "products/girls_rugged_shirt.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 26,
+    "fields": {
+        "name": "Girls_sherpa_fleece",
+        "price": "69.99",
+        "color": "Brown",
+        "size": "M",
+        "description": "Stay toasty in the Girls Sherpa Fleece, crafted from ultra-soft fleece for chill days and colder nights.",
+        "category": "FLEECE",
+        "image": "products/girls_sherpa_fleece.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 27,
+    "fields": {
+        "name": "Girls_smiley_jeans",
+        "price": "89.99",
+        "color": "Blue",
+        "size": "M",
+        "description": "The Girls Smiley Jeans are built for movement and style, offering a tailored silhouette with just the right stretch. Ready for the street or trail.",
+        "category": "PANTS",
+        "image": "products/girls_smiley_jeans.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 28,
+    "fields": {
+        "name": "Girls_tie_dye_sweater",
+        "price": "59.99",
+        "color": "Tie-dye",
+        "size": "M",
+        "description": "The Girls Tie Dye Sweater is a unique piece in the Drift Cult collection, crafted with detail and built for daily wear.",
+        "category": "SWEATERS",
+        "image": "products/girls_tie_dye_sweater.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 29,
+    "fields": {
+        "name": "Gloomy_girls_hoodie",
+        "price": "59.99",
+        "color": "Black",
+        "size": "M",
+        "description": "The Gloomy Girls Hoodie is a unique piece in the Drift Cult collection, crafted with detail and built for daily wear.",
+        "category": "SWEATERS",
+        "image": "products/gloomy_girls_hoodie.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 30,
+    "fields": {
+        "name": "Grey_shirt",
+        "price": "49.99",
+        "color": "Grey",
+        "size": "M",
+        "description": "The Grey Shirt is a relaxed button-up with a clean finish — ideal for layering or rocking solo.",
+        "category": "SHIRTS",
+        "image": "products/grey_shirt.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 31,
+    "fields": {
+        "name": "Hardly_t",
+        "price": "29.99",
+        "color": "Orange",
+        "size": "M",
+        "description": "The Hardly T is a comfortable everyday tee, crafted for those who live for freedom and style. Perfect fit and soft cotton for all-day comfort.",
+        "category": "T-SHIRTS",
+        "image": "products/hardly_t.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 32,
+    "fields": {
+        "name": "Honolulu_bikini",
+        "price": "19.99",
+        "color": "Pink",
+        "size": "M",
+        "description": "The Honolulu Bikini is a unique piece in the Drift Cult collection, crafted with detail and built for daily wear.",
+        "category": "BIKINIS",
+        "image": "products/honolulu_bikini.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 33,
+    "fields": {
+        "name": "Jeans_shirt",
+        "price": "89.99",
+        "color": "Blue",
+        "size": "M",
+        "description": "The Jeans Shirt are built for movement and style, offering a tailored silhouette with just the right stretch. Ready for the street or trail.",
+        "category": "PANTS",
+        "image": "products/jeans_shirt.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 34,
+    "fields": {
+        "name": "Linen_shirt",
+        "price": "49.99",
+        "color": "Blue",
+        "size": "M",
+        "description": "The Linen Shirt is a relaxed button-up with a clean finish — ideal for layering or rocking solo.",
+        "category": "SHIRTS",
+        "image": "products/linen_shirt.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 35,
+    "fields": {
+        "name": "Missmatch_hoodie",
+        "price": "59.99",
+        "color": "Mixed",
+        "size": "M",
+        "description": "The Missmatch Hoodie is a unique piece in the Drift Cult collection, crafted with detail and built for daily wear.",
+        "category": "SWEATERS",
+        "image": "products/missmatch_hoodie.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 36,
+    "fields": {
+        "name": "Missmatch_jacket",
+        "price": "99.99",
+        "color": "Yellow",
+        "size": "M",
+        "description": "The Missmatch Jacket offers serious style and weather protection in one. Rugged, durable, and street-approved.",
+        "category": "JACKETS",
+        "image": "products/missmatch_jacket.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 37,
+    "fields": {
+        "name": "Nature_bikini",
+        "price": "29.99",
+        "color": "Black",
+        "size": "M",
+        "description": "Sun-soaked style meets comfort with the Nature Bikini. Flattering cut and secure fit for beach days or poolside lounging.",
+        "category": "BIKINIS",
+        "image": "products/nature_bikini.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 38,
+    "fields": {
+        "name": "Picasso_pants",
+        "price": "89.99",
+        "color": "White",
+        "size": "M",
+        "description": "The Picasso Pants are built for movement and style, offering a tailored silhouette with just the right stretch. Ready for the street or trail.",
+        "category": "PANTS",
+        "image": "products/picasso_pants.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 39,
+    "fields": {
+        "name": "Regrets_girls_t",
+        "price": "29.99",
+        "color": "White",
+        "size": "M",
+        "description": "The Regrets Girls T is a comfortable everyday tee, crafted for those who live for freedom and style. Perfect fit and soft cotton for all-day comfort.",
+        "category": "T-SHIRTS",
+        "image": "products/regrets_girls_t.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 40,
+    "fields": {
+        "name": "Rio_bikini",
+        "price": "29.99",
+        "color": "Black",
+        "size": "M",
+        "description": "Sun-soaked style meets comfort with the Rio Bikini. Flattering cut and secure fit for beach days or poolside lounging.",
+        "category": "BIKINIS",
+        "image": "products/rio_bikini.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 41,
+    "fields": {
+        "name": "Savage_bikini",
+        "price": "29.99",
+        "color": "Zebra",
+        "size": "M",
+        "description": "Sun-soaked style meets comfort with the Savage Bikini. Flattering cut and secure fit for beach days or poolside lounging.",
+        "category": "BIKINIS",
+        "image": "products/savage_bikini.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 42,
+    "fields": {
+        "name": "Shred_pants",
+        "price": "89.99",
+        "color": "Blue",
+        "size": "M",
+        "description": "The Shred Pants are built for movement and style, offering a tailored silhouette with just the right stretch. Ready for the street or trail.",
+        "category": "PANTS",
+        "image": "products/shred_pants.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 43,
+    "fields": {
+        "name": "Skull_hoodie",
+        "price": "59.99",
+        "color": "Orange",
+        "size": "M",
+        "description": "Layer up with the Skull Hoodie, featuring a warm, breathable knit and a laid-back vibe. Cozy, stylish, and built to last.",
+        "category": "SWEATERS",
+        "image": "products/skull_hoodie.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 44,
+    "fields": {
+        "name": "Sonora_hoodie",
+        "price": "59.99",
+        "color": "Sand",
+        "size": "M",
+        "description": "Layer up with the Sonora Hoodie, featuring a warm, breathable knit and a laid-back vibe. Cozy, stylish, and built to last.",
+        "category": "SWEATERS",
+        "image": "products/sonora_hoodie.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 45,
+    "fields": {
+        "name": "Sonora_sweater",
+        "price": "59.99",
+        "color": "Sand",
+        "size": "M",
+        "description": "Layer up with the Sonora Sweater, featuring a warm, breathable knit and a laid-back vibe. Cozy, stylish, and built to last.",
+        "category": "SWEATERS",
+        "image": "products/sonora_sweater.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 46,
+    "fields": {
+        "name": "St. Patrick Hat",
+        "price": "39.99",
+        "color": "Green / orange",
+        "size": "M",
+        "description": "Top off your look with the St. Patrick Hat, a stylish essential to shade you from the sun or elevate your outfit effortlessly.",
+        "category": "HEADWEAR",
+        "image": "products/st._patrick_hat.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 47,
+    "fields": {
+        "name": "Sungaze_beani",
+        "price": "19.99",
+        "color": "Yellow",
+        "size": "M",
+        "description": "Top off your look with the Sungaze Beani, a stylish essential to shade you from the sun or elevate your outfit effortlessly.",
+        "category": "HEADWEAR",
+        "image": "products/sungaze_beani.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 48,
+    "fields": {
+        "name": "Thanks_hoodie",
+        "price": "59.99",
+        "color": "Grey",
+        "size": "M",
+        "description": "The Thanks Hoodie is a unique piece in the Drift Cult collection, crafted with detail and built for daily wear.",
+        "category": "SWEATERS",
+        "image": "products/thanks_hoodie.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 49,
+    "fields": {
+        "name": "Tie_dye_t",
+        "price": "29.99",
+        "color": "Tie-dye",
+        "size": "M",
+        "description": "The Tie Dye T is a comfortable everyday tee, crafted for those who live for freedom and style. Perfect fit and soft cotton for all-day comfort.",
+        "category": "T-SHIRTS",
+        "image": "products/tie_dye_t.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 50,
+    "fields": {
+        "name": "Toasty_shorts",
+        "price": "59.99",
+        "color": "Brown",
+        "size": "M",
+        "description": "The Toasty Shorts bring skate park vibes and casual comfort together. Lightweight and versatile for everyday wear.",
+        "category": "WALK SHORTS",
+        "image": "products/toasty_shorts.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 51,
+    "fields": {
+        "name": "Vintage_shirt",
+        "price": "49.99",
+        "color": "Mixed",
+        "size": "M",
+        "description": "The Vintage Shirt is a relaxed button-up with a clean finish — ideal for layering or rocking solo.",
+        "category": "SHIRTS",
+        "image": "products/vintage_shirt.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 52,
+    "fields": {
+        "name": "Vintage_shirt_two",
+        "price": "49.99",
+        "color": "Mixed",
+        "size": "M",
+        "description": "The Vintage Shirt Two is a relaxed button-up with a clean finish — ideal for layering or rocking solo.",
+        "category": "SHIRTS",
+        "image": "products/vintage_shirt_two.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 53,
+    "fields": {
+        "name": "Who_hoodie",
+        "price": "59.99",
+        "color": "Mixed",
+        "size": "M",
+        "description": "The Who Hoodie is a unique piece in the Drift Cult collection, crafted with detail and built for daily wear.",
+        "category": "SWEATERS",
+        "image": "products/who_hoodie.jpg"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 54,
+    "fields": {
+        "name": "Yikes_grey_hoodie",
+        "price": "59.99",
+        "color": "Grey",
+        "size": "M",
+        "description": "The Yikes Grey Hoodie is a unique piece in the Drift Cult collection, crafted with detail and built for daily wear.",
+        "category": "SWEATERS",
+        "image": "products/yikes_grey_hoodie.jpg"
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 1,
+    "fields": {
+        "product": 4,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 2,
+    "fields": {
+        "product": 4,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 3,
+    "fields": {
+        "product": 4,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 4,
+    "fields": {
+        "product": 4,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 5,
+    "fields": {
+        "product": 4,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 6,
+    "fields": {
+        "product": 5,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 7,
+    "fields": {
+        "product": 5,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 8,
+    "fields": {
+        "product": 5,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 9,
+    "fields": {
+        "product": 5,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 10,
+    "fields": {
+        "product": 5,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 11,
+    "fields": {
+        "product": 6,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 12,
+    "fields": {
+        "product": 6,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 13,
+    "fields": {
+        "product": 6,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 14,
+    "fields": {
+        "product": 6,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 15,
+    "fields": {
+        "product": 6,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 16,
+    "fields": {
+        "product": 7,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 17,
+    "fields": {
+        "product": 7,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 18,
+    "fields": {
+        "product": 7,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 19,
+    "fields": {
+        "product": 7,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 20,
+    "fields": {
+        "product": 7,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 21,
+    "fields": {
+        "product": 8,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 22,
+    "fields": {
+        "product": 8,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 23,
+    "fields": {
+        "product": 8,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 24,
+    "fields": {
+        "product": 8,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 25,
+    "fields": {
+        "product": 8,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 26,
+    "fields": {
+        "product": 9,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 27,
+    "fields": {
+        "product": 9,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 28,
+    "fields": {
+        "product": 9,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 29,
+    "fields": {
+        "product": 9,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 30,
+    "fields": {
+        "product": 9,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 31,
+    "fields": {
+        "product": 10,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 32,
+    "fields": {
+        "product": 10,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 33,
+    "fields": {
+        "product": 10,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 34,
+    "fields": {
+        "product": 10,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 35,
+    "fields": {
+        "product": 10,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 36,
+    "fields": {
+        "product": 11,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 37,
+    "fields": {
+        "product": 11,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 38,
+    "fields": {
+        "product": 11,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 39,
+    "fields": {
+        "product": 11,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 40,
+    "fields": {
+        "product": 11,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 41,
+    "fields": {
+        "product": 12,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 42,
+    "fields": {
+        "product": 12,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 43,
+    "fields": {
+        "product": 12,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 44,
+    "fields": {
+        "product": 12,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 45,
+    "fields": {
+        "product": 12,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 46,
+    "fields": {
+        "product": 13,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 47,
+    "fields": {
+        "product": 13,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 48,
+    "fields": {
+        "product": 13,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 49,
+    "fields": {
+        "product": 13,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 50,
+    "fields": {
+        "product": 13,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 51,
+    "fields": {
+        "product": 14,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 52,
+    "fields": {
+        "product": 14,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 53,
+    "fields": {
+        "product": 14,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 54,
+    "fields": {
+        "product": 14,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 55,
+    "fields": {
+        "product": 14,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 56,
+    "fields": {
+        "product": 15,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 57,
+    "fields": {
+        "product": 15,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 58,
+    "fields": {
+        "product": 15,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 59,
+    "fields": {
+        "product": 15,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 60,
+    "fields": {
+        "product": 15,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 61,
+    "fields": {
+        "product": 16,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 62,
+    "fields": {
+        "product": 16,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 63,
+    "fields": {
+        "product": 16,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 64,
+    "fields": {
+        "product": 16,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 65,
+    "fields": {
+        "product": 16,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 66,
+    "fields": {
+        "product": 17,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 67,
+    "fields": {
+        "product": 17,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 68,
+    "fields": {
+        "product": 17,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 69,
+    "fields": {
+        "product": 17,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 70,
+    "fields": {
+        "product": 17,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 71,
+    "fields": {
+        "product": 18,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 72,
+    "fields": {
+        "product": 18,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 73,
+    "fields": {
+        "product": 18,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 74,
+    "fields": {
+        "product": 18,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 75,
+    "fields": {
+        "product": 18,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 76,
+    "fields": {
+        "product": 19,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 77,
+    "fields": {
+        "product": 19,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 78,
+    "fields": {
+        "product": 19,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 79,
+    "fields": {
+        "product": 19,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 80,
+    "fields": {
+        "product": 19,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 81,
+    "fields": {
+        "product": 20,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 82,
+    "fields": {
+        "product": 20,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 83,
+    "fields": {
+        "product": 20,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 84,
+    "fields": {
+        "product": 20,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 85,
+    "fields": {
+        "product": 20,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 86,
+    "fields": {
+        "product": 21,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 87,
+    "fields": {
+        "product": 21,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 88,
+    "fields": {
+        "product": 21,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 89,
+    "fields": {
+        "product": 21,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 90,
+    "fields": {
+        "product": 21,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 91,
+    "fields": {
+        "product": 22,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 92,
+    "fields": {
+        "product": 22,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 93,
+    "fields": {
+        "product": 22,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 94,
+    "fields": {
+        "product": 22,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 95,
+    "fields": {
+        "product": 22,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 96,
+    "fields": {
+        "product": 23,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 97,
+    "fields": {
+        "product": 23,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 98,
+    "fields": {
+        "product": 23,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 99,
+    "fields": {
+        "product": 23,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 100,
+    "fields": {
+        "product": 23,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 101,
+    "fields": {
+        "product": 24,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 102,
+    "fields": {
+        "product": 24,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 103,
+    "fields": {
+        "product": 24,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 104,
+    "fields": {
+        "product": 24,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 105,
+    "fields": {
+        "product": 24,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 106,
+    "fields": {
+        "product": 25,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 107,
+    "fields": {
+        "product": 25,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 108,
+    "fields": {
+        "product": 25,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 109,
+    "fields": {
+        "product": 25,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 110,
+    "fields": {
+        "product": 25,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 111,
+    "fields": {
+        "product": 26,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 112,
+    "fields": {
+        "product": 26,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 113,
+    "fields": {
+        "product": 26,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 114,
+    "fields": {
+        "product": 26,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 115,
+    "fields": {
+        "product": 26,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 116,
+    "fields": {
+        "product": 27,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 117,
+    "fields": {
+        "product": 27,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 118,
+    "fields": {
+        "product": 27,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 119,
+    "fields": {
+        "product": 27,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 120,
+    "fields": {
+        "product": 27,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 121,
+    "fields": {
+        "product": 28,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 122,
+    "fields": {
+        "product": 28,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 123,
+    "fields": {
+        "product": 28,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 124,
+    "fields": {
+        "product": 28,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 125,
+    "fields": {
+        "product": 28,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 126,
+    "fields": {
+        "product": 29,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 127,
+    "fields": {
+        "product": 29,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 128,
+    "fields": {
+        "product": 29,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 129,
+    "fields": {
+        "product": 29,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 130,
+    "fields": {
+        "product": 29,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 131,
+    "fields": {
+        "product": 30,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 132,
+    "fields": {
+        "product": 30,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 133,
+    "fields": {
+        "product": 30,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 134,
+    "fields": {
+        "product": 30,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 135,
+    "fields": {
+        "product": 30,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 136,
+    "fields": {
+        "product": 31,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 137,
+    "fields": {
+        "product": 31,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 138,
+    "fields": {
+        "product": 31,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 139,
+    "fields": {
+        "product": 31,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 140,
+    "fields": {
+        "product": 31,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 141,
+    "fields": {
+        "product": 32,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 142,
+    "fields": {
+        "product": 32,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 143,
+    "fields": {
+        "product": 32,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 144,
+    "fields": {
+        "product": 32,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 145,
+    "fields": {
+        "product": 32,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 146,
+    "fields": {
+        "product": 33,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 147,
+    "fields": {
+        "product": 33,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 148,
+    "fields": {
+        "product": 33,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 149,
+    "fields": {
+        "product": 33,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 150,
+    "fields": {
+        "product": 33,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 151,
+    "fields": {
+        "product": 34,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 152,
+    "fields": {
+        "product": 34,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 153,
+    "fields": {
+        "product": 34,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 154,
+    "fields": {
+        "product": 34,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 155,
+    "fields": {
+        "product": 34,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 156,
+    "fields": {
+        "product": 35,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 157,
+    "fields": {
+        "product": 35,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 158,
+    "fields": {
+        "product": 35,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 159,
+    "fields": {
+        "product": 35,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 160,
+    "fields": {
+        "product": 35,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 161,
+    "fields": {
+        "product": 36,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 162,
+    "fields": {
+        "product": 36,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 163,
+    "fields": {
+        "product": 36,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 164,
+    "fields": {
+        "product": 36,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 165,
+    "fields": {
+        "product": 36,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 166,
+    "fields": {
+        "product": 37,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 167,
+    "fields": {
+        "product": 37,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 168,
+    "fields": {
+        "product": 37,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 169,
+    "fields": {
+        "product": 37,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 170,
+    "fields": {
+        "product": 37,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 171,
+    "fields": {
+        "product": 38,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 172,
+    "fields": {
+        "product": 38,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 173,
+    "fields": {
+        "product": 38,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 174,
+    "fields": {
+        "product": 38,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 175,
+    "fields": {
+        "product": 38,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 176,
+    "fields": {
+        "product": 39,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 177,
+    "fields": {
+        "product": 39,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 178,
+    "fields": {
+        "product": 39,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 179,
+    "fields": {
+        "product": 39,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 180,
+    "fields": {
+        "product": 39,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 181,
+    "fields": {
+        "product": 40,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 182,
+    "fields": {
+        "product": 40,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 183,
+    "fields": {
+        "product": 40,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 184,
+    "fields": {
+        "product": 40,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 185,
+    "fields": {
+        "product": 40,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 186,
+    "fields": {
+        "product": 41,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 187,
+    "fields": {
+        "product": 41,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 188,
+    "fields": {
+        "product": 41,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 189,
+    "fields": {
+        "product": 41,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 190,
+    "fields": {
+        "product": 41,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 191,
+    "fields": {
+        "product": 42,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 192,
+    "fields": {
+        "product": 42,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 193,
+    "fields": {
+        "product": 42,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 194,
+    "fields": {
+        "product": 42,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 195,
+    "fields": {
+        "product": 42,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 196,
+    "fields": {
+        "product": 43,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 197,
+    "fields": {
+        "product": 43,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 198,
+    "fields": {
+        "product": 43,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 199,
+    "fields": {
+        "product": 43,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 200,
+    "fields": {
+        "product": 43,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 201,
+    "fields": {
+        "product": 44,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 202,
+    "fields": {
+        "product": 44,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 203,
+    "fields": {
+        "product": 44,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 204,
+    "fields": {
+        "product": 44,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 205,
+    "fields": {
+        "product": 44,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 206,
+    "fields": {
+        "product": 45,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 207,
+    "fields": {
+        "product": 45,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 208,
+    "fields": {
+        "product": 45,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 209,
+    "fields": {
+        "product": 45,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 210,
+    "fields": {
+        "product": 45,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 211,
+    "fields": {
+        "product": 46,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 212,
+    "fields": {
+        "product": 46,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 213,
+    "fields": {
+        "product": 46,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 214,
+    "fields": {
+        "product": 46,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 215,
+    "fields": {
+        "product": 46,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 216,
+    "fields": {
+        "product": 47,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 217,
+    "fields": {
+        "product": 47,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 218,
+    "fields": {
+        "product": 47,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 219,
+    "fields": {
+        "product": 47,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 220,
+    "fields": {
+        "product": 47,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 221,
+    "fields": {
+        "product": 48,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 222,
+    "fields": {
+        "product": 48,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 223,
+    "fields": {
+        "product": 48,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 224,
+    "fields": {
+        "product": 48,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 225,
+    "fields": {
+        "product": 48,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 226,
+    "fields": {
+        "product": 49,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 227,
+    "fields": {
+        "product": 49,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 228,
+    "fields": {
+        "product": 49,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 229,
+    "fields": {
+        "product": 49,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 230,
+    "fields": {
+        "product": 49,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 231,
+    "fields": {
+        "product": 50,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 232,
+    "fields": {
+        "product": 50,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 233,
+    "fields": {
+        "product": 50,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 234,
+    "fields": {
+        "product": 50,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 235,
+    "fields": {
+        "product": 50,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 236,
+    "fields": {
+        "product": 51,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 237,
+    "fields": {
+        "product": 51,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 238,
+    "fields": {
+        "product": 51,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 239,
+    "fields": {
+        "product": 51,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 240,
+    "fields": {
+        "product": 51,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 241,
+    "fields": {
+        "product": 52,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 242,
+    "fields": {
+        "product": 52,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 243,
+    "fields": {
+        "product": 52,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 244,
+    "fields": {
+        "product": 52,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 245,
+    "fields": {
+        "product": 52,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 246,
+    "fields": {
+        "product": 53,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 247,
+    "fields": {
+        "product": 53,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 248,
+    "fields": {
+        "product": 53,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 249,
+    "fields": {
+        "product": 53,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 250,
+    "fields": {
+        "product": 53,
+        "size": "XL",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 251,
+    "fields": {
+        "product": 54,
+        "size": "XS",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 252,
+    "fields": {
+        "product": 54,
+        "size": "S",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 253,
+    "fields": {
+        "product": 54,
+        "size": "M",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 254,
+    "fields": {
+        "product": 54,
+        "size": "L",
+        "stock": 10
+    }
+},
+{
+    "model": "store.productsize",
+    "pk": 255,
+    "fields": {
+        "product": 54,
+        "size": "XL",
+        "stock": 10
+    }
+}
+]
