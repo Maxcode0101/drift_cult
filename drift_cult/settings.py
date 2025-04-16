@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security
 SECRET_KEY = os.environ.get('SECRET_KEY')
-DEBUG = os.environ.get('DEVELOPMENT') == 'True'
+DEBUG = os.environ.get('DEBUG', False)
 
 ALLOWED_HOSTS = [
     'drift-cult-9f60af6d7463.herokuapp.com',
@@ -60,7 +60,10 @@ ROOT_URLCONF = 'drift_cult.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [
+            BASE_DIR / 'templates',
+            os.path.join(BASE_DIR, 'templates', 'allauth'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,7 +81,12 @@ TEMPLATES = [
 WSGI_APPLICATION = 'drift_cult.wsgi.application'
 
 # Database
-if DEBUG:
+if os.environ.get('DATABASE_URL'):
+    print('Running in PRODUCTION mode using Postgres')
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
+else:
     print('Running in DEVELOPMENT mode using SQLite3')
     DATABASES = {
         'default': {
@@ -86,11 +94,7 @@ if DEBUG:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-else:
-    print('Running in PRODUCTION mode using Postgres')
-    DATABASES = {
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-    }
+
 
 # Static & Media
 if os.environ.get('USE_AWS'):
