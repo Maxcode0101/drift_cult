@@ -10,6 +10,7 @@ urlpatterns = [
     path('product/', include('store.urls')),
     path('store/', include('store.urls')),
     path('', include('store.urls')),
+    path('', include('core.urls')),
 ]
 
 # Serve media files in development
