@@ -2,6 +2,8 @@ import os
 from pathlib import Path
 import dj_database_url
 import stripe
+import resend
+
 
 # Load environment variables
 if os.path.exists('env.py'):
@@ -15,6 +17,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.environ.get('DEBUG', False)
 
 ALLOWED_HOSTS = [
+    'driftcult.art',
+    'www.driftcult.art',
     'drift-cult-9f60af6d7463.herokuapp.com',
     'drift-cult.herokuapp.com',
     'localhost',
@@ -164,3 +168,13 @@ STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
 
 stripe.api_key = STRIPE_SECRET_KEY
+
+
+# Email backend using Namecheap Pro Mail SMTP
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "mail.privateemail.com"
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = "admin@driftcult.art"
+EMAIL_HOST_PASSWORD = os.getenv("PRO_MAIL_PASSWORD")
+DEFAULT_FROM_EMAIL = "Drift Cult <admin@driftcult.art>"
