@@ -8,6 +8,11 @@ from django.http import JsonResponse, HttpResponseRedirect
 from django.urls import reverse
 import stripe
 
+# Email imports
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+
 from .models import Product, ProductSize, CartItem, Order, OrderItem
 
 
@@ -170,6 +175,16 @@ def order_confirmation(request):
             product_size=item.product_size,
             quantity=item.quantity
         )
+        
+    # Send confirmation email
+    subject = 'Your Drift Cult Order Confirmation'
+    html_message = render_to_string('emails/order_confirmation.html', {'order': order, 'user': request.user})
+    plain_message = strip_tags(html_message)
+    from_email = settings.DEFAULT_FROM_EMAIL
+    to_email = [request.user.email]
+
+    send_mail(subject, plain_message, from_email, to_email, html_message=html_message)
+    
     cart_items.delete()
     messages.success(request, "Order placed successfully!")
 

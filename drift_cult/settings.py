@@ -178,7 +178,7 @@ ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 
 
 # Email Branding
-DEFAULT_FROM_EMAIL = "Drift Cult <noreply@driftcult.art>"
+DEFAULT_FROM_EMAIL = "Drift Cult <admin@driftcult.art>"
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Drift Cult] '

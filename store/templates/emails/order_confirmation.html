@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Order Confirmation – Drift Cult</title>
+</head>
+<body style="font-family: Arial, sans-serif;">
+    <h2>Thanks for your order, {{ order.full_name }}!</h2>
+    <p>We’ve received your order <strong>#{{ order.id }}</strong> and it’s now being processed.</p>
+    
+    <h3>Order Summary:</h3>
+    <ul>
+        {% for item in order.items.all %}
+        <li>{{ item.product.name }} ({{ item.size.size }}) – {{ item.quantity }} x €{{ item.product.price }}</li>
+        {% endfor %}
+    </ul>
+    
+    <p>Total: <strong>€{{ order.total }}</strong></p>
+
+    <p>You’ll receive another email once it has been shipped.</p>
+
+    <hr>
+    <p>Drift Cult<br>Minimalist Surf, Skate & Outdoor Apparel</p>
+</body>
+</html>
