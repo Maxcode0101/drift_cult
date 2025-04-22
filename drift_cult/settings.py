@@ -159,8 +159,6 @@ USE_I18N = True
 USE_TZ = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 
 # Stripe settings
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY')
@@ -180,6 +178,7 @@ ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 
 
 # Email Branding
-DEFAULT_FROM_EMAIL = 'noreply@driftcult.art'
+DEFAULT_FROM_EMAIL = "Drift Cult <admin@driftcult.art>"
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Drift Cult] '
