@@ -176,4 +176,10 @@ EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 EMAIL_HOST_USER = "admin@driftcult.art"
 EMAIL_HOST_PASSWORD = os.getenv("PRO_MAIL_PASSWORD")
-DEFAULT_FROM_EMAIL = "Drift Cult <admin@driftcult.art>"
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+
+
+# Email Branding
+DEFAULT_FROM_EMAIL = 'noreply@driftcult.art'
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
+ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Drift Cult] '
