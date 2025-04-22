@@ -7,6 +7,9 @@ from django.conf import settings
 from django.http import JsonResponse, HttpResponseRedirect
 from django.urls import reverse
 import stripe
+import json
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
 
 # Email imports
 from django.core.mail import send_mail
@@ -151,6 +154,7 @@ def create_checkout_session(request):
 
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],
+        customer_email=request.user.email,
         line_items=line_items,
         mode='payment',
         success_url=request.build_absolute_uri(reverse('order_confirmation')),
@@ -175,15 +179,6 @@ def order_confirmation(request):
             product_size=item.product_size,
             quantity=item.quantity
         )
-        
-    # Send confirmation email
-    subject = 'Your Drift Cult Order Confirmation'
-    html_message = render_to_string('emails/order_confirmation.html', {'order': order, 'user': request.user})
-    plain_message = strip_tags(html_message)
-    from_email = settings.DEFAULT_FROM_EMAIL
-    to_email = [request.user.email]
-
-    send_mail(subject, plain_message, from_email, to_email, html_message=html_message)
     
     cart_items.delete()
     messages.success(request, "Order placed successfully!")
@@ -193,3 +188,47 @@ def order_confirmation(request):
 
 def home_view(request):
     return render(request, 'store/home.html')
+
+@csrf_exempt
+def stripe_webhook(request):
+    payload = request.body
+    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+    endpoint_secret = settings.STRIPE_WEBHOOK_SECRET
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, endpoint_secret
+        )
+    except ValueError as e:
+        # Invalid payload
+        return HttpResponse(status=400)
+    except stripe.error.SignatureVerificationError as e:
+        # Invalid signature
+        return HttpResponse(status=400)
+
+    # Handle successful checkout
+    if event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
+        customer_email = session.get('customer_email')
+        user = User.objects.filter(email=customer_email).first()
+        if user:
+            order = Order.objects.filter(user=user, paid=False).last()
+            if order:
+                order.paid = True
+                order.save()
+
+                # Send confirmation email
+                subject = "Your Drift Cult Order Confirmation"
+                html_message = render_to_string('emails/order_confirmation.html', {
+                    'order': order,
+                    'user': user
+                })
+                send_mail(
+                    subject,
+                    '',
+                    settings.DEFAULT_FROM_EMAIL,
+                    [customer_email],
+                    html_message=html_message
+                )
+
+    return HttpResponse(status=200)
