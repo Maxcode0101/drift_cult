@@ -1,28 +1,75 @@
-{% extends "base.html" %}
-{% load static %}
-
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Confirmation – Drift Cult</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            padding: 40px;
+            background: #fff;
+            color: #222;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 16px;
+        }
+        .order-summary {
+            margin-top: 30px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+        .order-summary ul {
+            list-style: none;
+            padding: 0;
+        }
+        .order-summary li {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .total {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background-color: #3b82f6;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
 <div class="container">
     <h1>Thank you for your order!</h1>
-
     <p>Your order has been placed successfully. You will receive a confirmation email shortly.</p>
 
-    <h3>Order Summary:</h3>
-    <ul>
-        {% for item in order.items.all %}
-            <li>
-                {{ item.quantity }} x {{ item.product_size.product.name }} 
-                (Size: {{ item.product_size.size }})
-            </li>
-        {% endfor %}
-    </ul>
-
-    <p><strong>Total Paid:</strong> €{{ total }}</p>
-
-    <div class="mt-4">
-        <a href="{% url 'product_list' %}" class="btn btn-primary">
-            Continue Shopping
-        </a>
+    <div class="order-summary">
+        <h2>Order Summary:</h2>
+        {% if order %}
+        <ul>
+            {% for item in order.items.all %}
+            <li>{{ item.product_size.product.name }} (Size: {{ item.product_size.size }}) – {{ item.quantity }} × €{{ item.product_size.product.price }}</li>
+            {% endfor %}
+        </ul>
+        <p class="total">Total Paid: €{{ order_total }}</p>
+        {% else %}
+        <p>No order found.</p>
+        {% endif %}
     </div>
+
+    <a href="{% url 'product_list' %}" class="btn">Continue Shopping</a>
 </div>
-{% endblock %}
+</body>
+</html>

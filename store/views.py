@@ -154,17 +154,17 @@ def create_checkout_session(request):
 
 @login_required
 def order_confirmation(request):
-    order_id = request.session.get('pending_order_id')
-    order = get_object_or_404(Order, pk=order_id, user=request.user)
+    order = Order.objects.filter(user=request.user, is_paid=True).order_by('-created_at').first()
 
-    if order and not order.items.exists():
-        cart_items = CartItem.objects.filter(user=request.user)
-        for item in cart_items:
-            OrderItem.objects.create(
-                order=order,
-                product_size=item.product_size,
-                quantity=item.quantity
-            )
-        cart_items.delete()
+    if not order:
+        messages.error(request, "No recent order found.")
+        return redirect('product_list')
 
-    return render(request, 'store/order_confirmation.html', {'order': order})
+    total = sum(
+        item.product_size.product.price * item.quantity for item in order.items.all()
+    )
+
+    return render(request, 'store/order_confirmation.html', {
+        'order': order,
+        'order_total': total
+    })
