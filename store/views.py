@@ -212,10 +212,12 @@ def stripe_webhook(request):
         customer_email = session.get('customer_email')
         user = User.objects.filter(email=customer_email).first()
         if user:
-            order = Order.objects.filter(user=user, paid=False).last()
+            order = Order.objects.filter(user=user, is_paid=False).last()
             if order:
-                order.paid = True
+                order.is_paid = True
                 order.save()
+                
+                print("✅ Webhook received and order marked as paid.")
 
                 # Send confirmation email
                 subject = "Your Drift Cult Order Confirmation"
