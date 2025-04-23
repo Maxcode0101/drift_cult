@@ -4,30 +4,22 @@
     <meta charset="UTF-8">
     <title>Order Confirmation – Drift Cult</title>
 </head>
-<body style="font-family: Arial, sans-serif; padding: 20px; color: #111;">
-    <h2>Thanks for your order, {{ user.first_name }}!</h2>
+<body style="font-family: Arial, sans-serif;">
+    <h2>Thanks for your order, {{ user.first_name|default:"friend" }}!</h2>
     <p>We’ve received your order <strong>#{{ order.id }}</strong> and it’s now being processed.</p>
-    
+
     <h3>Order Summary:</h3>
-    <ul style="list-style-type: none; padding: 0;">
+    <ul>
         {% for item in order.items.all %}
-        <li style="margin-bottom: 10px;">
-            {{ item.product_size.product.name }} ({{ item.product_size.size }}) – {{ item.quantity }} × €{{ item.product_size.product.price|floatformat:2 }}
-        </li>
+        <li>{{ item.product_size.product.name }} (Size: {{ item.product_size.size }}) – {{ item.quantity }} × €{{ item.product_size.product.price }}</li>
         {% endfor %}
     </ul>
-    
-    <p style="font-size: 16px; margin-top: 20px;">
-        <strong>Total: €{{ order.get_total|floatformat:2 }}</strong>
-    </p>
+
+    <p>Total: <strong>€{{ total }}</strong></p>
 
     <p>You’ll receive another email once it has been shipped.</p>
 
-    <hr style="margin-top: 40px;">
-    <p style="font-size: 14px; color: #555;">
-        Drift Cult<br>
-        Minimalist Surf, Skate & Outdoor Apparel<br>
-        <a href="https://www.driftcult.art" style="color: #111;">www.driftcult.art</a>
-    </p>
+    <hr>
+    <p>Drift Cult<br>Minimalist Surf, Skate & Outdoor Apparel</p>
 </body>
 </html>

@@ -40,46 +40,57 @@ def stripe_webhook(request):
     endpoint_secret = settings.STRIPE_WEBHOOK_SECRET
 
     try:
-        event = stripe.Webhook.construct_event(
-            payload, sig_header, endpoint_secret
-        )
+        event = stripe.Webhook.construct_event(payload, sig_header, endpoint_secret)
     except (ValueError, stripe.error.SignatureVerificationError):
         return HttpResponse(status=400)
 
-    # ✅ Handle the checkout.session.completed event
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
-
-        # 🔍 Try both methods to get the customer's email
         customer_email = session.get('customer_email') or session.get('customer_details', {}).get('email')
+
         if not customer_email:
-            print("❌ Webhook: No customer email found in session.")
+            print("❌ No customer email found.")
             return HttpResponse(status=400)
 
         user = User.objects.filter(email=customer_email).first()
         if not user:
-            print(f"❌ Webhook: No user found with email {customer_email}")
+            print(f"❌ No user found with email {customer_email}")
             return HttpResponse(status=404)
 
-        order = Order.objects.filter(user=user, is_paid=False).last()
-        if order:
-            order.is_paid = True
-            order.save()
+        cart_items = CartItem.objects.filter(user=user)
+        if not cart_items.exists():
+            print(f"❌ No cart items found for {customer_email}")
+            return HttpResponse(status=404)
 
-            print("✅ Webhook received and order marked as paid.")
+        # Create the order
+        order = Order.objects.create(user=user, is_paid=True)
 
-            # 📧 Send confirmation email
-            subject = "Your Drift Cult Order Confirmation"
-            html_message = render_to_string('emails/order_confirmation.html', {
-                'order': order,
-                'user': user
-            })
-            send_mail(
-                subject,
-                '',
-                settings.DEFAULT_FROM_EMAIL,
-                [customer_email],
-                html_message=html_message
+        total = 0
+        for item in cart_items:
+            OrderItem.objects.create(
+                order=order,
+                product_size=item.product_size,
+                quantity=item.quantity
             )
+            total += item.product_size.product.price * item.quantity
+
+        cart_items.delete()
+
+        print(f"✅ Webhook processed: Order #{order.id} marked as paid.")
+
+        # Send confirmation email
+        subject = f"Your Drift Cult Order Confirmation (Order #{order.id})"
+        html_message = render_to_string('emails/order_confirmation.html', {
+            'order': order,
+            'user': user,
+            'total': total
+        })
+        send_mail(
+            subject,
+            '',
+            settings.DEFAULT_FROM_EMAIL,
+            [customer_email],
+            html_message=html_message
+        )
 
     return HttpResponse(status=200)

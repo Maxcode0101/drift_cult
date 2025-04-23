@@ -7,8 +7,6 @@ from django.conf import settings
 from django.http import JsonResponse, HttpResponseRedirect
 from django.urls import reverse
 import stripe
-import json
-from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 
 # Email imports
@@ -18,7 +16,6 @@ from django.utils.html import strip_tags
 
 from .models import Product, ProductSize, CartItem, Order, OrderItem
 from django.contrib.auth.models import User
-
 
 def product_detail(request, pk):
     product = get_object_or_404(Product, pk=pk)
@@ -31,21 +28,17 @@ def product_detail(request, pk):
         'product': product
     })
 
-
 def product_list(request):
     products = Product.objects.all()
     return render(request, 'store/product_list.html', {'products': products})
-
 
 def shop_view(request):
     products = Product.objects.all()
     return render(request, 'store/shop.html', {'products': products})
 
-
 @login_required
 def profile_view(request):
     return render(request, 'store/profile.html')
-
 
 class ProductListView(ListView):
     model = Product
@@ -76,7 +69,6 @@ class ProductListView(ListView):
         ).distinct()
         return context
 
-
 @login_required
 def view_cart(request):
     cart_items = CartItem.objects.filter(user=request.user)
@@ -86,7 +78,6 @@ def view_cart(request):
         'total': total,
     }
     return render(request, 'store/cart.html', context)
-
 
 @login_required
 def add_to_cart(request, product_id, size_id):
@@ -104,14 +95,12 @@ def add_to_cart(request, product_id, size_id):
     messages.success(request, 'Item added to cart!')
     return redirect('view_cart')
 
-
 @login_required
 def remove_from_cart(request, item_id):
     item = get_object_or_404(CartItem, id=item_id, user=request.user)
     item.delete()
     messages.success(request, 'Item removed from cart.')
     return redirect('view_cart')
-
 
 @login_required
 def checkout(request):
@@ -129,7 +118,6 @@ def checkout(request):
         'stripe_public_key': settings.STRIPE_PUBLIC_KEY
     }
     return render(request, 'store/checkout.html', context)
-
 
 @login_required
 def create_checkout_session(request):
@@ -153,8 +141,6 @@ def create_checkout_session(request):
             'quantity': item.quantity,
         })
 
-    order = Order.objects.create(user=request.user)
-
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],
         customer_email=request.user.email,
@@ -162,35 +148,14 @@ def create_checkout_session(request):
         mode='payment',
         success_url=request.build_absolute_uri(reverse('order_confirmation')),
         cancel_url=request.build_absolute_uri(reverse('view_cart')),
-        metadata={'order_id': order.id},  # ✅ Add order ID here
     )
 
     return HttpResponseRedirect(session.url)
 
-
 @login_required
 def order_confirmation(request):
-    cart_items = CartItem.objects.filter(user=request.user)
-
-    if not cart_items.exists():
-        return redirect('product_list')
-
-    order = Order.objects.create(user=request.user)
-
-    for item in cart_items:
-        OrderItem.objects.create(
-            order=order,
-            product_size=item.product_size,
-            quantity=item.quantity
-        )
-    
-    cart_items.delete()
-    messages.success(request, "Order placed successfully!")
-
-    order.full_name = request.user.get_full_name() or request.user.username
-
-    return render(request, 'store/order_confirmation.html', {'order': order})
-
+    messages.success(request, "Thank you for your order!\nYour order has been placed successfully. You will receive a confirmation email shortly.")
+    return render(request, 'store/order_confirmation.html')
 
 def home_view(request):
     return render(request, 'store/home.html')
