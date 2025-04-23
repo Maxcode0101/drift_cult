@@ -175,7 +175,7 @@ def order_confirmation(request):
     if not cart_items.exists():
         return redirect('product_list')
 
-    order = Order.objects.filter(user=request.user, is_paid=False).last()
+    order = Order.objects.create(user=request.user)
 
     for item in cart_items:
         OrderItem.objects.create(
@@ -186,6 +186,8 @@ def order_confirmation(request):
     
     cart_items.delete()
     messages.success(request, "Order placed successfully!")
+
+    order.full_name = request.user.get_full_name() or request.user.username
 
     return render(request, 'store/order_confirmation.html', {'order': order})
 
