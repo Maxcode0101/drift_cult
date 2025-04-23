@@ -3,7 +3,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from core.views import home
-from store.views import stripe_webhook
+from core.views import stripe_webhook
 
 
 urlpatterns = [
