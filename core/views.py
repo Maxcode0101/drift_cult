@@ -5,8 +5,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.admin.views.decorators import staff_member_required
 from django.conf import settings
 from django.template.loader import render_to_string
-from store.models import Order, User
 
+from store.models import Order, OrderItem, CartItem, User
 import stripe
 import json
 
@@ -62,29 +62,38 @@ def stripe_webhook(request):
             print(f"❌ No cart items found for {customer_email}")
             return HttpResponse(status=404)
 
-        # Create the order
         order = Order.objects.create(user=user, is_paid=True)
 
         total = 0
+        order_items_data = []
         for item in cart_items:
-            OrderItem.objects.create(
+            order_item = OrderItem.objects.create(
                 order=order,
                 product_size=item.product_size,
                 quantity=item.quantity
             )
-            total += item.product_size.product.price * item.quantity
+            subtotal = item.product_size.product.price * item.quantity
+            total += subtotal
+            order_items_data.append({
+                'product_name': item.product_size.product.name,
+                'size': item.product_size.size,
+                'quantity': item.quantity,
+                'price': f"{item.product_size.product.price:.2f}",
+                'subtotal': f"{subtotal:.2f}",
+            })
 
         cart_items.delete()
 
         print(f"✅ Webhook processed: Order #{order.id} marked as paid.")
 
-        # Send confirmation email
         subject = f"Your Drift Cult Order Confirmation (Order #{order.id})"
         html_message = render_to_string('emails/order_confirmation.html', {
             'order': order,
             'user': user,
-            'total': total
+            'total': f"{total:.2f}",
+            'items': order_items_data,
         })
+
         send_mail(
             subject,
             '',

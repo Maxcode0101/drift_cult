@@ -4,22 +4,26 @@
     <meta charset="UTF-8">
     <title>Order Confirmation – Drift Cult</title>
 </head>
-<body style="font-family: Arial, sans-serif;">
-    <h2>Thanks for your order, {{ user.first_name|default:"friend" }}!</h2>
-    <p>We’ve received your order <strong>#{{ order.id }}</strong> and it’s now being processed.</p>
+<body style="font-family: Arial, sans-serif; background: #fafafa; padding: 20px; color: #333;">
+    <div style="max-width: 600px; margin: auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        <h2 style="color: #111;">Thanks for your order, {{ user.get_full_name|default:user.username }}!</h2>
+        <p style="font-size: 16px;">We’ve received your order <strong>#{{ order.id }}</strong> and it’s now being processed.</p>
+        
+        <h3 style="margin-top: 30px;">Order Summary:</h3>
+        <ul style="list-style: none; padding: 0;">
+            {% for item in order.items.all %}
+            <li style="padding: 8px 0; border-bottom: 1px solid #eee;">
+                {{ item.product_size.product.name }} (Size: {{ item.product_size.size }}) – {{ item.quantity }} x €{{ item.product_size.product.price }}
+            </li>
+            {% endfor %}
+        </ul>
 
-    <h3>Order Summary:</h3>
-    <ul>
-        {% for item in order.items.all %}
-        <li>{{ item.product_size.product.name }} (Size: {{ item.product_size.size }}) – {{ item.quantity }} × €{{ item.product_size.product.price }}</li>
-        {% endfor %}
-    </ul>
+        <p style="margin-top: 20px; font-size: 18px;"><strong>Total: €{{ total }}</strong></p>
 
-    <p>Total: <strong>€{{ total }}</strong></p>
+        <p style="margin-top: 30px;">You’ll receive another email once it has been shipped.</p>
 
-    <p>You’ll receive another email once it has been shipped.</p>
-
-    <hr>
-    <p>Drift Cult<br>Minimalist Surf, Skate & Outdoor Apparel</p>
+        <hr style="margin: 40px 0;">
+        <p style="font-size: 14px; color: #777;">Drift Cult<br>Minimalist Surf, Skate & Outdoor Apparel</p>
+    </div>
 </body>
 </html>
