@@ -17,6 +17,7 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 
 from .models import Product, ProductSize, CartItem, Order, OrderItem
+from django.contrib.auth.models import User
 
 
 def product_detail(request, pk):
@@ -152,6 +153,8 @@ def create_checkout_session(request):
             'quantity': item.quantity,
         })
 
+    order = Order.objects.create(user=request.user)
+
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],
         customer_email=request.user.email,
@@ -159,6 +162,7 @@ def create_checkout_session(request):
         mode='payment',
         success_url=request.build_absolute_uri(reverse('order_confirmation')),
         cancel_url=request.build_absolute_uri(reverse('view_cart')),
+        metadata={'order_id': order.id},  # ✅ Add order ID here
     )
 
     return HttpResponseRedirect(session.url)
@@ -171,7 +175,7 @@ def order_confirmation(request):
     if not cart_items.exists():
         return redirect('product_list')
 
-    order = Order.objects.create(user=request.user)
+    order = Order.objects.filter(user=request.user, is_paid=False).last()
 
     for item in cart_items:
         OrderItem.objects.create(
@@ -189,6 +193,7 @@ def order_confirmation(request):
 def home_view(request):
     return render(request, 'store/home.html')
 
+
 @csrf_exempt
 def stripe_webhook(request):
     payload = request.body
@@ -196,41 +201,38 @@ def stripe_webhook(request):
     endpoint_secret = settings.STRIPE_WEBHOOK_SECRET
 
     try:
-        event = stripe.Webhook.construct_event(
-            payload, sig_header, endpoint_secret
-        )
-    except ValueError as e:
-        # Invalid payload
+        event = stripe.Webhook.construct_event(payload, sig_header, endpoint_secret)
+    except ValueError:
         return HttpResponse(status=400)
-    except stripe.error.SignatureVerificationError as e:
-        # Invalid signature
+    except stripe.error.SignatureVerificationError:
         return HttpResponse(status=400)
 
-    # Handle successful checkout
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
         customer_email = session.get('customer_email')
-        user = User.objects.filter(email=customer_email).first()
-        if user:
-            order = Order.objects.filter(user=user, is_paid=False).last()
-            if order:
-                order.is_paid = True
-                order.save()
-                
-                print("✅ Webhook received and order marked as paid.")
+        order_id = session['metadata'].get('order_id')
 
-                # Send confirmation email
-                subject = "Your Drift Cult Order Confirmation"
-                html_message = render_to_string('emails/order_confirmation.html', {
-                    'order': order,
-                    'user': user
-                })
-                send_mail(
-                    subject,
-                    '',
-                    settings.DEFAULT_FROM_EMAIL,
-                    [customer_email],
-                    html_message=html_message
-                )
+        user = User.objects.filter(email=customer_email).first()
+        order = Order.objects.filter(id=order_id, user=user).first()
+
+        if order:
+            order.is_paid = True
+            order.save()
+
+            print("✅ Webhook received and order marked as paid.")
+
+            # Send confirmation email
+            subject = "Your Drift Cult Order Confirmation"
+            html_message = render_to_string('emails/order_confirmation.html', {
+                'order': order,
+                'user': user
+            })
+            send_mail(
+                subject,
+                '',
+                settings.DEFAULT_FROM_EMAIL,
+                [customer_email],
+                html_message=html_message
+            )
 
     return HttpResponse(status=200)
