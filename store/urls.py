@@ -1,8 +1,6 @@
 from django.urls import path
 from . import views
 from .views import ProductListView
-from store.views import stripe_webhook
-
 
 urlpatterns = [
     path('', views.home_view, name='home'),  # Homepage

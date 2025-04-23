@@ -2,8 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from core.views import home
-from core.views import stripe_webhook
+from core.views import home, stripe_webhook
 
 
 urlpatterns = [
