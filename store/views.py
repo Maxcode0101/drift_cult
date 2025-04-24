@@ -103,6 +103,25 @@ def remove_from_cart(request, item_id):
 
 
 @login_required
+def update_cart_quantity(request, item_id):
+    item = get_object_or_404(CartItem, id=item_id, user=request.user)
+
+    if request.method == 'POST':
+        new_quantity = int(request.POST.get('quantity', 1))
+
+        if new_quantity > 0:
+            item.quantity = new_quantity
+            item.save()
+            messages.success(request, 'Cart updated.')
+        else:
+            item.delete()
+            messages.success(request, 'Item removed from cart.')
+
+    return redirect('view_cart')
+
+
+
+@login_required
 def checkout(request):
     cart_items = CartItem.objects.filter(user=request.user)
     if not cart_items.exists():
