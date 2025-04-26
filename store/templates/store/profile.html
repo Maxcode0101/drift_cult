@@ -20,12 +20,22 @@
         <ul class="list-group">
           {% for order in request.user.order_set.all|dictsortreversed:"created_at"|slice:":5" %}
             <li class="list-group-item">
-              <strong>Order #{{ order.id }}</strong> — 
+              <strong>Order #{{ order.id }}</strong><br>
+
               {% if order.is_paid %}
                 <span class="badge badge-success">Paid</span>
               {% else %}
                 <span class="badge badge-secondary">Unpaid</span>
               {% endif %}
+
+              {% if order.status == "processing" %}
+                <span class="badge badge-warning">Processing</span>
+              {% elif order.status == "shipped" %}
+                <span class="badge badge-primary">Shipped</span>
+              {% elif order.status == "delivered" %}
+                <span class="badge badge-success">Delivered</span>
+              {% endif %}
+
               <br>
               <small class="text-muted">{{ order.created_at|date:"M d, Y H:i" }}</small>
             </li>

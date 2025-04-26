@@ -48,14 +48,22 @@ class CartItem(models.Model):
 
 
 class Order(models.Model):
+    STATUS_CHOICES = [
+        ('processing', 'Processing'),
+        ('shipped', 'Shipped'),
+        ('delivered', 'Delivered'),
+    ]
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     is_paid = models.BooleanField(default=False)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='processing')
 
     def __str__(self):
         return f'Order #{self.id} by {self.user.username}'
 
     def get_total(self):
+        """Return the total cost of all items in this order."""
         return sum(item.product_size.product.price * item.quantity for item in self.items.all())
 
 
