@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.html import format_html
 from .models import Product, ProductSize, CartItem, Order, OrderItem
 
 @admin.register(Product)
@@ -16,9 +17,11 @@ class CartItemAdmin(admin.ModelAdmin):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'created_at', 'is_paid', 'colored_status')
-    list_filter = ('is_paid', 'status')
+    list_display = ('id', 'user', 'is_paid', 'status', 'colored_status', 'created_at')
+    list_filter = ('status', 'is_paid', 'created_at')
+    search_fields = ('user__username', 'id')
     readonly_fields = ('created_at',)
+    fields = ('user', 'is_paid', 'status', 'created_at')
 
     def colored_status(self, obj):
         color = {
@@ -33,6 +36,7 @@ class OrderAdmin(admin.ModelAdmin):
             obj.get_status_display()
         )
     colored_status.short_description = 'Status'
+
 
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):
