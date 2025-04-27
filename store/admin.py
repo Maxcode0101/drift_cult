@@ -15,20 +15,22 @@ class ProductSizeAdmin(admin.ModelAdmin):
 class CartItemAdmin(admin.ModelAdmin):
     list_display = ('user', 'product_size', 'quantity')
 
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    fields = ('product_size', 'quantity')  # Editable quantity
+    extra = 0
+
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'is_paid', 'colored_status', 'created_at')
     list_filter = ('status', 'is_paid', 'created_at')
     search_fields = ('user__username', 'id')
-    readonly_fields = ('created_at',)
-    actions = ['mark_as_processing', 'mark_as_shipped', 'mark_as_delivered']
+    readonly_fields = ('created_at', 'get_total_display', 'get_payment_method_display')
+    inlines = [OrderItemInline]
 
     fieldsets = (
-        ('Order Information', {
-            'fields': ('user', 'created_at', 'is_paid')
-        }),
-        ('Shipping Status', {
-            'fields': ('status',)
+        (None, {
+            'fields': ('user', 'is_paid', 'status', 'get_payment_method_display', 'get_total_display', 'created_at')
         }),
     )
 
@@ -40,24 +42,16 @@ class OrderAdmin(admin.ModelAdmin):
         }.get(obj.status, 'gray')
 
         return format_html(
-            '<span style="color: white; background-color: {}; padding: 4px 8px; border-radius: 12px;">{}</span>',
+            '<span style="color: white; background-color: {}; padding: 2px 8px; border-radius: 8px;">{}</span>',
             color,
             obj.get_status_display()
         )
     colored_status.short_description = 'Status'
 
+    def get_total_display(self, obj):
+        return f"${obj.get_total():.2f}"
+    get_total_display.short_description = 'Order Total'
 
-    @admin.action(description='Mark selected orders as Processing')
-    def mark_as_processing(self, request, queryset):
-        updated = queryset.update(status='processing')
-        self.message_user(request, f"{updated} orders marked as Processing.")
-
-    @admin.action(description='Mark selected orders as Shipped')
-    def mark_as_shipped(self, request, queryset):
-        updated = queryset.update(status='shipped')
-        self.message_user(request, f"{updated} orders marked as Shipped.")
-
-    @admin.action(description='Mark selected orders as Delivered')
-    def mark_as_delivered(self, request, queryset):
-        updated = queryset.update(status='delivered')
-        self.message_user(request, f"{updated} orders marked as Delivered.")
+    def get_payment_method_display(self, obj):
+        return "Stripe"
+    get_payment_method_display.short_description = 'Payment Method'
