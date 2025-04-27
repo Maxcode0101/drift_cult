@@ -38,6 +38,11 @@
 
               <br>
               <small class="text-muted">{{ order.created_at|date:"M d, Y H:i" }}</small>
+              
+              <br>
+              <a href="{% url 'order_detail' order.id %}" class="btn btn-sm btn-outline-primary mt-2">
+                View Details
+              </a>
             </li>
           {% endfor %}
         </ul>

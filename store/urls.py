@@ -11,6 +11,7 @@ urlpatterns = [
     path('add-to-cart/<int:product_id>/<int:size_id>/', views.add_to_cart, name='add_to_cart'),
     path('remove-from-cart/<int:item_id>/', views.remove_from_cart, name='remove_from_cart'),
     path('update_cart_quantity/<int:item_id>/', views.update_cart_quantity, name='update_cart_quantity'),
+    path('orders/<int:order_id>/', views.order_detail, name='order_detail'),
 
     # Stripe Checkout
     path('checkout/', views.checkout, name='checkout'),
