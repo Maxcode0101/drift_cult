@@ -28,11 +28,27 @@ class OrderAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at', 'get_total_display', 'get_payment_method_display')
     inlines = [OrderItemInline]
 
+    actions = ['mark_as_processing', 'mark_as_shipped', 'mark_as_delivered']
+
     fieldsets = (
         (None, {
             'fields': ('user', 'is_paid', 'status', 'get_payment_method_display', 'get_total_display', 'created_at')
         }),
     )
+    
+    def mark_as_processing(self, request, queryset):
+        queryset.update(status='processing')
+
+    def mark_as_shipped(self, request, queryset):
+        queryset.update(status='shipped')
+
+    def mark_as_delivered(self, request, queryset):
+        queryset.update(status='delivered')
+
+    mark_as_processing.short_description = "Mark selected orders as Processing"
+    mark_as_shipped.short_description = "Mark selected orders as Shipped"
+    mark_as_delivered.short_description = "Mark selected orders as Delivered"
+    
 
     def colored_status(self, obj):
         color = {
@@ -55,3 +71,5 @@ class OrderAdmin(admin.ModelAdmin):
     def get_payment_method_display(self, obj):
         return "Stripe"
     get_payment_method_display.short_description = 'Payment Method'
+    
+    
