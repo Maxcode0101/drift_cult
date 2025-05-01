@@ -13,4 +13,21 @@
     </div>
   </div>
 </div>
+<!-- Newsletter signup box -->
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+      <h3>Join Our Newsletter</h3>
+      <p>Get updates, promos & more.</p>
+      <form id="newsletter-form" method="post">
+        {% csrf_token %}
+        <div class="input-group">
+          <input type="email" name="email" id="newsletter-email" class="form-control" placeholder="Enter your email" required>
+          <button class="btn btn-dark" type="submit">Subscribe</button>
+        </div>
+        <small id="newsletter-success" class="text-success d-none mt-2">Thank you for subscribing!</small>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock %}

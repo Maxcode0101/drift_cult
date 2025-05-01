@@ -74,3 +74,11 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f'{self.quantity} x {self.product_size.product.name} ({self.product_size.size})'
+    
+    
+class NewsletterSubscriber(models.Model):
+    email = models.EmailField(unique=True)
+    subscribed_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
