@@ -6,7 +6,7 @@
   <div class="row">
     <!-- Product Image -->
     <div class="col-md-6">
-      {% if product.image and product.image.storage.exists(product.image.name) %}
+      {% if product.image %}
         <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
       {% else %}
         <img src="{% static 'images/placeholder.png' %}" class="card-img-top" alt="No Image">

@@ -18,12 +18,8 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 def file_exists_locally(image_path):
-    """
-    Check if the image exists in the local media folder.
-    Only relevant during local development.
-    """
     if not settings.DEBUG:
-        return False  # In production (e.g., Heroku), don't check the local filesystem
+        return False
     full_path = os.path.join(settings.MEDIA_ROOT, image_path)
     return os.path.exists(full_path)
 
@@ -40,20 +36,13 @@ class ProductListView(ListView):
         category = self.request.GET.get('category')
 
         if query:
-            queryset = queryset.filter(
-                Q(name__icontains=query) |
-                Q(description__icontains=query)
-            )
+            queryset = queryset.filter(Q(name__icontains=query) | Q(description__icontains=query))
 
         if category:
             queryset = queryset.filter(category__iexact=category)
 
-        # Add local image existence check
         for product in queryset:
-            if product.image:
-                product.has_local_image = file_exists_locally(product.image.name)
-            else:
-                product.has_local_image = False
+            product.has_local_image = file_exists_locally(product.image.name) if product.image else False
 
         return queryset.order_by('name')
 
