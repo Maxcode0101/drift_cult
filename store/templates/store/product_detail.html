@@ -6,11 +6,14 @@
   <div class="row">
     <!-- Product Image -->
     <div class="col-md-6">
-      {% if product.image %}
-        <img src="{{ product.image.url }}" class="img-fluid rounded shadow-sm" alt="{{ product.name }}">
+      {% if product.has_local_image %}
+        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
       {% else %}
-        <img src="{% static 'images/placeholder.png' %}" class="img-fluid rounded shadow-sm" alt="Placeholder">
+        <img src="{% static 'images/placeholder.png' %}" class="card-img-top" alt="No Image">
       {% endif %}
+
+
+
     </div>
 
     <!-- Product Details -->

@@ -7,20 +7,54 @@
     {% for product in products %}
       <div class="col-md-4 mb-4">
         <div class="card h-100">
- 
-          {% if product.image %}
+          {% if product.has_local_image %}
             <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
           {% else %}
             <img src="{% static 'images/placeholder.png' %}" class="card-img-top" alt="No Image">
           {% endif %}
           <div class="card-body">
             <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">${{ product.price }}</p>
+            <p class="card-text">€{{ product.price }}</p>
             <a href="{% url 'product_detail' product.id %}" class="btn btn-dark">View</a>
           </div>
         </div>
       </div>
     {% endfor %}
+  </div>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+<script>
+  $(document).ready(function () {
+    setTimeout(function () {
+      $('#newsletterModal').modal('show');
+    }, 3000);
+  });
+</script>
+
+<!-- Newsletter Modal HTML -->
+<div class="modal fade" id="newsletterModal" tabindex="-1" role="dialog" aria-labelledby="newsletterModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content p-4 bg-dark text-white">
+      <div class="modal-header border-0">
+        <h5 class="modal-title" id="newsletterModalLabel">Join The Cult! Get 10% discount on your first order!</h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="newsletter-modal-form" method="post">
+          {% csrf_token %}
+          <div class="input-group mb-3">
+            <input type="email" name="email" id="modal-newsletter-email" class="form-control" placeholder="Your email address" required>
+            <div class="input-group-append">
+              <button class="btn btn-light" type="submit">Subscribe</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
