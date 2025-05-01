@@ -7,9 +7,9 @@
     <!-- Product Image -->
     <div class="col-md-6">
       {% if product.image %}
-        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+        <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
       {% else %}
-        <img src="{% static 'images/placeholder.png' %}" class="card-img-top" alt="No Image">
+        <img class="card-img-top img-fluid" src="{% static 'images/placeholder.png' %}" alt="{{ product.name }}">
       {% endif %}
     </div>
 

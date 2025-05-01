@@ -17,13 +17,6 @@ from .models import Product, ProductSize, CartItem, Order, OrderItem
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
-def file_exists_locally(image_path):
-    if not settings.DEBUG:
-        return False
-    full_path = os.path.join(settings.MEDIA_ROOT, image_path)
-    return os.path.exists(full_path)
-
-
 class ProductListView(ListView):
     model = Product
     template_name = 'store/shop.html'
@@ -40,9 +33,6 @@ class ProductListView(ListView):
 
         if category:
             queryset = queryset.filter(category__iexact=category)
-
-        for product in queryset:
-            product.has_local_image = file_exists_locally(product.image.name) if product.image else False
 
         return queryset.order_by('name')
 
