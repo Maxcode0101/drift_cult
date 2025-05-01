@@ -1,4 +1,5 @@
 # store/views.py
+
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
@@ -8,20 +9,18 @@ from django.conf import settings
 from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.core.mail import send_mail
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
-
+from django.views.decorators.csrf import csrf_exempt
 import stripe
 
 from .models import Product, ProductSize, CartItem, Order, OrderItem
-
+from .utils import file_exists_locally
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 class ProductListView(ListView):
     model = Product
-    template_name = 'store/product_list.html'
+    template_name = 'store/shop.html'
     context_object_name = 'products'
     paginate_by = 20
 
@@ -38,6 +37,12 @@ class ProductListView(ListView):
 
         if category:
             queryset = queryset.filter(category__iexact=category)
+
+        for product in queryset:
+            if product.image:
+                product.has_local_image = file_exists_locally(product.image.name)
+            else:
+                product.has_local_image = False
 
         return queryset.order_by('name')
 
@@ -120,7 +125,6 @@ def update_cart_quantity(request, item_id):
     return redirect('view_cart')
 
 
-
 @login_required
 def checkout(request):
     cart_items = CartItem.objects.filter(user=request.user)
@@ -197,3 +201,21 @@ def order_detail(request, order_id):
         'order': order,
         'order_items': order_items,
     })
+
+
+@csrf_exempt
+def newsletter_signup_ajax(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        if email:
+            subscriber, created = NewsletterSubscriber.objects.get_or_create(email=email)
+            if created:
+                send_mail(
+                    'Thanks for subscribing!',
+                    'You are now subscribed to Drift Cult updates.',
+                    'noreply@driftcult.art',
+                    [email],
+                    fail_silently=True,
+                )
+            return JsonResponse({'success': True})
+    return JsonResponse({'success': False})
