@@ -6,14 +6,11 @@
   <div class="row">
     <!-- Product Image -->
     <div class="col-md-6">
-      {% if product.has_local_image %}
+      {% if product.image and product.image.storage.exists(product.image.name) %}
         <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
       {% else %}
         <img src="{% static 'images/placeholder.png' %}" class="card-img-top" alt="No Image">
       {% endif %}
-
-
-
     </div>
 
     <!-- Product Details -->
@@ -26,7 +23,6 @@
       {% if product.sizes.all %}
       <form method="post" action="{% url 'add_to_cart' product.id 0 %}" id="add-to-cart-form">
         {% csrf_token %}
-
         <div class="form-group">
           <label for="size">Select Size:</label>
           <select name="size_id" id="size" class="form-control" required>
@@ -36,7 +32,6 @@
             {% endfor %}
           </select>
         </div>
-
         <button type="submit" class="btn btn-dark mt-3">Add to Cart</button>
       </form>
       {% else %}
@@ -48,7 +43,6 @@
   </div>
 </div>
 
-<!-- JS to handle dynamic URL injection -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("add-to-cart-form");

@@ -8,37 +8,34 @@
   <!-- Search + Filter -->
   <form method="GET" class="form-inline justify-content-center mb-4">
     <input type="text" name="q" class="form-control mr-2" placeholder="Search products..." value="{{ request.GET.q }}">
-
     <select name="category" class="form-control mr-2">
       <option value="">All Categories</option>
       {% for cat in categories %}
         <option value="{{ cat }}" {% if request.GET.category == cat %}selected{% endif %}>{{ cat }}</option>
       {% endfor %}
     </select>
-
     <button type="submit" class="btn btn-dark">Apply</button>
   </form>
 
   <!-- Product Grid -->
   <div class="row">
     {% for product in products %}
-    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-      <div class="card h-100 shadow-sm border-0">
-        {% if product.has_local_image %}
-          <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-        {% else %}
-          <img src="{% static 'images/placeholder.png' %}" class="card-img-top" alt="No Image">
-        {% endif %}
+      <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="card h-100 shadow-sm border-0">
+          {% if product.image and product.image.storage.exists(product.image.name) %}
+            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+          {% else %}
+            <img src="{% static 'images/placeholder.png' %}" class="card-img-top" alt="No Image">
+          {% endif %}
 
-
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">{{ product.name }}</h5>
-          <p class="card-text text-muted">{{ product.category }}</p>
-          <p class="card-text font-weight-bold">€{{ product.price }}</p>
-          <a href="{% url 'product_detail' product.pk %}" class="btn btn-outline-dark mt-auto">View Product</a>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text text-muted">{{ product.category }}</p>
+            <p class="card-text font-weight-bold">€{{ product.price }}</p>
+            <a href="{% url 'product_detail' product.pk %}" class="btn btn-outline-dark mt-auto">View Product</a>
+          </div>
         </div>
       </div>
-    </div>
     {% endfor %}
   </div>
 

@@ -8,9 +8,9 @@
       <div class="col-md-4 mb-4">
         <div class="card h-100">
           {% if product.has_local_image %}
-            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+            <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
           {% else %}
-            <img src="{% static 'images/placeholder.png' %}" class="card-img-top" alt="No Image">
+            <img class="card-img-top img-fluid" src="{% static 'images/placeholder.png' %}" alt="{{ product.name }}">
           {% endif %}
           <div class="card-body">
             <h5 class="card-title">{{ product.name }}</h5>

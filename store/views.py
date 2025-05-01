@@ -1,4 +1,5 @@
-# store/views.py
+import os
+import stripe
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
@@ -10,12 +11,21 @@ from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.core.mail import send_mail
 from django.views.decorators.csrf import csrf_exempt
-import stripe
 
 from .models import Product, ProductSize, CartItem, Order, OrderItem
-from .utils import file_exists_locally
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
+
+
+def file_exists_locally(image_path):
+    """
+    Check if the image exists in the local media folder.
+    Only relevant during local development.
+    """
+    if not settings.DEBUG:
+        return False  # In production (e.g., Heroku), don't check the local filesystem
+    full_path = os.path.join(settings.MEDIA_ROOT, image_path)
+    return os.path.exists(full_path)
 
 
 class ProductListView(ListView):
@@ -38,6 +48,7 @@ class ProductListView(ListView):
         if category:
             queryset = queryset.filter(category__iexact=category)
 
+        # Add local image existence check
         for product in queryset:
             if product.image:
                 product.has_local_image = file_exists_locally(product.image.name)
