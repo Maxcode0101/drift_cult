@@ -12,7 +12,7 @@ from django.urls import reverse
 from django.core.mail import send_mail
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import Product, ProductSize, CartItem, Order, OrderItem
+from .models import Product, ProductSize, CartItem, Order, OrderItem, NewsletterSubscriber
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -203,6 +203,24 @@ def newsletter_signup_ajax(request):
                 send_mail(
                     'Thanks for subscribing!',
                     'You are now subscribed to Drift Cult updates.',
+                    'noreply@driftcult.art',
+                    [email],
+                    fail_silently=True,
+                )
+            return JsonResponse({'success': True})
+    return JsonResponse({'success': False})
+
+
+@csrf_exempt
+def newsletter_signup_ajax(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        if email:
+            subscriber, created = NewsletterSubscriber.objects.get_or_create(email=email)
+            if created:
+                send_mail(
+                    'Thanks for joining The Cult!',
+                    'You are now subscribed to Drift Cult updates and offers.',
                     'noreply@driftcult.art',
                     [email],
                     fail_silently=True,

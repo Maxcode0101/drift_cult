@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
-from .views import ProductListView
+from .views import ProductListView, newsletter_signup_ajax
+
 
 urlpatterns = [
     path('', views.home_view, name='home'),  # Homepage
@@ -13,6 +14,8 @@ urlpatterns = [
     path('update_cart_quantity/<int:item_id>/', views.update_cart_quantity, name='update_cart_quantity'),
     path('orders/<int:order_id>/', views.order_detail, name='order_detail'),
     path('newsletter-signup/', views.newsletter_signup_ajax, name='newsletter_signup_ajax'),
+    path('ajax/newsletter-signup/', newsletter_signup_ajax, name='newsletter_signup_ajax'),
+
 
     # Stripe Checkout
     path('checkout/', views.checkout, name='checkout'),

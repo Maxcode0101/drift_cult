@@ -55,9 +55,36 @@
 {% block postloadjs %}
 <script>
   $(document).ready(function () {
+    // Show modal after 3 seconds
     setTimeout(function () {
       $('#newsletterModal').modal('show');
     }, 3000);
+
+    // Handle AJAX form submission
+    $('#newsletter-modal-form').on('submit', function (e) {
+      e.preventDefault();
+      const email = $('#modal-newsletter-email').val();
+      const csrfToken = $('[name=csrfmiddlewaretoken]').val();
+
+      $.ajax({
+        type: 'POST',
+        url: '{% url "newsletter_signup_ajax" %}',
+        data: {
+          email: email,
+          csrfmiddlewaretoken: csrfToken
+        },
+        success: function (response) {
+          if (response.success) {
+            $('#newsletterModal .modal-body').html('<p class="text-success">Thanks for subscribing!</p>');
+          } else {
+            $('#newsletterModal .modal-body').html('<p class="text-danger">Subscription failed. Try again.</p>');
+          }
+        },
+        error: function () {
+          $('#newsletterModal .modal-body').html('<p class="text-danger">Something went wrong.</p>');
+        }
+      });
+    });
   });
 </script>
 
