@@ -13,21 +13,72 @@
     </div>
   </div>
 </div>
+
 <!-- Newsletter signup box -->
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6 text-center">
-      <h3>Join Our Newsletter</h3>
-      <p>Get updates, promos & more.</p>
-      <form id="newsletter-form" method="post">
-        {% csrf_token %}
-        <div class="input-group">
-          <input type="email" name="email" id="newsletter-email" class="form-control" placeholder="Enter your email" required>
-          <button class="btn btn-dark" type="submit">Subscribe</button>
+<section class="newsletter-signup bg-dark text-white py-5">
+  <div class="container text-center">
+    <h2>Join The Cult</h2>
+    <p class="mb-4">Get 10% off your first order and exclusive access to new drops.</p>
+    <form id="homepage-newsletter-form" method="post" class="form-inline justify-content-center">
+      {% csrf_token %}
+      <div class="input-group w-50">
+        <input type="email" name="email" id="homepage-newsletter-email" class="form-control" placeholder="Enter your email" required>
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-light">Subscribe</button>
         </div>
-        <small id="newsletter-success" class="text-success d-none mt-2">Thank you for subscribing!</small>
-      </form>
+      </div>
+    </form>
+    <div id="newsletter-success-message" class="mt-3 text-success" style="display: none;">
+      ✅ You're subscribed to Drift Cult!
+    </div>
+    <div id="newsletter-error-message" class="mt-3 text-danger" style="display: none;">
+      ❌ Something went wrong. Please try again.
     </div>
   </div>
-</div>
+</section>
+{% endblock %}  <!-- ✅ This was missing -->
+
+{% block postloadjs %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("homepage-newsletter-form");
+    const emailInput = document.getElementById("homepage-newsletter-email");
+    const successMessage = document.getElementById("newsletter-success-message");
+    const errorMessage = document.getElementById("newsletter-error-message");
+
+    if (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const email = emailInput.value;
+
+        fetch("{% url 'newsletter_signup_ajax' %}", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-CSRFToken": "{{ csrf_token }}",
+          },
+          body: new URLSearchParams({
+            email: email,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              successMessage.style.display = "block";
+              errorMessage.style.display = "none";
+              emailInput.value = "";
+            } else {
+              successMessage.style.display = "none";
+              errorMessage.style.display = "block";
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            successMessage.style.display = "none";
+            errorMessage.style.display = "block";
+          });
+      });
+    }
+  });
+</script>
 {% endblock %}

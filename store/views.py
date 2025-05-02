@@ -9,7 +9,8 @@ from django.contrib import messages
 from django.conf import settings
 from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.urls import reverse
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMultiAlternatives
+from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt
 
 from .models import Product, ProductSize, CartItem, Order, OrderItem, NewsletterSubscriber
@@ -211,6 +212,9 @@ def newsletter_signup_ajax(request):
     return JsonResponse({'success': False})
 
 
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+
 @csrf_exempt
 def newsletter_signup_ajax(request):
     if request.method == 'POST':
@@ -218,12 +222,16 @@ def newsletter_signup_ajax(request):
         if email:
             subscriber, created = NewsletterSubscriber.objects.get_or_create(email=email)
             if created:
-                send_mail(
-                    'Thanks for joining The Cult!',
-                    'You are now subscribed to Drift Cult updates and offers.',
-                    'noreply@driftcult.art',
-                    [email],
-                    fail_silently=True,
-                )
+                subject = "🔥 Welcome to Drift Cult – You're In!"
+                from_email = 'noreply@driftcult.art'
+                to = [email]
+
+                context = {'email': email}
+                html_content = render_to_string('emails/newsletter_welcome.html', context)
+
+                msg = EmailMultiAlternatives(subject, '', from_email, to)
+                msg.attach_alternative(html_content, "text/html")
+                msg.send()
+
             return JsonResponse({'success': True})
     return JsonResponse({'success': False})
