@@ -1,6 +1,25 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_title %}
+  | {{ product.name }} – Drift Cult
+{% endblock %}
+
+{% block extra_meta %}
+  <meta name="description" content="{{ product.description|truncatechars:150 }}">
+  <meta name="keywords" content="{{ product.category }}, surf apparel, skatewear, outdoor fashion, drift cult">
+  <meta name="author" content="Drift Cult">
+  <meta property="og:title" content="{{ product.name }} – Drift Cult">
+  <meta property="og:description" content="{{ product.description|truncatechars:150 }}">
+  <meta property="og:image" content="{% if product.image %}{{ product.image.url }}{% else %}{% static 'images/placeholder.png' %}{% endif %}">
+  <meta property="og:url" content="https://driftcult.art{% url 'product_detail' product.pk %}">
+  <meta property="og:type" content="product">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ product.name }} – Drift Cult">
+  <meta name="twitter:description" content="{{ product.description|truncatechars:150 }}">
+  <meta name="twitter:image" content="{% if product.image %}{{ product.image.url }}{% else %}{% static 'images/placeholder.png' %}{% endif %}">
+{% endblock %}
+
 {% block content %}
 <div class="container mt-5 pt-5">
   <div class="row">
@@ -21,19 +40,19 @@
       <p class="h5 font-weight-bold mb-4">€{{ product.price }}</p>
 
       {% if product.sizes.all %}
-      <form method="post" action="{% url 'add_to_cart' product.id 0 %}" id="add-to-cart-form">
-        {% csrf_token %}
-        <div class="form-group">
-          <label for="size">Select Size:</label>
-          <select name="size_id" id="size" class="form-control" required>
-            <option value="">Choose a size</option>
-            {% for size in product.sizes.all %}
-              <option value="{{ size.id }}">{{ size.size }}</option>
-            {% endfor %}
-          </select>
-        </div>
-        <button type="submit" class="btn btn-dark mt-3">Add to Cart</button>
-      </form>
+        <form method="post" action="{% url 'add_to_cart' product.id 0 %}" id="add-to-cart-form">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="size">Select Size:</label>
+            <select name="size_id" id="size" class="form-control" required>
+              <option value="">Choose a size</option>
+              {% for size in product.sizes.all %}
+                <option value="{{ size.id }}">{{ size.size }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <button type="submit" class="btn btn-dark mt-3">Add to Cart</button>
+        </form>
       {% else %}
         <p class="text-danger">No sizes available for this product.</p>
       {% endif %}
