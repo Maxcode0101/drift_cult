@@ -1,8 +1,37 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_title %}
+  | Shop All – Drift Cult
+{% endblock %}
+
+{% block extra_meta %}
+  <meta name="description" content="Browse all Drift Cult apparel – minimalist surf, skate & outdoor gear made to last the journey.">
+  <meta name="keywords" content="surf clothing, skatewear, outdoor apparel, minimalist fashion, Drift Cult shop">
+  <meta name="author" content="Drift Cult">
+  <meta property="og:title" content="Shop All – Drift Cult">
+  <meta property="og:description" content="Browse all Drift Cult apparel – minimalist surf, skate & outdoor gear made to last the journey.">
+  <meta property="og:image" content="https://driftcult.art/static/images/drift_cult_logo.webp">
+  <meta property="og:url" content="https://driftcult.art/shop/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Shop All – Drift Cult">
+  <meta name="twitter:description" content="Browse all Drift Cult apparel – minimalist surf, skate & outdoor gear made to last the journey.">
+  <meta name="twitter:image" content="https://driftcult.art/static/images/drift_cult_logo.webp">
+{% endblock %}
+
 {% block content %}
 <div class="container mt-5 pt-5">
+  <h2 class="mb-4 text-center">Shop All Products</h2>
+
+  <!-- Filter and search summary -->
+  {% if request.GET.q %}
+    <p class="text-center">Results for "<strong>{{ request.GET.q }}</strong>"</p>
+  {% endif %}
+  {% if selected_category %}
+    <p class="text-center">Showing: <strong>{{ selected_category }}</strong></p>
+  {% endif %}
+
   <div class="row">
     {% for product in products %}
       <div class="col-md-4 mb-4">
@@ -14,19 +43,24 @@
               <img class="card-img-top img-fluid" src="{% static 'images/placeholder.png' %}" alt="{{ product.name }}">
             {% endif %}
           </a>
-          <div class="card-body">
+          <div class="card-body text-center">
             <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">€{{ product.price }}</p>
-            <a href="{% url 'product_detail' product.id %}" class="btn btn-dark">View</a>
+            <p class="card-text text-muted">{{ product.category }}</p>
+            <p class="card-text font-weight-bold">€{{ product.price }}</p>
+            <a href="{% url 'product_detail' product.id %}" class="btn btn-dark btn-sm">View Product</a>
           </div>
         </div>
+      </div>
+    {% empty %}
+      <div class="col-12 text-center">
+        <p>No products available at the moment.</p>
       </div>
     {% endfor %}
   </div>
 
   {% if is_paginated %}
     <nav aria-label="Page navigation">
-      <ul class="pagination justify-content-center">
+      <ul class="pagination justify-content-center mt-4">
         {% if page_obj.has_previous %}
           <li class="page-item">
             <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
@@ -50,17 +84,40 @@
     </nav>
   {% endif %}
 </div>
+
+<!-- Newsletter Modal -->
+<div class="modal fade" id="newsletterModal" tabindex="-1" role="dialog" aria-labelledby="newsletterModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content p-4 bg-dark text-white">
+      <div class="modal-header border-0">
+        <h5 class="modal-title" id="newsletterModalLabel">Join The Cult! Get 10% off your first order!</h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="newsletter-modal-form" method="post">
+          {% csrf_token %}
+          <div class="input-group mb-3">
+            <input type="email" name="email" id="modal-newsletter-email" class="form-control" placeholder="Your email address" required>
+            <div class="input-group-append">
+              <button class="btn btn-light" type="submit">Subscribe</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
 
 {% block postloadjs %}
 <script>
   $(document).ready(function () {
-    // Show modal after 3 seconds
     setTimeout(function () {
       $('#newsletterModal').modal('show');
     }, 3000);
 
-    // Handle AJAX form submission
     $('#newsletter-modal-form').on('submit', function (e) {
       e.preventDefault();
       const email = $('#modal-newsletter-email').val();
@@ -87,29 +144,4 @@
     });
   });
 </script>
-
-<!-- Newsletter Modal -->
-<div class="modal fade" id="newsletterModal" tabindex="-1" role="dialog" aria-labelledby="newsletterModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content p-4 bg-dark text-white">
-      <div class="modal-header border-0">
-        <h5 class="modal-title" id="newsletterModalLabel">Join The Cult! Get 10% off your first order!</h5>
-        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form id="newsletter-modal-form" method="post">
-          {% csrf_token %}
-          <div class="input-group mb-3">
-            <input type="email" name="email" id="modal-newsletter-email" class="form-control" placeholder="Your email address" required>
-            <div class="input-group-append">
-              <button class="btn btn-light" type="submit">Subscribe</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
 {% endblock %}
