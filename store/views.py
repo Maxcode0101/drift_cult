@@ -239,3 +239,7 @@ def newsletter_signup_ajax(request):
 
 def about_view(request):
     return render(request, 'store/about.html')
+
+
+def community_view(request):
+    return render(request, 'store/community.html')

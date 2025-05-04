@@ -16,6 +16,7 @@ urlpatterns = [
     path('', include('core.urls')),
     path('webhooks/stripe/', stripe_webhook, name='stripe_webhook'),
     path('about/', store_views.about_view, name='about'),
+    path('community/', store_views.community_view, name='community'),
 ]
 
 # Serve media files in development
