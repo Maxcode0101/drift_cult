@@ -2,21 +2,41 @@
 {% load static %}
 
 {% block extra_title %}
-  | Shop All – Drift Cult
+  {% if request.GET.q %}
+    | Search Results for "{{ request.GET.q }}" – Drift Cult
+  {% elif selected_category %}
+    | {{ selected_category }} – Drift Cult
+  {% else %}
+    | Shop All – Drift Cult
+  {% endif %}
 {% endblock %}
 
 {% block extra_meta %}
-  <meta name="description" content="Browse all Drift Cult apparel – minimalist surf, skate & outdoor gear made to last the journey.">
+  {% if request.GET.q %}
+    <meta name="description" content="Search results for '{{ request.GET.q }}' on Drift Cult. Explore our surf, skate, and outdoor apparel.">
+    <meta property="og:title" content="Search: {{ request.GET.q }} – Drift Cult">
+    <meta property="og:description" content="Search results for '{{ request.GET.q }}'. Explore minimalist gear built to last.">
+    <meta name="twitter:title" content="Search: {{ request.GET.q }} – Drift Cult">
+    <meta name="twitter:description" content="Search results for '{{ request.GET.q }}'. Explore minimalist surf and skate apparel.">
+  {% elif selected_category %}
+    <meta name="description" content="{{ selected_category }} gear by Drift Cult – minimalist surf, skate & outdoor apparel made to last.">
+    <meta property="og:title" content="{{ selected_category }} – Drift Cult">
+    <meta property="og:description" content="Shop {{ selected_category }} from Drift Cult. No sellouts. No mainstream. Just raw, authentic culture.">
+    <meta name="twitter:title" content="{{ selected_category }} – Drift Cult">
+    <meta name="twitter:description" content="Shop {{ selected_category }} gear from Drift Cult. Built for the journey.">
+  {% else %}
+    <meta name="description" content="Browse all Drift Cult apparel – minimalist surf, skate & outdoor gear made to last the journey.">
+    <meta property="og:title" content="Shop All – Drift Cult">
+    <meta property="og:description" content="Browse all Drift Cult apparel – minimalist surf, skate & outdoor gear made to last the journey.">
+    <meta name="twitter:title" content="Shop All – Drift Cult">
+    <meta name="twitter:description" content="Minimalist fashion for surf, skate & outdoors. Built to last.">
+  {% endif %}
   <meta name="keywords" content="surf clothing, skatewear, outdoor apparel, minimalist fashion, Drift Cult shop">
   <meta name="author" content="Drift Cult">
-  <meta property="og:title" content="Shop All – Drift Cult">
-  <meta property="og:description" content="Browse all Drift Cult apparel – minimalist surf, skate & outdoor gear made to last the journey.">
   <meta property="og:image" content="https://driftcult.art/static/images/drift_cult_logo.webp">
   <meta property="og:url" content="https://driftcult.art/shop/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Shop All – Drift Cult">
-  <meta name="twitter:description" content="Browse all Drift Cult apparel – minimalist surf, skate & outdoor gear made to last the journey.">
   <meta name="twitter:image" content="https://driftcult.art/static/images/drift_cult_logo.webp">
 {% endblock %}
 
@@ -66,7 +86,6 @@
             <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
           </li>
         {% endif %}
-
         {% for num in paginator.page_range %}
           {% if page_obj.number == num %}
             <li class="page-item active"><a class="page-link" href="#">{{ num }}</a></li>
@@ -74,7 +93,6 @@
             <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
           {% endif %}
         {% endfor %}
-
         {% if page_obj.has_next %}
           <li class="page-item">
             <a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a>
