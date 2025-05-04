@@ -1,6 +1,25 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_title %}
+  | Shop All – Drift Cult
+{% endblock %}
+
+{% block extra_meta %}
+  <meta name="description" content="Browse all Drift Cult apparel – minimalist surf, skate & outdoor gear made to last the journey.">
+  <meta name="keywords" content="surf clothing, skatewear, outdoor apparel, minimalist fashion, Drift Cult shop">
+  <meta name="author" content="Drift Cult">
+  <meta property="og:title" content="Shop All – Drift Cult">
+  <meta property="og:description" content="Browse all Drift Cult apparel – minimalist surf, skate & outdoor gear made to last the journey.">
+  <meta property="og:image" content="https://driftcult.art/static/images/drift_cult_logo.webp">
+  <meta property="og:url" content="https://driftcult.art/shop/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Shop All – Drift Cult">
+  <meta name="twitter:description" content="Browse all Drift Cult apparel – minimalist surf, skate & outdoor gear made to last the journey.">
+  <meta name="twitter:image" content="https://driftcult.art/static/images/drift_cult_logo.webp">
+{% endblock %}
+
 {% block content %}
 <div class="container mt-5 pt-5">
   <h2 class="text-center mb-4">Shop All</h2>
@@ -22,14 +41,14 @@
     {% for product in products %}
       <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
         <div class="card h-100 shadow-sm border-0">
-          {% if product.image %}
-            <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
-          {% else %}
-            <img class="card-img-top img-fluid" src="{% static 'images/placeholder.png' %}" alt="{{ product.name }}">
-          {% endif %}
-
-
-          <div class="card-body d-flex flex-column">
+          <a href="{% url 'product_detail' product.pk %}">
+            {% if product.image %}
+              <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+            {% else %}
+              <img class="card-img-top img-fluid" src="{% static 'images/placeholder.png' %}" alt="{{ product.name }}">
+            {% endif %}
+          </a>
+          <div class="card-body d-flex flex-column text-center">
             <h5 class="card-title">{{ product.name }}</h5>
             <p class="card-text text-muted">{{ product.category }}</p>
             <p class="card-text font-weight-bold">€{{ product.price }}</p>
