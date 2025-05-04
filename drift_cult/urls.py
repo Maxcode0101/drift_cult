@@ -3,6 +3,8 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from core.views import home, stripe_webhook
+from store import views as store_views
+
 
 
 urlpatterns = [
@@ -13,6 +15,7 @@ urlpatterns = [
     path('', include('store.urls')),
     path('', include('core.urls')),
     path('webhooks/stripe/', stripe_webhook, name='stripe_webhook'),
+    path('about/', store_views.about_view, name='about'),
 ]
 
 # Serve media files in development
