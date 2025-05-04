@@ -235,3 +235,7 @@ def newsletter_signup_ajax(request):
 
             return JsonResponse({'success': True})
     return JsonResponse({'success': False})
+
+
+def about_view(request):
+    return render(request, 'store/about.html')

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}
+  | About – Drift Cult
+{% endblock %}
+
+{% block extra_meta %}
+  <meta name="description" content="Learn about Drift Cult – minimalist surf, skate & outdoor apparel for the untamed spirit. No sellouts. No mainstream. Just raw, authentic culture.">
+  <meta name="keywords" content="about Drift Cult, brand story, surf skate fashion, outdoor clothing, ethical streetwear">
+  <meta name="author" content="Drift Cult">
+  <meta property="og:title" content="About – Drift Cult">
+  <meta property="og:description" content="Discover our story. Drift Cult is built for those who carve their own path.">
+  <meta property="og:image" content="https://driftcult.art/static/images/drift_cult_logo.webp">
+  <meta property="og:url" content="https://driftcult.art/about/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About – Drift Cult">
+  <meta name="twitter:description" content="Discover our story. Drift Cult is built for those who carve their own path.">
+  <meta name="twitter:image" content="https://driftcult.art/static/images/drift_cult_logo.webp">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10 text-center">
+      <h1 class="display-4 font-weight-bold mb-4">Our Story</h1>
+      <p class="lead mb-5">Drift Cult was born out of rebellion — against throwaway fashion, against the mainstream, against compromise.</p>
+
+      <img src="{% static 'images/drift_cult_logo.webp' %}" class="img-fluid mb-4" style="max-height: 120px;" alt="Drift Cult Logo">
+
+      <p class="mb-4">We’re surfers, skaters, nomads — a community built on self-expression and independence. Every piece of apparel we drop is made to last, not just in quality, but in attitude.</p>
+
+      <p class="mb-4">We don’t chase trends. We build gear for the long ride — from coastlines to concrete, forests to fire pits. Minimalist. Durable. Ethical. Designed by riders, for riders.</p>
+
+      <p class="mb-4">If you're not here for the hype, you're in the right place. Welcome to the Cult.</p>
+
+      <a href="{% url 'product_list' %}" class="btn btn-dark btn-lg mt-4">Shop the Collection</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
