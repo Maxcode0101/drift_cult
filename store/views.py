@@ -6,7 +6,6 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
 from django.db.models import Q
 from django.contrib import messages
-from django.contrib.sites.models import Site
 from django.conf import settings
 from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.urls import reverse
@@ -253,23 +252,3 @@ def robots_txt(request):
         "Sitemap: https://driftcult.art/sitemap.xml"
     ]
     return HttpResponse("\n".join(lines), content_type="text/plain")
-
-
-def sitemap_xml(request):
-    domain = Site.objects.get_current().domain
-    urls = [
-        f"https://{domain}{reverse('home')}",
-        f"https://{domain}{reverse('product_list')}",
-        f"https://{domain}{reverse('about')}",
-        f"https://{domain}{reverse('community')}",
-    ]
-    for product in Product.objects.all():
-        urls.append(f"https://{domain}{reverse('product_detail', args=[product.id])}")
-
-    xml = ['<?xml version="1.0" encoding="UTF-8"?>']
-    xml.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
-    for url in urls:
-        xml.append(f"  <url><loc>{url}</loc></url>")
-    xml.append("</urlset>")
-
-    return HttpResponse("\n".join(xml), content_type="application/xml")

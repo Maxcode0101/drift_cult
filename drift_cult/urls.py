@@ -4,8 +4,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from core.views import home, stripe_webhook
 from store import views as store_views
+from django.contrib.sitemaps.views import sitemap
+from store.sitemaps import ProductSitemap, StaticViewSitemap
 
 
+sitemaps = {
+    'products': ProductSitemap,
+    'static': StaticViewSitemap,
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -17,6 +23,7 @@ urlpatterns = [
     path('webhooks/stripe/', stripe_webhook, name='stripe_webhook'),
     path('about/', store_views.about_view, name='about'),
     path('community/', store_views.community_view, name='community'),
+    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="sitemap"),
 ]
 
 # Serve media files in development

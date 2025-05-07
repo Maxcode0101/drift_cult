@@ -103,3 +103,12 @@ def stripe_webhook(request):
         )
 
     return HttpResponse(status=200)
+
+
+def robots_txt(request):
+    lines = [
+        "User-Agent: *",
+        "Disallow:",
+        "Sitemap: https://driftcult.art/sitemap.xml",
+    ]
+    return HttpResponse("\n".join(lines), content_type="text/plain")
