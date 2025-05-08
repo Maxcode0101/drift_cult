@@ -91,8 +91,3 @@ def robots_txt(request):
         "Sitemap: https://driftcult.art/sitemap.xml",
     ]
     return HttpResponse("\n".join(lines), content_type="text/plain")
-
-
-def test_middleware(request):
-    return HttpResponse(f"Host: {request.get_host()}")
-
