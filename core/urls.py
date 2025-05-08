@@ -8,4 +8,5 @@ urlpatterns = [
     path("about/", about_view, name="about"),
     path("community/", community_view, name="community"),
     path("robots.txt", robots_txt, name="robots_txt"),
+    path("test-middleware/", test_middleware, name="test_middleware"),
 ]
