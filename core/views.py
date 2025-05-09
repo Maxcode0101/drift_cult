@@ -38,6 +38,7 @@ def stripe_webhook(request):
         return HttpResponse(status=400)
 
     if event['type'] == 'checkout.session.completed':
+        print("🔥🔥🔥 LIVE WEBHOOK CODE IS RUNNING 🔥🔥🔥")
         session = event['data']['object']
         order_id = session.get('metadata', {}).get('order_id')
         customer_email = session.get('customer_email') or session.get('customer_details', {}).get('email')
