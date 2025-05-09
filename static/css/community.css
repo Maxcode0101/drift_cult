@@ -48,39 +48,62 @@
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
   }
 
-  .community-hero {
-    position: relative;
-    width: 100%;
-    max-height: 420px;
-    overflow: hidden;
+  .community-hero-split {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 3rem;
+    padding: 0 2rem;
   }
   
-  .community-hero img {
+  .hero-image img {
     width: 100%;
-    height: auto;
+    max-width: 420px;
+    border-radius: 8px;
     object-fit: cover;
-    display: block;
-    filter: brightness(80%);
   }
   
-  .overlay-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-    text-align: center;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+  .hero-content {
+    max-width: 600px;
   }
   
-  .overlay-text h1 {
-    font-size: 3rem;
-    margin: 0;
-    font-weight: 700;
+  .hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
   }
   
-  .overlay-text p {
-    font-size: 1.2rem;
+  .hero-content .blog-intro {
+    color: #555;
     margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
   }
   
+  .blog-title {
+    margin-top: 1.5rem;
+  }
+  
+  .blog-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .blog-list li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .blog-list a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .blog-list a:hover {
+    text-decoration: underline;
+  }
+  
+  .blog-date {
+    color: #888;
+    margin-left: 0.5rem;
+    font-size: 0.95rem;
+  }  

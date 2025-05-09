@@ -6,28 +6,28 @@
 {% endblock %}
 
 {% block content %}
-<div class="community-hero">
-  <img src="{% static 'images/blog/hero_community.jpg' %}" alt="Two people sitting in a van smiling and relaxed">
-  <div class="overlay-text">
-    <h1>Drift Cult Community</h1>
-    <p>Style rebels. Nomadic souls. Stories worth telling.</p>
+<div class="community-hero-split">
+  <div class="hero-image">
+    <img src="{% static 'images/blog/hero_community.jpg' %}" alt="Drift Cult Community">
   </div>
-</div>
+  <div class="hero-content">
+    <h1>Drift Cult Community</h1>
+    <p>Stories about style, culture and nomadic souls worth telling.</p>
 
-<div class="blog-container">
-  <h2 class="blog-title">Community Blog</h2>
-  <p class="blog-intro">
-    Real stories, raw opinions, no filters. Dive into the Drift Cult community — where rebellion, style, and voice collide.
-  </p>
-  <ul class="blog-list">
-    {% for post in posts %}
-      <li>
-        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-        <span class="blog-date">– {{ post.published_date }}</span>
-      </li>
-    {% empty %}
-      <li>No posts yet — be the first to shake things up.</li>
-    {% endfor %}
-  </ul>
+    <h2 class="blog-title mt-4">Community Blog</h2>
+    <p class="blog-intro">
+      Real stories, raw opinions, no filters. Dive into the Drift Cult community — where rebellion, style, and voice collide.
+    </p>
+    <ul class="blog-list">
+      {% for post in posts %}
+        <li>
+          <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+          <span class="blog-date">– {{ post.published_date }}</span>
+        </li>
+      {% empty %}
+        <li>No posts yet — be the first to shake things up.</li>
+      {% endfor %}
+    </ul>
+  </div>
 </div>
 {% endblock %}
