@@ -183,6 +183,8 @@ ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Drift Cult] '
 
+# Fix 301 redirect issues on Stripe webhook endpoint
+SECURE_REDIRECT_EXEMPT = [r'^webhook/stripe/$']
 
 # Enforce HTTPS on Heroku and all environments
 SECURE_SSL_REDIRECT = not DEBUG
