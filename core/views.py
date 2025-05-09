@@ -39,27 +39,25 @@ def stripe_webhook(request):
 
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
-        customer_email = session.get('customer_email') or session.get('customer_details', {}).get('email')
         order_id = session.get('metadata', {}).get('order_id')
+        customer_email = session.get('customer_email') or session.get('customer_details', {}).get('email')
 
+        order = Order.objects.filter(id=order_id).first()
         user = User.objects.filter(email=customer_email).first()
-        if not user or not order_id:
+
+        if not order or not user:
             return HttpResponse(status=404)
 
-        order = Order.objects.filter(id=order_id, user=user).first()
-        if not order:
-            return HttpResponse(status=404)
+        order.is_paid = True
+        order.save()
 
-        cart_items = CartItem.objects.filter(user=user)
-        if not cart_items.exists():
-            return HttpResponse(status=404)
-
-        total = 0
+        # Send order confirmation email
+        order_items = order.items.select_related('product_size__product')
         order_items_data = []
 
-        for item in cart_items:
+        total = 0
+        for item in order_items:
             subtotal = item.product_size.product.price * item.quantity
-            OrderItem.objects.create(order=order, product_size=item.product_size, quantity=item.quantity)
             total += subtotal
             order_items_data.append({
                 'product_name': item.product_size.product.name,
@@ -68,10 +66,6 @@ def stripe_webhook(request):
                 'price': f"{item.product_size.product.price:.2f}",
                 'subtotal': f"{subtotal:.2f}",
             })
-
-        order.is_paid = True
-        order.save()
-        cart_items.delete()
 
         html_message = render_to_string('emails/order_confirmation.html', {
             'order': order,
@@ -87,6 +81,9 @@ def stripe_webhook(request):
             recipient_list=[customer_email],
             html_message=html_message
         )
+
+        # Clear the cart
+        CartItem.objects.filter(user=user).delete()
 
     return HttpResponse(status=200)
 

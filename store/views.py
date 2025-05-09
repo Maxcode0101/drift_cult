@@ -137,8 +137,18 @@ def create_checkout_session(request):
         messages.info(request, "Your cart is empty.")
         return redirect('view_cart')
 
+    # Create Order
+    order = Order.objects.create(user=request.user)
     line_items = []
+
     for item in cart_items:
+        # Save each item to the order
+        OrderItem.objects.create(
+            order=order,
+            product_size=item.product_size,
+            quantity=item.quantity
+        )
+
         line_items.append({
             'price_data': {
                 'currency': 'eur',
@@ -150,8 +160,7 @@ def create_checkout_session(request):
             'quantity': item.quantity,
         })
 
-    order = Order.objects.create(user=request.user)
-
+    # Create Stripe checkout session
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],
         customer_email=request.user.email,
@@ -162,8 +171,11 @@ def create_checkout_session(request):
         metadata={'order_id': order.id},
     )
 
-    request.session['pending_order_id'] = order.id
+    order.stripe_checkout_id = session.id
+    order.save()
+
     return HttpResponseRedirect(session.url)
+
 
 
 @login_required
