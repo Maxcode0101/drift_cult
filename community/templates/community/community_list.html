@@ -21,14 +21,15 @@
 
     <ul class="blog-list">
       {% for post in posts %}
-        <li>
+        <li class="blog-post-item">
           <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-          <span class="blog-date">– {{ post.published_date }}</span>
+          <p class="blog-meta">Posted on {{ post.created_at|date:"F j, Y" }} by Drift Cult</p>
         </li>
       {% empty %}
         <li>No posts yet — be the first to shake things up.</li>
       {% endfor %}
     </ul>
+  
   </div>
 </div>
 {% endblock %}

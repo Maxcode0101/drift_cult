@@ -110,3 +110,14 @@
     margin-left: 0.5rem;
     font-size: 0.95rem;
   }
+
+  .blog-post-item {
+    margin-bottom: 1.5rem;
+  }
+  
+  .blog-meta {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.25rem;
+    margin-left: 0.25rem;
+  }
