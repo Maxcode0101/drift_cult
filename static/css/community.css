@@ -1,52 +1,49 @@
 .blog-container {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 3rem 1.5rem;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #1e1e1e;
+    max-width: 860px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+    font-family: 'Inter', sans-serif;
   }
   
   .blog-container h1 {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
     font-weight: 700;
-    margin-bottom: 1rem;
-    letter-spacing: -0.5px;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
   }
   
-  .blog-container h2 {
-    font-size: 1.4rem;
-    margin-top: 2rem;
+  .meta {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .blog-body {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #222;
+  }
+  
+  .blog-body h2 {
+    font-size: 1.5rem;
     font-weight: 600;
-    border-left: 4px solid black;
-    padding-left: 0.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid #000;
+    padding-left: 0.75rem;
   }
   
-  .blog-container p {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 1.2rem;
+  .blog-body p {
+    margin: 1.25rem 0;
   }
   
-  .blog-container img {
-    width: 100%;
+  .blog-body img {
     max-width: 100%;
     height: auto;
-    margin: 1.5rem 0;
-    border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .blog-container .meta {
-    font-size: 0.9rem;
-    color: #555;
-    margin-bottom: 1rem;
-    font-style: italic;
-  }
-  
-  .blog-container .callout {
-    background-color: #f8f8f8;
-    padding: 1rem;
-    border-left: 3px solid #222;
-    font-size: 0.95rem;
-    margin-top: 2rem;
+    display: block;
+    margin: 2rem auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
   }  
