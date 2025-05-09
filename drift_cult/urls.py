@@ -15,7 +15,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('store/', include('store.urls')),
-    path('community/', include('community.urls')),
+    path('community/', include('community.urls', namespace='community')),
     path('', include('core.urls')),
     path('webhooks/stripe/', stripe_webhook, name='stripe_webhook'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),

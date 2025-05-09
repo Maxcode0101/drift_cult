@@ -7,4 +7,4 @@ def community_list(request):
 
 def community_detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
-    return render(request, 'community/community_detail.html', {'post': post})
+    return render(request, 'community/post_detail.html', {'post': post})

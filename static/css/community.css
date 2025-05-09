@@ -96,6 +96,9 @@
   .blog-list a {
     color: #007bff;
     text-decoration: none;
+    cursor: pointer;
+    pointer-events: auto;
+    display: inline;
   }
   
   .blog-list a:hover {
@@ -106,4 +109,4 @@
     color: #888;
     margin-left: 0.5rem;
     font-size: 0.95rem;
-  }  
+  }
