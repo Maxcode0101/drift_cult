@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Community Blog</h2>
+  <ul>
+    {% for post in posts %}
+      <li><a href="{% url 'community_detail' post.slug %}">{{ post.title }}</a> – {{ post.created_at|date:"Y-m-d" }}</li>
+    {% empty %}
+      <li>No posts yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

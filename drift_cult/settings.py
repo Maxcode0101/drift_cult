@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # Local Apps
     'core',
     'store',
+    'community',
 ]
 
 SITE_ID = 1
