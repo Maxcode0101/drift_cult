@@ -121,3 +121,19 @@
     margin-top: 0.25rem;
     margin-left: 0.25rem;
   }
+
+  .back-link {
+    margin-top: 3rem;
+    text-align: left;
+  }
+  
+  .back-link a {
+    color: #333;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  
+  .back-link a:hover {
+    text-decoration: underline;
+  }
+  
