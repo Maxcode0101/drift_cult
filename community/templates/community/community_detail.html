@@ -1,7 +1,16 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/community.css' %}">
+{% endblock %}
+
 {% block content %}
-  <h2>{{ post.title }}</h2>
-  <p><small>Published: {{ post.created_at|date:"Y-m-d" }}</small></p>
-  <div>{{ post.content|linebreaks }}</div>
-  <p><a href="{% url 'community_list' %}">← Back to Community</a></p>
+<div class="blog-container">
+  <h1>{{ post.title }}</h1>
+  <p class="meta">Published: {{ post.published_date }}</p>
+  <div class="blog-body">
+    {{ post.content|safe }}
+  </div>
+</div>
 {% endblock %}
