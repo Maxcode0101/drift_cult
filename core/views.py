@@ -40,16 +40,20 @@ def stripe_webhook(request):
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
         customer_email = session.get('customer_email') or session.get('customer_details', {}).get('email')
+        order_id = session.get('metadata', {}).get('order_id')
 
         user = User.objects.filter(email=customer_email).first()
-        if not user:
+        if not user or not order_id:
+            return HttpResponse(status=404)
+
+        order = Order.objects.filter(id=order_id, user=user).first()
+        if not order:
             return HttpResponse(status=404)
 
         cart_items = CartItem.objects.filter(user=user)
         if not cart_items.exists():
             return HttpResponse(status=404)
 
-        order = Order.objects.create(user=user, is_paid=True)
         total = 0
         order_items_data = []
 
@@ -65,6 +69,8 @@ def stripe_webhook(request):
                 'subtotal': f"{subtotal:.2f}",
             })
 
+        order.is_paid = True
+        order.save()
         cart_items.delete()
 
         html_message = render_to_string('emails/order_confirmation.html', {
@@ -83,6 +89,7 @@ def stripe_webhook(request):
         )
 
     return HttpResponse(status=200)
+
 
 def robots_txt(request):
     lines = [
