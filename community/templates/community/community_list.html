@@ -1,11 +1,33 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/community.css' %}">
+{% endblock %}
+
 {% block content %}
-  <h2>Community Blog</h2>
-  <ul>
+<div class="community-hero">
+  <img src="{% static 'images/blog/hero_community.jpg' %}" alt="Two people sitting in a van smiling and relaxed">
+  <div class="overlay-text">
+    <h1>Drift Cult Community</h1>
+    <p>Style rebels. Nomadic souls. Stories worth telling.</p>
+  </div>
+</div>
+
+<div class="blog-container">
+  <h2 class="blog-title">Community Blog</h2>
+  <p class="blog-intro">
+    Real stories, raw opinions, no filters. Dive into the Drift Cult community — where rebellion, style, and voice collide.
+  </p>
+  <ul class="blog-list">
     {% for post in posts %}
-      <li><a href="{% url 'community_detail' post.slug %}">{{ post.title }}</a> – {{ post.created_at|date:"Y-m-d" }}</li>
+      <li>
+        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        <span class="blog-date">– {{ post.published_date }}</span>
+      </li>
     {% empty %}
-      <li>No posts yet.</li>
+      <li>No posts yet — be the first to shake things up.</li>
     {% endfor %}
   </ul>
+</div>
 {% endblock %}
