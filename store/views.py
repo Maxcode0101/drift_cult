@@ -362,3 +362,15 @@ def admin_order_detail(request, order_id):
         'order_items': order_items,
         'status_choices': Order.STATUS_CHOICES,
     })
+    
+    
+@staff_member_required
+def admin_order_delete(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+
+    if request.method == 'POST':
+        order.delete()
+        messages.success(request, "Order successfully deleted.")
+        return redirect('admin_order_list')
+
+    return render(request, 'store/admin_order_confirm_delete.html', {'order': order})

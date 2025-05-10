@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5 text-center">
+  <h2>⚠️ Confirm Order Deletion</h2>
+  <p class="text-danger">
+    Are you sure you want to <strong>delete Order #{{ order.id }}</strong>?
+    This action <strong>cannot be undone</strong>.
+  </p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, Delete Order</button>
+    <a href="{% url 'admin_order_list' %}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock %}
