@@ -2,41 +2,48 @@
 {% block content %}
 <div class="container mt-5">
   <h2>{{ title }}</h2>
+
+  {% if title == "Add Product" %}
+    <div class="alert alert-info">
+      After saving the product, you'll be taken to a form where you can define available sizes.
+    </div>
+  {% endif %}
+
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
 
     <div class="form-group">
-      {{ form.name.label_tag }}
-      {{ form.name }}
+      {{ form.name.label_tag }} {{ form.name }}
     </div>
 
     <div class="form-group">
-      {{ form.description.label_tag }}
-      {{ form.description }}
+      {{ form.description.label_tag }} {{ form.description }}
     </div>
 
     <div class="form-group">
-      {{ form.price.label_tag }}
-      {{ form.price }}
+      {{ form.price.label_tag }} {{ form.price }}
     </div>
 
     <div class="form-group">
-      {{ form.category.label_tag }}
-      {{ form.category }}
+      {{ form.category.label_tag }} {{ form.category }}
     </div>
 
     <div class="form-group">
-      {{ form.image.label_tag }}
-      {{ form.image }}
+      {{ form.image.label_tag }} {{ form.image }}
     </div>
 
-    <div class="form-group">
-      <label>Available Sizes:</label>
-      {{ form.sizes }}
-    </div>
+    {% if title == "Edit Product" %}
+      <div class="alert alert-warning">
+        <a href="{% url 'add_product_sizes' product.id %}" class="btn btn-sm btn-outline-primary">
+          ➕ Edit Available Sizes
+        </a>
+      </div>
+    {% endif %}
 
-    <button type="submit" class="btn btn-success">Save</button>
-    <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary">Cancel</a>
+    <div class="mt-4">
+      <button type="submit" class="btn btn-success">Save</button>
+      <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary">Cancel</a>
+    </div>
   </form>
 </div>
 {% endblock %}
