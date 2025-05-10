@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 from .views import ProductListView, newsletter_signup_ajax
+from .views import admin_dashboard, product_create, product_edit, product_delete
+
 urlpatterns = [
     path('', views.home_view, name='home'),  # Homepage
     path('shop/', ProductListView.as_view(), name='product_list'),  # Shop view
@@ -11,6 +13,12 @@ urlpatterns = [
     path('remove-from-cart/<int:item_id>/', views.remove_from_cart, name='remove_from_cart'),
     path('update_cart_quantity/<int:item_id>/', views.update_cart_quantity, name='update_cart_quantity'),
     path('orders/<int:order_id>/', views.order_detail, name='order_detail'),
+    
+    # Admin Dashboard
+    path('admin-dashboard/', admin_dashboard, name='admin_dashboard'),
+    path('admin-dashboard/product/add/', product_create, name='product_create'),
+    path('admin-dashboard/product/<int:pk>/edit/', product_edit, name='product_edit'),
+    path('admin-dashboard/product/<int:pk>/delete/', product_delete, name='product_delete'),
     
     # AJAX Newsletter Signup
     path('ajax/newsletter-signup/', newsletter_signup_ajax, name='newsletter_signup_ajax'),

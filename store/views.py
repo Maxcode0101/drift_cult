@@ -3,6 +3,7 @@ import stripe
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from django.views.generic import ListView
 from django.db.models import Q
 from django.contrib import messages
@@ -12,6 +13,7 @@ from django.urls import reverse
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt
+from .forms import ProductForm
 
 from .models import Product, ProductSize, CartItem, Order, OrderItem, NewsletterSubscriber
 
@@ -264,3 +266,43 @@ def robots_txt(request):
         "Sitemap: https://driftcult.art/sitemap.xml"
     ]
     return HttpResponse("\n".join(lines), content_type="text/plain")
+
+# Admin Dashboard Views
+@staff_member_required
+def admin_dashboard(request):
+    products = Product.objects.all().order_by('-id')
+    return render(request, 'store/admin_dashboard.html', {'products': products})
+
+
+@staff_member_required
+def product_create(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('admin_dashboard')
+    else:
+        form = ProductForm()
+    return render(request, 'store/product_form.html', {'form': form, 'title': 'Add Product'})
+
+
+@staff_member_required
+def product_edit(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('admin_dashboard')
+    else:
+        form = ProductForm(instance=product)
+    return render(request, 'store/product_form.html', {'form': form, 'title': 'Edit Product'})
+
+
+@staff_member_required
+def product_delete(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == 'POST':
+        product.delete()
+        return redirect('admin_dashboard')
+    return render(request, 'store/product_confirm_delete.html', {'product': product})
