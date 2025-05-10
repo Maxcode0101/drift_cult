@@ -374,3 +374,28 @@ def admin_order_delete(request, order_id):
         return redirect('admin_order_list')
 
     return render(request, 'store/admin_order_confirm_delete.html', {'order': order})
+
+
+@staff_member_required
+def bulk_order_action(request):
+    if request.method == 'POST':
+        action = request.POST.get('action')
+        selected_ids = request.POST.getlist('order_ids')
+
+        if not selected_ids:
+            messages.warning(request, "No orders selected.")
+            return redirect('admin_order_list')
+
+        orders = Order.objects.filter(id__in=selected_ids)
+
+        if action == 'delete':
+            deleted_count = orders.count()
+            orders.delete()
+            messages.success(request, f"{deleted_count} orders deleted.")
+        elif action in ['processing', 'shipped', 'delivered']:
+            updated = orders.update(status=action)
+            messages.success(request, f"{updated} orders marked as {action}.")
+        else:
+            messages.warning(request, "Invalid bulk action selected.")
+
+    return redirect('admin_order_list')

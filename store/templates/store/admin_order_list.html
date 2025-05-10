@@ -1,37 +1,75 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container mt-5">
-  <h2>Order Management</h2>
-  <table class="table table-bordered mt-3">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>User</th>
-        <th>Status</th>
-        <th>Paid</th>
-        <th>Date</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for order in orders %}
-      <tr>
-        <td>{{ order.id }}</td>
-        <td>{{ order.user.email }}</td>
-        <td>{{ order.status }}</td>
-        <td>
-          {% if order.is_paid %}
-            <span class="badge bg-success">Yes</span>
-          {% else %}
-            <span class="badge bg-danger">No</span>
-          {% endif %}
-        </td>
-        <td>{{ order.created_at|date:"Y-m-d H:i" }}</td>
-        <td><a href="{% url 'admin_order_detail' order.id %}" class="btn btn-sm btn-primary">Details</a></td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+  <h2>Admin Order Management</h2>
+
+  <form method="post" action="{% url 'bulk_order_action' %}" id="bulk-action-form">
+    {% csrf_token %}
+    
+    <div class="d-flex align-items-center mb-3">
+      <select name="action" class="form-select w-auto me-2" required>
+        <option value="" disabled selected>Bulk Action</option>
+        <option value="delete">Delete</option>
+        <option value="processing">Set to Processing</option>
+        <option value="shipped">Set to Shipped</option>
+        <option value="delivered">Set to Delivered</option>
+      </select>
+      <button type="submit" class="btn btn-primary"
+        onclick="return confirmBulkAction()">Apply</button>
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><input type="checkbox" id="select-all"></th>
+          <th>Order ID</th>
+          <th>User</th>
+          <th>Status</th>
+          <th>Paid</th>
+          <th>Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in orders %}
+        <tr>
+          <td><input type="checkbox" name="order_ids" value="{{ order.id }}"></td>
+          <td>#{{ order.id }}</td>
+          <td>{{ order.user.email }}</td>
+          <td>{{ order.status|title }}</td>
+          <td>
+            {% if order.is_paid %}
+              <span class="badge bg-success">Yes</span>
+            {% else %}
+              <span class="badge bg-danger">No</span>
+            {% endif %}
+          </td>
+          <td>{{ order.created_at|date:"Y-m-d H:i" }}</td>
+          <td>
+            <a href="{% url 'admin_order_detail' order.id %}" class="btn btn-sm btn-outline-secondary">View</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </form>
+
+  <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary mt-4">← Back to Product Dashboard</a>
 </div>
+
+<script>
+  document.getElementById('select-all').addEventListener('click', function () {
+    const checkboxes = document.querySelectorAll('input[name="order_ids"]');
+    checkboxes.forEach(cb => cb.checked = this.checked);
+  });
+
+  function confirmBulkAction() {
+    const selected = document.querySelectorAll('input[name="order_ids"]:checked').length;
+    const action = document.querySelector('select[name="action"]').value;
+    if (action === 'delete') {
+      return confirm(`⚠️ WARNING: You are about to DELETE ${selected} orders. This action is irreversible. Continue?`);
+    }
+    return true;
+  }
+</script>
 {% endblock %}
