@@ -19,7 +19,8 @@ urlpatterns = [
     path('admin-dashboard/product/add/', product_create, name='product_create'),
     path('admin-dashboard/product/<int:pk>/edit/', product_edit, name='product_edit'),
     path('admin-dashboard/product/<int:pk>/delete/', product_delete, name='product_delete'),
-    
+    path('admin-dashboard/product/<int:product_id>/add-sizes/', views.add_product_sizes, name='add_product_sizes'),
+
     # AJAX Newsletter Signup
     path('ajax/newsletter-signup/', newsletter_signup_ajax, name='newsletter_signup_ajax'),
 

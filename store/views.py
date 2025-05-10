@@ -14,6 +14,8 @@ from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt
 from .forms import ProductForm
+from django.forms import modelformset_factory
+
 
 from .models import Product, ProductSize, CartItem, Order, OrderItem, NewsletterSubscriber
 
@@ -306,3 +308,24 @@ def product_delete(request, pk):
         product.delete()
         return redirect('admin_dashboard')
     return render(request, 'store/product_confirm_delete.html', {'product': product})
+
+
+@staff_member_required
+def add_product_sizes(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    SizeFormSet = modelformset_factory(ProductSize, fields=('size', 'stock'), extra=3, can_delete=True)
+
+    if request.method == 'POST':
+        formset = SizeFormSet(request.POST, queryset=ProductSize.objects.filter(product=product))
+        if formset.is_valid():
+            instances = formset.save(commit=False)
+            for instance in instances:
+                instance.product = product
+                instance.save()
+            for obj in formset.deleted_objects:
+                obj.delete()
+            return redirect('admin_dashboard')
+    else:
+        formset = SizeFormSet(queryset=ProductSize.objects.filter(product=product))
+
+    return render(request, 'store/add_product_sizes.html', {'formset': formset, 'product': product})

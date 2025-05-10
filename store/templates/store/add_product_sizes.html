@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2>Add Sizes for: {{ product.name }}</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ formset.management_form }}
+    {% for form in formset %}
+      <div class="form-group border p-3 mb-3">
+        {{ form.as_p }}
+      </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-success">Save Sizes</button>
+    <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock %}
