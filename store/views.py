@@ -349,7 +349,16 @@ def admin_order_detail(request, order_id):
     order = get_object_or_404(Order, id=order_id)
     order_items = order.items.select_related('product_size', 'product_size__product')
 
+    if request.method == 'POST':
+        new_status = request.POST.get('status')
+        if new_status in dict(Order.STATUS_CHOICES):  # Only accept valid choices
+            order.status = new_status
+            order.save()
+            messages.success(request, f"Order status updated to {new_status.title()}")
+            return redirect('admin_order_detail', order_id=order.id)
+
     return render(request, 'store/admin_order_detail.html', {
         'order': order,
         'order_items': order_items,
+        'status_choices': Order.STATUS_CHOICES,
     })
