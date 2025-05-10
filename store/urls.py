@@ -7,6 +7,8 @@ from .views import (
     product_edit,
     product_delete,
     add_product_sizes,
+    admin_order_list,
+    admin_order_detail,
 )
 
 urlpatterns = [
@@ -26,6 +28,8 @@ urlpatterns = [
     path('admin-dashboard/product/<int:pk>/edit/', product_edit, name='product_edit'),
     path('admin-dashboard/product/<int:pk>/delete/', product_delete, name='product_delete'),
     path('admin-dashboard/product/<int:product_id>/sizes/', add_product_sizes, name='add_product_sizes'),
+    path('admin-dashboard/orders/', admin_order_list, name='admin_order_list'),
+    path('admin-dashboard/orders/<int:order_id>/', admin_order_detail, name='admin_order_detail'),
 
     # AJAX Newsletter Signup
     path('ajax/newsletter-signup/', newsletter_signup_ajax, name='newsletter_signup_ajax'),

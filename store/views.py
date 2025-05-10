@@ -336,3 +336,20 @@ def add_product_sizes(request, product_id):
         formset = SizeFormSet(queryset=ProductSize.objects.filter(product=product))
 
     return render(request, 'store/add_product_sizes.html', {'formset': formset, 'product': product})
+
+
+@staff_member_required
+def admin_order_list(request):
+    orders = Order.objects.all().order_by('-created_at')
+    return render(request, 'store/admin_order_list.html', {'orders': orders})
+
+
+@staff_member_required
+def admin_order_detail(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    order_items = order.items.select_related('product_size', 'product_size__product')
+
+    return render(request, 'store/admin_order_detail.html', {
+        'order': order,
+        'order_items': order_items,
+    })
