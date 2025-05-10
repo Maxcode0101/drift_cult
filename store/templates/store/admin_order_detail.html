@@ -54,7 +54,7 @@
 
   <hr class="mt-5">
 
-  <form method="post" action="{% url 'delete_order' order.id %}" onsubmit="return confirm('⚠️ WARNING: This will permanently delete Order #{{ order.id }}. Are you absolutely sure?');">
+  <form method="post" action="{% url 'admin_order_delete' order.id %}" onsubmit="return confirm('⚠️ WARNING: This will permanently delete Order #{{ order.id }}. Are you absolutely sure?');">
     {% csrf_token %}
     <button type="submit" class="btn btn-danger">🗑 Delete This Order</button>
   </form>
