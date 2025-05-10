@@ -1,16 +1,33 @@
 {% extends "base.html" %}
-
 {% block content %}
 <div class="container mt-5">
-  <h2>Add Sizes for: {{ product.name }}</h2>
+  <h2>Manage Sizes for: {{ product.name }}</h2>
   <form method="post">
     {% csrf_token %}
     {{ formset.management_form }}
-    {% for form in formset %}
-      <div class="form-group border p-3 mb-3">
-        {{ form.as_p }}
-      </div>
-    {% endfor %}
+
+    <div class="row">
+      {% for form in formset %}
+        <div class="col-md-4 mb-4">
+          <div class="card p-3">
+            {{ form.id }}  {# This is crucial for deletion to work #}
+            <div class="form-group">
+              {{ form.size.label_tag }}
+              {{ form.size }}
+            </div>
+            <div class="form-group">
+              {{ form.stock.label_tag }}
+              {{ form.stock }}
+            </div>
+            <div class="form-group form-check">
+              {{ form.DELETE }}
+              {{ form.DELETE.label_tag }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
     <button type="submit" class="btn btn-success">Save Sizes</button>
     <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary">Cancel</a>
   </form>

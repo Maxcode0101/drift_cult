@@ -281,11 +281,14 @@ def product_create(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect('admin_dashboard')
+            product = form.save()
+            return redirect('add_product_sizes', product_id=product.id)
     else:
         form = ProductForm()
-    return render(request, 'store/product_form.html', {'form': form, 'title': 'Add Product'})
+    return render(request, 'store/product_form.html', {
+        'form': form,
+        'title': 'Add Product'
+    })
 
 
 @staff_member_required
@@ -298,7 +301,11 @@ def product_edit(request, pk):
             return redirect('admin_dashboard')
     else:
         form = ProductForm(instance=product)
-    return render(request, 'store/product_form.html', {'form': form, 'title': 'Edit Product'})
+    return render(request, 'store/product_form.html', {
+    'form': form,
+    'title': 'Edit Product',
+    'product': product
+})
 
 
 @staff_member_required
@@ -313,10 +320,10 @@ def product_delete(request, pk):
 @staff_member_required
 def add_product_sizes(request, product_id):
     product = get_object_or_404(Product, id=product_id)
-    SizeFormSet = modelformset_factory(ProductSize, fields=('size', 'stock'), extra=3, can_delete=True)
+    SizeFormSet = modelformset_factory(ProductSize, fields=('size', 'stock'), extra=6, can_delete=True)
 
     if request.method == 'POST':
-        formset = SizeFormSet(request.POST, queryset=ProductSize.objects.filter(product=product))
+        formset = SizeFormSet(request.POST, request.FILES, queryset=ProductSize.objects.filter(product=product))
         if formset.is_valid():
             instances = formset.save(commit=False)
             for instance in instances:
