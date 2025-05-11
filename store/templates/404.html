@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="error-404-container">
+  <h1>404</h1>
+  <p>You’ve drifted off course…</p>
+  <a href="{% url 'product_list' %}" class="btn btn-light btn-lg">Take Me Home</a>
+</div>
+{% endblock %}

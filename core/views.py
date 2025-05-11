@@ -95,3 +95,7 @@ def robots_txt(request):
         "Sitemap: https://driftcult.art/sitemap.xml",
     ]
     return HttpResponse("\n".join(lines), content_type="text/plain")
+
+
+def custom_404_view(request, exception):
+    return render(request, '404.html', status=404)
