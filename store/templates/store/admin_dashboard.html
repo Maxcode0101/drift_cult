@@ -1,25 +1,40 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container mt-5">
-  <h2>Admin Dashboard</h2>
-  <a class="btn btn-primary my-3" href="{% url 'product_create' %}">+ Add Product</a>
-  <table class="table table-bordered">
+  <h2>Admin Product Management</h2>
+
+  <a href="{% url 'product_create' %}" class="btn btn-success mb-3">➕ Add New Product</a>
+  <a href="{% url 'admin_order_list' %}" class="btn btn-outline-dark mb-3 ms-2">📦 Go to Order Management</a>
+
+  <table class="table table-striped">
     <thead>
       <tr>
-        <th>Name</th><th>Price</th><th>Category</th><th>Actions</th>
+        <th>Product</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Sizes</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       {% for product in products %}
-        <tr>
-          <td>{{ product.name }}</td>
-          <td>€{{ product.price }}</td>
-          <td>{{ product.category }}</td>
-          <td>
-            <a class="btn btn-sm btn-secondary" href="{% url 'product_edit' product.pk %}">Edit</a>
-            <a class="btn btn-sm btn-danger" href="{% url 'product_delete' product.pk %}">Delete</a>
-          </td>
-        </tr>
+      <tr>
+        <td>{{ product.name }}</td>
+        <td>{{ product.category }}</td>
+        <td>€{{ product.price }}</td>
+        <td>
+          {% for size in product.productsize_set.all %}
+            {{ size.size }}{% if not forloop.last %}, {% endif %}
+          {% empty %}
+            <em>No sizes</em>
+          {% endfor %}
+        </td>
+        <td>
+          <a href="{% url 'product_edit' product.id %}" class="btn btn-sm btn-outline-primary">Edit</a>
+          <a href="{% url 'product_delete' product.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
+          <a href="{% url 'add_product_sizes' product.id %}" class="btn btn-sm btn-outline-secondary">Sizes</a>
+        </td>
+      </tr>
       {% endfor %}
     </tbody>
   </table>
