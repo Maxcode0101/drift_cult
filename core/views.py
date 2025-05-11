@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.core.mail import send_mail, EmailMessage
+from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
@@ -126,13 +126,13 @@ Message:
         """
 
         try:
-            email_message = EmailMessage(
-                subject=subject,
-                body=body,
-                from_email="Drift Cult <admin@driftcult.art>",
-                to=["admin@driftcult.art"],
+            send_mail(
+                subject,
+                body,
+                "Drift Cult <admin@driftcult.art>",
+                ["admin@driftcult.art"],
+                fail_silently=False,
             )
-            email_message.send(fail_silently=False)
             messages.success(request, "Thanks for reaching out! We’ll get back to you soon.")
             return redirect('contact')
         except Exception:
