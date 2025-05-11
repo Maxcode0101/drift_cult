@@ -351,9 +351,21 @@ def admin_order_detail(request, order_id):
 
     if request.method == 'POST':
         new_status = request.POST.get('status')
-        if new_status in dict(Order.STATUS_CHOICES):  # Only accept valid choices
+        if new_status in dict(Order.STATUS_CHOICES):
+            previous_status = order.status
             order.status = new_status
             order.save()
+
+            if previous_status == 'processing' and new_status == 'shipped':
+                subject = f"📦 Your Drift Cult Order #{order.id} Has Shipped"
+                from_email = 'noreply@driftcult.art'
+                to_email = [order.user.email]
+                context = {'user': order.user, 'order': order}
+                html_message = render_to_string('emails/order_shipped.html', context)
+                msg = EmailMultiAlternatives(subject, '', from_email, to_email)
+                msg.attach_alternative(html_message, "text/html")
+                msg.send()
+
             messages.success(request, f"Order status updated to {new_status.title()}")
             return redirect('admin_order_detail', order_id=order.id)
 
@@ -362,6 +374,7 @@ def admin_order_detail(request, order_id):
         'order_items': order_items,
         'status_choices': Order.STATUS_CHOICES,
     })
+
     
     
 @staff_member_required
@@ -387,15 +400,34 @@ def bulk_order_action(request):
             return redirect('admin_order_list')
 
         orders = Order.objects.filter(id__in=selected_ids)
+        affected = 0
+
+        for order in orders:
+            if action == 'delete':
+                order.delete()
+                affected += 1
+            elif action in ['processing', 'shipped', 'delivered']:
+                if order.status != action:
+                    previous_status = order.status
+                    order.status = action
+                    order.save()
+                    affected += 1
+
+                    # Trigger email ONLY if going from processing → shipped
+                    if previous_status == 'processing' and action == 'shipped':
+                        subject = f"📦 Your Drift Cult Order #{order.id} Has Shipped"
+                        from_email = 'noreply@driftcult.art'
+                        to_email = [order.user.email]
+                        context = {'user': order.user, 'order': order}
+                        html_message = render_to_string('emails/order_shipped.html', context)
+                        msg = EmailMultiAlternatives(subject, '', from_email, to_email)
+                        msg.attach_alternative(html_message, "text/html")
+                        msg.send()
 
         if action == 'delete':
-            deleted_count = orders.count()
-            orders.delete()
-            messages.success(request, f"{deleted_count} orders deleted.")
-        elif action in ['processing', 'shipped', 'delivered']:
-            updated = orders.update(status=action)
-            messages.success(request, f"{updated} orders marked as {action}.")
+            messages.success(request, f"{affected} orders deleted.")
         else:
-            messages.warning(request, "Invalid bulk action selected.")
+            messages.success(request, f"{affected} orders updated to {action}.")
 
     return redirect('admin_order_list')
+
