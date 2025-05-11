@@ -38,27 +38,32 @@
   }
 
 
-  /* 404 Page Styling */
-.error-404-container {
-  background: url("/static/images/404_desert.jpg") no-repeat center center;
-  background-size: cover;
-  height: 100vh;
-  color: white;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+ /* 404 Page Styling */
+.error-container {
+  position: relative;
   text-align: center;
-  padding: 2rem;
+  color: white;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 15vh;
 }
 
-.error-404-container h1 {
+.error-container h1 {
   font-size: 5rem;
-  margin-bottom: 1rem;
+  text-shadow: 2px 2px 8px black;
+  margin-bottom: 0.5rem;
 }
 
-.error-404-container p {
+.error-container p {
   font-size: 1.5rem;
-  margin-bottom: 2rem;
+  text-shadow: 2px 2px 6px black;
+}
+
+.error-container a.btn {
+  margin-top: 1.5rem;
 }

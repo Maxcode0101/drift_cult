@@ -2,9 +2,9 @@
 {% load static %}
 
 {% block content %}
-<div class="error-404-container">
+<div class="error-container" style="background-image: url('{% static 'images/pexels-mart-production-8869406.jpg' %}');">
   <h1>404</h1>
   <p>You’ve drifted off course…</p>
-  <a href="{% url 'product_list' %}" class="btn btn-light btn-lg">Take Me Home</a>
+  <a href="{% url 'home' %}" class="btn btn-light">Take Me Home</a>
 </div>
 {% endblock %}
