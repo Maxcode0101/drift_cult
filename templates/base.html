@@ -5,16 +5,16 @@
   <head>
 
     <!-- Required meta tags -->
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% block meta %}
     {% endblock %}
 
     <!-- SEO & Meta -->
-      <meta name="description" content="Drift Cult – Minimalist Surf, Skate & Outdoor Apparel for Real Ones.">
-      <meta name="author" content="Drift Cult">
-      <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+    <meta name="description" content="Drift Cult – Minimalist Surf, Skate & Outdoor Apparel for Real Ones.">
+    <meta name="author" content="Drift Cult">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
     {% block extra_meta %}
     {% endblock %}
 
@@ -69,7 +69,6 @@
             <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
 
-
             {% if user.is_authenticated %}
               <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
               <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Logout</a></li>
@@ -95,15 +94,28 @@
         {% endfor %}
       {% endif %}
     </div>
-    
+
     {% block page_header %}
     {% endblock %}
 
     {% block content %}
     {% endblock %}
-    
+
     {% block postloadjs %}
     {% endblock %}
-    
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light text-center py-4 mt-5">
+      <p class="mb-2">&copy; Drift Cult {{ now|date:"Y" }}</p>
+      <div class="mb-2">
+        <a href="{% url 'faq' %}" class="text-light mr-3">FAQ</a>
+        <a href="{% url 'terms' %}" class="text-light mr-3">Terms & Conditions</a>
+        <a href="/returns/" class="text-light mr-3">Return Policy</a>
+        <a href="https://www.instagram.com/" class="text-light mr-3" target="_blank">Instagram</a>
+        <a href="https://www.facebook.com/" class="text-light mr-3" target="_blank">Facebook</a>
+        <a href="https://www.tiktok.com/" class="text-light mr-3" target="_blank">TikTok</a>
+        <a href="https://twitter.com/" class="text-light" target="_blank">Twitter</a>
+      </div>
+    </footer>
   </body>
 </html>
