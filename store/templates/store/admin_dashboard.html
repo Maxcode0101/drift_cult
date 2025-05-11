@@ -3,8 +3,14 @@
 <div class="container mt-5">
   <h2>Admin Product Management</h2>
 
-  <a href="{% url 'product_create' %}" class="btn btn-success mb-3">➕ Add New Product</a>
-  <a href="{% url 'admin_order_list' %}" class="btn btn-outline-dark mb-3 ms-2">📦 Go to Order Management</a>
+  <div class="mb-4">
+    <a href="{% url 'product_create' %}" class="btn btn-success">
+      <i class="fas fa-plus"></i>🛍️ Add New Product
+    </a>
+    <a href="{% url 'admin_order_list' %}" class="btn btn-outline-dark">
+      <i class="fas fa-box"></i>📦 Go to Order Management
+    </a>
+  </div>
 
   <table class="table table-striped">
     <thead>
@@ -18,23 +24,23 @@
     </thead>
     <tbody>
       {% for product in products %}
-      <tr>
-        <td>{{ product.name }}</td>
-        <td>{{ product.category }}</td>
-        <td>€{{ product.price }}</td>
-        <td>
-          {% for size in product.productsize_set.all %}
-            {{ size.size }}{% if not forloop.last %}, {% endif %}
-          {% empty %}
-            <em>No sizes</em>
-          {% endfor %}
-        </td>
-        <td>
-          <a href="{% url 'product_edit' product.id %}" class="btn btn-sm btn-outline-primary">Edit</a>
-          <a href="{% url 'product_delete' product.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
-          <a href="{% url 'add_product_sizes' product.id %}" class="btn btn-sm btn-outline-secondary">Sizes</a>
-        </td>
-      </tr>
+        <tr>
+          <td>{{ product.name }}</td>
+          <td>{{ product.category }}</td>
+          <td>€{{ product.price }}</td>
+          <td>
+            {% if product.sizes.all %}
+              {{ product.sizes.count }} sizes
+            {% else %}
+              <em>No sizes</em>
+            {% endif %}
+          </td>
+          <td>
+            <a href="{% url 'product_edit' product.id %}" class="btn btn-sm btn-outline-primary">Edit</a>
+            <a href="{% url 'product_delete' product.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
+            <a href="{% url 'add_product_sizes' product.id %}" class="btn btn-sm btn-outline-secondary">Sizes</a>
+          </td>
+        </tr>
       {% endfor %}
     </tbody>
   </table>

@@ -15,6 +15,7 @@ from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt
 from .forms import ProductForm
 from django.forms import modelformset_factory
+from django.db.models import Prefetch
 
 
 from .models import Product, ProductSize, CartItem, Order, OrderItem, NewsletterSubscriber
@@ -272,7 +273,7 @@ def robots_txt(request):
 # Admin Dashboard Views
 @staff_member_required
 def admin_dashboard(request):
-    products = Product.objects.all().order_by('-id')
+    products = Product.objects.all().prefetch_related('sizes')
     return render(request, 'store/admin_dashboard.html', {'products': products})
 
 
