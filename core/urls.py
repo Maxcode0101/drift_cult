@@ -1,6 +1,7 @@
 from django.urls import path
 from django.contrib.sitemaps.views import sitemap
 from .views import stripe_webhook, test_email, robots_txt, contact_view
+from core import views
 from store.views import home_view, about_view, community_view
 from store.sitemaps import ProductSitemap, StaticViewSitemap
 
@@ -18,4 +19,7 @@ urlpatterns = [
     path("community/", community_view, name="community"),
     path("robots.txt", robots_txt, name="robots_txt"),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('faq/', views.faq_view, name='faq'),
+    path('terms/', views.terms_view, name='terms'),
+    path('returns/', views.returns_view, name='returns'),
 ]

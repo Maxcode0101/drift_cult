@@ -140,3 +140,42 @@ Message:
             return redirect('contact')
 
     return render(request, "core/contact.html")
+
+
+def faq_view(request):
+    return render(request, 'core/faq.html')
+
+
+def faq_view(request):
+    faq_list = [
+        {
+            "question": "What is the standard delivery time within Europe?",
+            "answer": "Standard delivery takes 3–5 business days."
+        },
+        {
+            "question": "What payment methods do you accept?",
+            "answer": "We accept all major credit cards. That’s it. No Klarna, no crypto. Just cards."
+        },
+        {
+            "question": "Do you provide size charts?",
+            "answer": "Nope. We don’t do cookie-cutter sizing. Email us at <a href='mailto:service@driftcult.art'>service@driftcult.art</a> and we’ll help you pick the right fit."
+        },
+        {
+            "question": "Are your products unisex?",
+            "answer": "Some are, some aren’t. The product description will tell you. Either way — wear what feels right."
+        },
+        {
+            "question": "Do I need an account to place an order?",
+            "answer": "Yes. We’re a community, not a clearance bin. Log in, be part of it."
+        },
+    ]
+    return render(request, 'core/faq.html', {'faq_list': faq_list})
+
+
+def terms_view(request):
+    return render(request, 'core/terms.html')
+
+
+def returns_view(request):
+    return render(request, 'core/returns.html')
+
