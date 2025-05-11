@@ -1,24 +1,20 @@
-import os
 import stripe
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.views.generic import ListView
-from django.db.models import Q
+from django.db.models import Q, Prefetch
 from django.contrib import messages
 from django.conf import settings
 from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.urls import reverse
-from django.core.mail import send_mail, EmailMultiAlternatives
-from django.template.loader import render_to_string
+from django.forms import modelformset_factory
 from django.views.decorators.csrf import csrf_exempt
 from .forms import ProductForm
-from django.forms import modelformset_factory
-from django.db.models import Prefetch
-
-
 from .models import Product, ProductSize, CartItem, Order, OrderItem, NewsletterSubscriber
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -431,4 +427,3 @@ def bulk_order_action(request):
             messages.success(request, f"{affected} orders updated to {action}.")
 
     return redirect('admin_order_list')
-
