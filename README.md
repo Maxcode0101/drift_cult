@@ -167,4 +167,30 @@ The following pages were wireframed to cover core user interactions from browsin
 - **Mobile App**: Native app for mobile users.
 
 
+## Tools & Technologies
 
+| Tool / Tech | Use |
+| --- | --- |
+| [![badge](https://img.shields.io/badge/Python-grey?logo=python&logoColor=3776AB)](https://www.python.org) | Back-end programming language |
+| [![badge](https://img.shields.io/badge/Django_4.2-grey?logo=django&logoColor=092E20)](https://www.djangoproject.com) | Main web framework |
+| [![badge](https://img.shields.io/badge/Django_Allauth-grey?logo=django&logoColor=092E20)](https://django-allauth.readthedocs.io) | Handles user authentication, registration, and email confirmation |
+| [![badge](https://img.shields.io/badge/PostgreSQL-grey?logo=postgresql&logoColor=4169E1)](https://www.postgresql.org) | Production relational database (Neon) |
+| [![badge](https://img.shields.io/badge/SQLite3-grey?logo=sqlite&logoColor=003B57)](https://www.sqlite.org) | Development database |
+| [![badge](https://img.shields.io/badge/Gunicorn-grey?logo=gunicorn&logoColor=499848)](https://gunicorn.org) | WSGI HTTP server for Heroku deployment |
+| [![badge](https://img.shields.io/badge/Stripe-grey?logo=stripe&logoColor=008CDD)](https://stripe.com) | Secure checkout and webhook-based payment processing |
+| [![badge](https://img.shields.io/badge/Heroku-grey?logo=heroku&logoColor=430098)](https://www.heroku.com) | Cloud deployment platform |
+| [![badge](https://img.shields.io/badge/AWS_S3-grey?logo=amazons3&logoColor=569A31)](https://aws.amazon.com/s3) | Media file hosting |
+| [![badge](https://img.shields.io/badge/WhiteNoise-grey?logo=python&logoColor=FFFFFF)](https://whitenoise.readthedocs.io) | Serving static files in production |
+| [![badge](https://img.shields.io/badge/Namecheap_ProMail-grey?logo=mail-dot-ru&logoColor=E36000)](https://www.namecheap.com/hosting/email/) | SMTP service for transactional emails |
+| [![badge](https://img.shields.io/badge/HTML-grey?logo=html5&logoColor=E34F26)](https://developer.mozilla.org/en-US/docs/Web/HTML) | Page structure |
+| [![badge](https://img.shields.io/badge/CSS-grey?logo=css3&logoColor=1572B6)](https://developer.mozilla.org/en-US/docs/Web/CSS) | Custom styling |
+| [![badge](https://img.shields.io/badge/Bootstrap_4-grey?logo=bootstrap&logoColor=7952B3)](https://getbootstrap.com/docs/4.6/getting-started/introduction/) | Responsive layout and components |
+| [![badge](https://img.shields.io/badge/JavaScript-grey?logo=javascript&logoColor=F7DF1E)](https://www.javascript.com) | Interactive functionality |
+| [![badge](https://img.shields.io/badge/jQuery-grey?logo=jquery&logoColor=0769AD)](https://jquery.com) | AJAX and DOM manipulation |
+| [![badge](https://img.shields.io/badge/Git-grey?logo=git&logoColor=F05032)](https://git-scm.com) | Version control |
+| [![badge](https://img.shields.io/badge/GitHub-grey?logo=github&logoColor=181717)](https://github.com) | Repo management and issue tracking |
+| [![badge](https://img.shields.io/badge/VSCode-grey?logo=visualstudiocode&logoColor=007ACC)](https://code.visualstudio.com) | Primary code editor |
+| [![badge](https://img.shields.io/badge/Lucidchart-grey?logo=lucidchart&logoColor=FF9900)](https://www.lucidchart.com) | ERD and system diagram creation |
+| [![badge](https://img.shields.io/badge/Markdown_Builder-grey?logo=markdown&logoColor=000000)](https://markdown.2bn.dev) | README and TESTING file generation |
+| [![badge](https://img.shields.io/badge/ChatGPT-grey?logo=openai&logoColor=75A99C)](https://chat.openai.com) | Debugging, planning, and markdown structure support |
+| [![badge](https://img.shields.io/badge/StackOverflow-grey?logo=stackoverflow&logoColor=F58025)](https://stackoverflow.com) | Problem solving and community support |
