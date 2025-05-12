@@ -279,3 +279,139 @@ Each user story was labeled using the **MoSCoW prioritization** method:
 – Reviews Model  
 – Discount Code Usage |  
 ![9](documentation/readme/agile/9_wishlist.png) |
+
+
+## Ecommerce Business Model
+
+This site follows a **Business to Customer (B2C)** model, selling products directly to individual consumers. The structure is simple — there are no subscriptions or recurring billing.
+
+While still early-stage, the business includes a newsletter system and is integrated with social platforms to grow its reach. These channels will help build a loyal customer base and keep the audience engaged with announcements, new products, and offers.
+
+---
+
+## SEO & Marketing
+
+### Keywords
+
+Both short-tail and long-tail keywords were identified to optimize the site for search engines. Tools like [WordTracker](https://www.wordtracker.com) helped refine the primary keywords during development.
+
+### Sitemap
+
+A [sitemap.xml](sitemap.xml) was generated using [XML-Sitemaps](https://www.xml-sitemaps.com), ensuring all pages are crawlable.
+
+### Robots.txt
+
+Basic `robots.txt` included:
+
+```txt
+User-agent: *
+Disallow:
+Sitemap: https://driftcult.art/sitemap.xml
+```
+
+**Note**: There is no separate `robots.txt` file in the root directory.  
+> Instead, it is dynamically served via a Django view located in `core/views.py`:
+> ```python
+> def robots_txt(request):
+>     return HttpResponse("User-agent: *\nDisallow:\nSitemap: https://driftcult.art/sitemap.xml",   content_type="text/plain")
+> ```
+
+### Social Media Marketing
+
+The project includes external social media links (Instagram, Facebook, TikTok, X) and mockup previews to visualize future integrations.
+
+![screenshot](documentation/mockup-facebook.png)
+
+### Newsletter Marketing
+
+Newsletter functionality will be implemented using a custom Django model:
+
+```python
+class Newsletter(models.Model):
+    email = models.EmailField(unique=True, null=False, blank=False)
+
+    def __str__(self):
+        return self.email
+```
+
+Emails will be stored in the database and can be used for campaign outreach or product updates.
+
+---
+
+## Testing
+
+Please refer to the separate [TESTING.md](TESTING.md) file for all manual and automated test procedures, results, and validations.
+
+---
+
+## Deployment
+
+The live project is available at:  
+🌐 [https://driftcult.art](https://driftcult.art)  
+(Backup: [https://drift-cult-9f60af6d7463.herokuapp.com](https://drift-cult-9f60af6d7463.herokuapp.com))
+
+The site was deployed to [Heroku](https://www.heroku.com), using a PostgreSQL database and AWS S3 for static and media file hosting.
+
+A custom domain (`driftcult.art`) was purchased via [Namecheap](https://www.namecheap.com) and connected to Heroku. DNS settings (A, CNAME, MX, and TXT records) were configured in the Namecheap dashboard, and SSL was handled automatically by Heroku ACM.
+
+All environment variables — including AWS, Stripe, Namecheap Pro Mail, and Django secret keys — were configured in Heroku Config Vars.
+
+There are no differences between the local development version and the deployed production version.
+
+
+### Environment Variables
+
+The following environment variables are used in `env.py` for local development and are set in Heroku Config Vars for production:
+
+```python
+os.environ.setdefault('SECRET_KEY', '')
+
+# AWS S3 Config
+os.environ.setdefault('AWS_STORAGE_BUCKET_NAME', '')
+os.environ.setdefault('AWS_S3_REGION_NAME', '')
+os.environ.setdefault('AWS_ACCESS_KEY_ID', '')
+os.environ.setdefault('AWS_SECRET_ACCESS_KEY', '')
+
+# Stripe Config
+os.environ.setdefault('STRIPE_PUBLIC_KEY', '')
+os.environ.setdefault('STRIPE_SECRET_KEY', '')
+os.environ.setdefault("STRIPE_WEBHOOK_SECRET", "")
+
+# Database Config
+os.environ.setdefault('DATABASE_URL', '')
+
+# Deployment Config
+os.environ.setdefault('DEVELOPMENT', 'True')
+os.environ.setdefault('DEBUG', 'True')
+
+# Email Config Resend
+os.environ.setdefault("PRO_MAIL_PASSWORD", "")
+
+---
+
+## Credits
+
+### Content
+
+| Source | Notes |
+| --- | --- |
+| [Markdown Builder](https://markdown.2bn.dev) | Markdown layout support |
+| [Bootstrap](https://getbootstrap.com) | Frontend layout framework |
+| [AWS](https://aws.amazon.com/s3) | Media storage |
+| [Stripe](https://stripe.com) | Payment integration |
+| [ChatGPT](https://chat.openai.com) | Content and code assistance |
+| [Namecheap Pro Mail](https://www.namecheap.com/hosting/email/) | Sending transactional emails (e.g., order confirmations) |
+
+### Media
+
+| Source | Notes |
+| --- | --- |
+| [Pexels](https://pexels.com) | Product photos |
+
+---
+
+## Acknowledgements
+
+- Thanks to [Code Institute](https://codeinstitute.net) and mentor [Tim Nelson](https://github.com/TravelTimN)
+- The CI Slack community helped with debugging and guidance
+- Gratitude to my personal support system throughout development
