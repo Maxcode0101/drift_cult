@@ -104,3 +104,19 @@ The following pages were wireframed to cover core user interactions from browsin
 - Imagery: high-resolution product shots hosted on AWS S3; transparent brand logo featured on homepage.
 - Layout: minimalist, responsive, built with Bootstrap 4 grid and media queries.
 
+
+## User Stories
+
+| Target | Expectation | Outcome |
+| --- | --- | --- |
+| As a customer | I want to browse and search for products | so that I can find the items I want to purchase easily. |
+| As a customer | I want to create an account | so that I can save my order history and checkout faster. |
+| As a customer | I want to add products to a shopping cart | so that I can purchase them later. |
+| As a customer | I want to update product quantities in my cart | so that I can adjust my order before checkout. |
+| As a customer | I want to securely pay for my order with Stripe | so that I can receive my items. |
+| As a customer | I want to receive confirmation messages and emails after checkout | so that I know my order was successful. |
+| As a customer | I want to see my order history | so that I can track my purchases. |
+| As an admin | I want to manage products and orders | so that I can keep the store updated. |
+| As a business owner | I want my store to rank higher on search engines | so that more customers can find it. |
+| As a customer | I want the website to work smoothly on mobile | so that I can shop from any device. |
+| As a customer | I want to save products to a wishlist | so that I can purchase them later. |
