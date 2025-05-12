@@ -194,3 +194,27 @@ The following pages were wireframed to cover core user interactions from browsin
 | [![badge](https://img.shields.io/badge/Markdown_Builder-grey?logo=markdown&logoColor=000000)](https://markdown.2bn.dev) | README and TESTING file generation |
 | [![badge](https://img.shields.io/badge/ChatGPT-grey?logo=openai&logoColor=75A99C)](https://chat.openai.com) | Debugging, planning, and markdown structure support |
 | [![badge](https://img.shields.io/badge/StackOverflow-grey?logo=stackoverflow&logoColor=F58025)](https://stackoverflow.com) | Problem solving and community support |
+
+
+## Database Design
+
+The Drift Cult database schema is composed of multiple interrelated models to support eCommerce functionality, user management, order tracking, and marketing features. The diagram below was created using [Lucidchart](https://www.lucidchart.com) and reflects the full production model setup.
+
+![screenshot](documentation/erd_drift_cult_django_project.png)
+
+### Key Entities
+
+- **User**: The built-in Django user model used for authentication.
+- **UserProfile**: One-to-one extension of `User`, storing default shipping data.
+- **Product**: Core item for sale, linked to a `Category` and displayed with optional `ProductSize` entries.
+- **ProductSize**: Defines available sizes and stock levels for each product.
+- **CartItem**: Tracks items added to cart by a user, including selected size and quantity.
+- **Order**: Placed by a user, holds status and total pricing information.
+- **OrderItem**: Line item within an order, linked to product and size at the time of purchase.
+- **Payment**: One-to-one relationship with `Order`, storing amount, method, and timestamp.
+- **DiscountCode**: Optional discount logic supporting both percentage and fixed-value coupons.
+- **Review**: User-submitted product ratings and comments.
+- **Wishlist**: User-specific saved products for future interest.
+
+All models use Django best practices for relationships (`ForeignKey`, `OneToOneField`, etc.), and were designed for maintainability, scalability, and ease of use in the admin and frontend.
+
