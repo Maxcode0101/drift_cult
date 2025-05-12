@@ -218,3 +218,64 @@ The Drift Cult database schema is composed of multiple interrelated models to su
 
 All models use Django best practices for relationships (`ForeignKey`, `OneToOneField`, etc.), and were designed for maintainability, scalability, and ease of use in the admin and frontend.
 
+
+## Agile Development Process
+
+### GitHub Projects
+
+[GitHub Projects](https://www.github.com/Maxcode0101/drift_cult/projects) served as an Agile tool for this project. EPICs, user stories, bugs, and milestone tasks were planned and tracked using a **Kanban-style board** for visual management and iterative progress.
+
+📌 **Board screenshot:**  
+![GitHub Projects Kanban](documentation/readme/agile/kanban.png)
+
+---
+
+### GitHub Issues
+
+[GitHub Issues](https://www.github.com/Maxcode0101/drift_cult/issues) were used to manage user stories, track bugs, and link to specific milestones. Each issue was labeled according to the MoSCoW prioritization method, and all acceptance criteria were strictly defined and implemented.
+
+| Link | Screenshot |
+| ---- | ---------- |
+| [Closed Issues](https://www.github.com/Maxcode0101/drift_cult/issues?q=is%3Aissue+is%3Aclosed) | ![screenshot](documentation/readme/agile/gh-issues-closed.png) |
+
+---
+
+### MoSCoW Prioritization
+
+I've decomposed my Epics into User Stories for prioritizing and implementing them. Using this approach, I was able to apply "MoSCoW" prioritization and labels to my User Stories within the Issues tab.
+
+Each user story was labeled using the **MoSCoW prioritization** method:
+
+- ✅ **Must Have**: required for project completion (core features). (*max ~60% of stories*)
+- 🟠 **Should Have**: important but not essential. (*~20% of stories*)
+- 🟡 **Could Have**: optional enhancements. (*the rest ~20% of stories*)
+- 🚫 **Won’t Have**: explicitly excluded from the current scope.
+
+### Prioritization Breakdown with Screenshots
+
+| Priority     | Features | Screenshots |
+|--------------|----------|-------------|
+| ✅ **Must Have** |  
+– User Authentication & Authorization  
+– Product Browsing & Search  
+– Shopping Cart & Checkout  
+– Payment Processing with Stripe  
+– Mobile-Friendly & Responsive Design |  
+![1](documentation/readme/agile/1_user_authentication_and_authorization.png)  
+![2](documentation/readme/agile/2_product_browsing_and_search.png)  
+![3](documentation/readme/agile/3_shopping_cart_and_checkout.png)  
+![4](documentation/readme/agile/4_payment_processing.png)  
+![8](documentation/readme/agile/8_responsive_design.png) |
+| 🟠 **Should Have** |  
+– Order Management & History  
+– Admin Dashboard for Product & Order Management |  
+![5](documentation/readme/agile/5_order_management.png)  
+![6](documentation/readme/agile/6_admin_dashboard.png) |
+| 🟡 **Could Have** |  
+– SEO & Marketing Features |  
+![7](documentation/readme/agile/7_seo_and_marketing.png) |
+| 🚫 **Won’t Have** |  
+– Wishlist Feature  
+– Reviews Model  
+– Discount Code Usage |  
+![9](documentation/readme/agile/9_wishlist.png) |
