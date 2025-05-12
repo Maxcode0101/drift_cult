@@ -127,21 +127,29 @@ The following pages were wireframed to cover core user interactions from browsin
 
 | Feature | Notes | Screenshot |
 | --- | --- | --- |
-| User Registration & Authentication | Users can register, log in, and log out via Django Allauth. Includes email confirmation and welcome email. | ![screenshot](documentation/readme/features/1_user_authentication_and_authorization.png) |
-| Product Browsing & Search | Products can be browsed by category or searched via keyword. | ![screenshot](documentation/readme/features/2_product_browsing_and_search.png) |
-| Shopping Cart | Users can add products to cart, change quantities, or remove items. Cart updates in real time. | ![screenshot](documentation/readme/features/3_shopping_cart_and_checkout.png) |
-| Checkout Process | Logged-in users can complete checkout using Stripe. Guest users are prompted to log in or register. | ![screenshot](documentation/readme/features/3_shopping_cart_and_checkout.png) |
-| Stripe Payment Integration | Secure payment using Stripe Checkout Sessions. Includes quantity-aware line items and user email. | ![screenshot](documentation/readme/features/4_payment_processing.png) |
-| Order Management (User) | Users can view order history and details from their profile. Orders include product names, sizes, and total paid. | ![screenshot](documentation/readme/features/5_order_management.png) |
-| Order Management (Admin) | Staff can view, update, or delete orders via the admin dashboard. Bulk status actions and email notifications are available. | ![screenshot](documentation/readme/features/6_admin_dashboard.png) |
-| Admin Product Management | Superusers can create, update, and delete products, and manage product sizes and stock levels. | ![screenshot](documentation/readme/features/6_admin_dashboard.png) |
-| SEO Optimization | Meta tags are dynamically injected per page for SEO and social sharing (OpenGraph, Twitter cards, etc.). | ![screenshot](documentation/readme/features/7_seo_and_marketing.png) |
-| Newsletter Signup | AJAX-based email capture with feedback messages. Confirmation email is sent using a branded HTML template. | ![screenshot](documentation/readme/features/7_seo_and_marketing.png) |
-| Responsive Design | Fully mobile-first responsive design using Bootstrap 4. Optimized for mobile, tablet, and desktop views. | ![screenshot](documentation/readme/features/8_responsive_design.png) |
-| Wishlist System | Logged-in users can add/remove products from their wishlist. Products in wishlist are highlighted. | ![screenshot](documentation/readme/features/9_wishlist.png) |
-| Custom 404 Page | Branded 404 page if users visit a broken or invalid URL. | ![screenshot](documentation/readme/features/404.png) |
-| Contact Form | Users can submit their name, email, and a message. Emails are sent to service@driftcult.art. | ![screenshot](documentation/readme/features/contact.png) |
-| Footer with Social Media | Links to Instagram, Facebook, TikTok, and Twitter are provided in the footer for visibility and branding. | ![screenshot](documentation/readme/features/7_seo_and_marketing.png) |
+| Register | Users can create an account with email and password. Email confirmation is required. | ![screenshot](documentation/readme/features/register.png) |
+| Login | Existing users can securely log in. | ![screenshot](documentation/readme/features/login.png) |
+| Logout | Users can log out of their account from the navigation menu. | ![screenshot](documentation/readme/features/logout.png) |
+| Product List | Users can browse all available products with search and category filtering. | ![screenshot](documentation/readme/features/product-list.png) |
+| Product Details | Shows product description, image, price, and size options. | ![screenshot](documentation/readme/features/product-details.png) |
+| Add to Cart | Adds a product to the shopping cart with selected size. | ![screenshot](documentation/readme/features/add-to-bag.png) |
+| Remove from Cart | Users can remove items from the shopping cart. | ![screenshot](documentation/readme/features/remove-from-bag.png) |
+| Checkout | Checkout with Stripe integration and email input. | ![screenshot](documentation/readme/features/checkout.png) |
+| Order Confirmation | Confirmation screen displayed after a successful purchase. | ![screenshot](documentation/readme/features/order-confirmation.png) |
+| Order History | Logged-in users can view past orders. | ![screenshot](documentation/readme/features/order-history.png) |
+| Order Management (Admin) | Admin dashboard to update or delete customer orders. | ![screenshot](documentation/readme/features/order-management.png) |
+| Product Management (Admin) | Add, edit, or delete products via the admin interface. | ![screenshot](documentation/readme/features/product-management.png) |
+| Newsletter Modal | AJAX-based modal for newsletter signup on homepage. | ![screenshot](documentation/readme/features/modal.png) |
+| Contact Form | Users can send a message via a contact form. | ![screenshot](documentation/readme/features/contact.png) |
+| FAQ Page | Site-wide FAQ accordion page to answer common questions. | ![screenshot](documentation/readme/features/faqs.png) |
+| 404 Page | Branded 404 page for invalid or broken links. | ![screenshot](documentation/readme/features/404.png) |
+| SEO Metadata | Each page includes SEO meta tags (title, description, OG/Twitter). | ![screenshot](documentation/readme/features/seo.png) |
+| Marketing Footer | Social media links and newsletter form displayed in footer. | ![screenshot](documentation/readme/features/Footer.png) |
+| Facebook Mockup | Social media promotion example with a branded post. | ![screenshot](documentation/readme/features/facebook-mockup.png) |
+| Facebook Integration | Connect social media accounts for sharing and login. | ![screenshot](documentation/readme/features/Facebook.png) |
+| Stripe Integration | Stripe payment integration for smooth checkout processing. | ![screenshot](documentation/readme/features/stripe.png) |
+| User Feedback Messages | Feedback messages on user actions (e.g., adding/removing items). | ![screenshot](documentation/readme/features/user-feedback.png) |
+| View Bag | Users can view and manage their shopping cart. | ![screenshot](documentation/readme/features/view-bag.png) |
 
 ### Future Features
 
