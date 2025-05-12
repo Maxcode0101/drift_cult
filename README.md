@@ -1,29 +1,19 @@
-# drift_cult
+# [drift_cult](https://drift-cult-9f60af6d7463.herokuapp.com) (https://driftcult.art)
 
-## ERD
+Developer: Max Kaening ([Maxcode0101](https://www.github.com/Maxcode0101))
 
-![ERD](<ERD Drift Cult Django Project.png>)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/t/Maxcode0101/drift_cult)](https://www.github.com/Maxcode0101/drift_cult/commits/main)
+[![GitHub last commit](https://img.shields.io/github/last-commit/Maxcode0101/drift_cult)](https://www.github.com/Maxcode0101/drift_cult/commits/main)
+[![GitHub repo size](https://img.shields.io/github/repo-size/Maxcode0101/drift_cult)](https://www.github.com/Maxcode0101/drift_cult)
 
+---
 
-## Wireframes
+**Drift Cult** is a modern, full-stack e-commerce web application built using Django, PostgreSQL, and Stripe. It serves as the online storefront for a countercultural surf, skate, and outdoor clothing brand that emphasizes durability, authenticity, and non-mainstream values.
 
-![Home Page](<Home Page.png>)
-![ASCII Home](Homepage.png)
+The application is designed for a niche community of independent, style-conscious individuals who reject fast fashion in favor of minimalist design and long-lasting quality. The platform provides a streamlined shopping experience, allowing users to browse curated products, manage their cart, and complete secure purchases.
 
-![Product List](<Products Page.png>)
-![ASCII Product List](Shop.png)
+From a technical perspective, Drift Cult incorporates user authentication via Allauth, dynamic product filtering, Stripe-powered payment flows, responsive UI with Bootstrap 4, automated confirmation emails, and an admin interface for managing inventory and orders. Media files are hosted via AWS S3, and the application is deployed on Heroku with PostgreSQL as the production database.
 
-![Product Detail Page](<Product Detail Page.png>)
-![ASCII Product Detail](<Product Detail.png>)
+Drift Cult reflects both a technical implementation of best practices and a brand-driven digital experience that connects directly with its target audience.
 
-![Cart Page](<Cart Page.png>)
-![ASCII Cart & Checkout](<Cart & Checkout.png>)
-
-![Checkout Page](<Checkout Page.png>)
-
-![Login & SignUp Page](<Login & Sign Up Page.png>)
-![ASCII Login & SignUp](<Login & Sign Up.png>)
-
-![Admin Dashboard](<Admin Dashboard.png>)
-![ASCII Admin Dashboard](<Admin : Dashboard.png>)
-
+---
