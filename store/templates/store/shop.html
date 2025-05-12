@@ -132,9 +132,12 @@
 {% block postloadjs %}
 <script>
   $(document).ready(function () {
-    setTimeout(function () {
-      $('#newsletterModal').modal('show');
-    }, 3000);
+    if (!sessionStorage.getItem("newsletterShown")) {
+      setTimeout(function () {
+        $('#newsletterModal').modal('show');
+        sessionStorage.setItem("newsletterShown", "true");
+      }, 3000);
+    }
 
     $('#newsletter-modal-form').on('submit', function (e) {
       e.preventDefault();
@@ -149,14 +152,18 @@
           csrfmiddlewaretoken: csrfToken
         },
         success: function (response) {
-          if (response.success) {
-            $('#newsletterModal .modal-body').html('<p class="text-success">Thanks for subscribing!</p>');
-          } else {
-            $('#newsletterModal .modal-body').html('<p class="text-danger">Subscription failed. Try again.</p>');
-          }
+          const message = response.message || (response.success
+            ? 'Thanks for subscribing!'
+            : 'Something went wrong. Please try again.');
+
+          $('#newsletterModal .modal-body').html(
+            `<p class="${response.success ? 'text-success' : 'text-danger'}">${message}</p>`
+          );
         },
         error: function () {
-          $('#newsletterModal .modal-body').html('<p class="text-danger">Something went wrong.</p>');
+          $('#newsletterModal .modal-body').html(
+            '<p class="text-danger">Something went wrong. Please try again.</p>'
+          );
         }
       });
     });

@@ -234,6 +234,7 @@ def newsletter_signup_ajax(request):
         email = request.POST.get('email')
         if email:
             subscriber, created = NewsletterSubscriber.objects.get_or_create(email=email)
+
             if created:
                 subject = "🔥 Welcome to Drift Cult – You're In!"
                 from_email = 'noreply@driftcult.art'
@@ -246,8 +247,12 @@ def newsletter_signup_ajax(request):
                 msg.attach_alternative(html_content, "text/html")
                 msg.send()
 
-            return JsonResponse({'success': True})
-    return JsonResponse({'success': False})
+                return JsonResponse({'success': True, 'message': '✅ Welcome to the cult – check your inbox!'})
+
+            return JsonResponse({'success': False, 'message': '⚠️ You’re already subscribed. Please check your inbox.'})
+
+    return JsonResponse({'success': False, 'message': 'Invalid request.'})
+
 
 
 def about_view(request):
