@@ -119,4 +119,44 @@ The following pages were wireframed to cover core user interactions from browsin
 | As an admin | I want to manage products and orders | so that I can keep the store updated. |
 | As a business owner | I want my store to rank higher on search engines | so that more customers can find it. |
 | As a customer | I want the website to work smoothly on mobile | so that I can shop from any device. |
-| As a customer | I want to save products to a wishlist | so that I can purchase them later. |
+
+
+## Features
+
+### Existing Features
+
+| Feature | Notes | Screenshot |
+| --- | --- | --- |
+| User Registration & Authentication | Users can register, log in, and log out via Django Allauth. Includes email confirmation and welcome email. | ![screenshot](documentation/readme/features/1_user_authentication_and_authorization.png) |
+| Product Browsing & Search | Products can be browsed by category or searched via keyword. | ![screenshot](documentation/readme/features/2_product_browsing_and_search.png) |
+| Shopping Cart | Users can add products to cart, change quantities, or remove items. Cart updates in real time. | ![screenshot](documentation/readme/features/3_shopping_cart_and_checkout.png) |
+| Checkout Process | Logged-in users can complete checkout using Stripe. Guest users are prompted to log in or register. | ![screenshot](documentation/readme/features/3_shopping_cart_and_checkout.png) |
+| Stripe Payment Integration | Secure payment using Stripe Checkout Sessions. Includes quantity-aware line items and user email. | ![screenshot](documentation/readme/features/4_payment_processing.png) |
+| Order Management (User) | Users can view order history and details from their profile. Orders include product names, sizes, and total paid. | ![screenshot](documentation/readme/features/5_order_management.png) |
+| Order Management (Admin) | Staff can view, update, or delete orders via the admin dashboard. Bulk status actions and email notifications are available. | ![screenshot](documentation/readme/features/6_admin_dashboard.png) |
+| Admin Product Management | Superusers can create, update, and delete products, and manage product sizes and stock levels. | ![screenshot](documentation/readme/features/6_admin_dashboard.png) |
+| SEO Optimization | Meta tags are dynamically injected per page for SEO and social sharing (OpenGraph, Twitter cards, etc.). | ![screenshot](documentation/readme/features/7_seo_and_marketing.png) |
+| Newsletter Signup | AJAX-based email capture with feedback messages. Confirmation email is sent using a branded HTML template. | ![screenshot](documentation/readme/features/7_seo_and_marketing.png) |
+| Responsive Design | Fully mobile-first responsive design using Bootstrap 4. Optimized for mobile, tablet, and desktop views. | ![screenshot](documentation/readme/features/8_responsive_design.png) |
+| Wishlist System | Logged-in users can add/remove products from their wishlist. Products in wishlist are highlighted. | ![screenshot](documentation/readme/features/9_wishlist.png) |
+| Custom 404 Page | Branded 404 page if users visit a broken or invalid URL. | ![screenshot](documentation/readme/features/404.png) |
+| Contact Form | Users can submit their name, email, and a message. Emails are sent to service@driftcult.art. | ![screenshot](documentation/readme/features/contact.png) |
+| Footer with Social Media | Links to Instagram, Facebook, TikTok, and Twitter are provided in the footer for visibility and branding. | ![screenshot](documentation/readme/features/7_seo_and_marketing.png) |
+
+### Future Features
+
+- **Product Reviews & Ratings**: Users can leave reviews and rate products.
+- **Wishlist System**: Users can add/remove products from their wishlist.
+- **Sorting Dropdown**: Sort products by price and name.
+- **Discount Codes & Vouchers**: Redeemable codes at checkout.
+- **Abandoned Cart Recovery**: Email users about uncompleted checkouts.
+- **Loyalty Program**: Points-based reward system.
+- **Live Chat Support**: Real-time customer support chat.
+- **Product Recommendations**: "You might also like" sections.
+- **Inventory Alerts**: Notify users when items are back in stock.
+- **Shipping Tracking Integration**: Real-time shipping updates.
+- **Multi-language/Currency Support**: Internationalization features.
+- **Mobile App**: Native app for mobile users.
+
+
+
