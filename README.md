@@ -249,11 +249,11 @@ Milestones were used to group and track progress across related user stories. Ea
 
 | Milestone | Goal | Screenshot |
 |----------|------|------------|
-| **Milestone 1: MVP Project Setup & Core Features**<br>(Due: April 7, 2025) | Set up core user auth, basic product browsing, and responsive layout | ![Milestone 1](/Users/maximiliankaening/Documents/vscode-projects/drift_cult/documentation/readme/agile/milestone_1.png) |
-| **Milestone 2: Shopping & Payments**<br>(Due: April 21, 2025) | Implement shopping cart, Stripe checkout, and payment logic | ![Milestone 2](/Users/maximiliankaening/Documents/vscode-projects/drift_cult/documentation/readme/agile/milestone_2.png) |
-| **Milestone 3: Order Management & Admin Panel**<br>(Due: May 1, 2025) | Build user order history and admin product/order tools | ![Milestone 3](/Users/maximiliankaening/Documents/vscode-projects/drift_cult/documentation/readme/agile/milestone_3.png) |
-| **Milestone 4: Marketing & Content Strategy**<br>(Due: May 7, 2025) | SEO, wishlist, and finalize site experience | ![Milestone 4](/Users/maximiliankaening/Documents/vscode-projects/drift_cult/documentation/readme/agile/milestone_4.png) |
-| **Final Deployment & Launch**<br>(Due: May 13, 2025) | Final fixes, polish, and launch preparations | ![Milestone 5](/Users/maximiliankaening/Documents/vscode-projects/drift_cult/documentation/readme/agile/milestone_5.png) |
+| **Milestone 1: MVP Project Setup & Core Features**<br>(Due: April 7, 2025) | Set up core user auth, basic product browsing, and responsive layout | ![Milestone 1](documentation/readme/agile/milestone_1.png) |
+| **Milestone 2: Shopping & Payments**<br>(Due: April 21, 2025) | Implement shopping cart, Stripe checkout, and payment logic | ![Milestone 2](documentation/readme/agile/milestone_2.png) |
+| **Milestone 3: Order Management & Admin Panel**<br>(Due: May 1, 2025) | Build user order history and admin product/order tools | ![Milestone 3](documentation/readme/agile/milestone_3.png) |
+| **Milestone 4: Marketing & Content Strategy**<br>(Due: May 7, 2025) | SEO, wishlist, and finalize site experience | ![Milestone 4](documentation/readme/agile/milestone_4.png) |
+| **Final Deployment & Launch**<br>(Due: May 13, 2025) | Final fixes, polish, and launch preparations | ![Milestone 5](documentation/readme/agile/milestone_5.png) |
 
 
 ### MoSCoW Prioritization
