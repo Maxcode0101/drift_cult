@@ -66,24 +66,24 @@ I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-val
 
 ## Responsiveness
 
-I've tested my deployed project to check for responsiveness issues.
+I've tested my deployed project to check for responsiveness issues across standard screen sizes: **Mobile**, **Tablet**, and **Desktop**. These tests were performed using browser DevTools and verified visually for each major view template.
 
-| Page | Mobile | Tablet | Desktop | Notes |mobile-
+| Page | Mobile | Tablet | Desktop | Notes |
 | --- | --- | --- | --- | --- |
-| Register | ![screenshot](documentation/responsiveness/mobile-register.png) | ![screenshot](documentation/responsiveness/tablet-register.png) | ![screenshot](documentation/responsiveness/desktop-register.png) | Works as expected |
-| Login | ![screenshot](documentation/responsiveness/mobile-login.png) | ![screenshot](documentation/responsiveness/tablet-login.png) | ![screenshot](documentation/responsiveness/desktop-login.png) | Works as expected |
-| Profile | ![screenshot](documentation/responsiveness/mobile-profile.png) | ![screenshot](documentation/responsiveness/tablet-profile.png) | ![screenshot](documentation/responsiveness/desktop-profile.png) | Works as expected |
-| Home | ![screenshot](documentation/responsiveness/mobile-home.png) | ![screenshot](documentation/responsiveness/tablet-home.png) | ![screenshot](documentation/responsiveness/desktop-home.png) | Works as expected |
-| Products | ![screenshot](documentation/responsiveness/mobile-products.png) | ![screenshot](documentation/responsiveness/tablet-products.png) | ![screenshot](documentation/responsiveness/desktop-products.png) | Works as expected |
-| Product Details | ![screenshot](documentation/responsiveness/mobile-product-details.png) | ![screenshot](documentation/responsiveness/tablet-product-details.png) | ![screenshot](documentation/responsiveness/desktop-product-details.png) | Works as expected |
-| Bag | ![screenshot](documentation/responsiveness/mobile-bag.png) | ![screenshot](documentation/responsiveness/tablet-bag.png) | ![screenshot](documentation/responsiveness/desktop-bag.png) | Works as expected |
-| Checkout | ![screenshot](documentation/responsiveness/mobile-checkout.png) | ![screenshot](documentation/responsiveness/tablet-checkout.png) | ![screenshot](documentation/responsiveness/desktop-checkout.png) | Works as expected |
-| Checkout Success | ![screenshot](documentation/responsiveness/mobile-checkout-success.png) | ![screenshot](documentation/responsiveness/tablet-checkout-success.png) | ![screenshot](documentation/responsiveness/desktop-checkout-success.png) | Works as expected |
-| Add Product | ![screenshot](documentation/responsiveness/mobile-add-product.png) | ![screenshot](documentation/responsiveness/tablet-add-product.png) | ![screenshot](documentation/responsiveness/desktop-add-product.png) | Works as expected |
-| Edit Product | ![screenshot](documentation/responsiveness/mobile-edit-product.png) | ![screenshot](documentation/responsiveness/tablet-edit-product.png) | ![screenshot](documentation/responsiveness/desktop-edit-product.png) | Works as expected |
-| Newsletter | ![screenshot](documentation/responsiveness/mobile-newsletter.png) | ![screenshot](documentation/responsiveness/tablet-newsletter.png) | ![screenshot](documentation/responsiveness/desktop-newsletter.png) | Works as expected |
-| Contact | ![screenshot](documentation/responsiveness/mobile-contact.png) | ![screenshot](documentation/responsiveness/tablet-contact.png) | ![screenshot](documentation/responsiveness/desktop-contact.png) | Works as expected |
-| 404 | ![screenshot](documentation/responsiveness/mobile-404.png) | ![screenshot](documentation/responsiveness/tablet-404.png) | ![screenshot](documentation/responsiveness/desktop-404.png) | Works as expected |
+| Register | ![Mobile](documentation/responsiveness/mobile-register.png) | ![Tablet](documentation/responsiveness/tablet-register.png) | ![Desktop](documentation/responsiveness/desktop-register.png) | Works as expected |
+| Login | ![Mobile](documentation/responsiveness/mobile-login.png) | ![Tablet](documentation/responsiveness/tablet-login.png) | ![Desktop](documentation/responsiveness/desktop-login.png) | Works as expected |
+| Profile | ![Mobile](documentation/responsiveness/mobile-profile.png) | ![Tablet](documentation/responsiveness/tablet-profile.png) | ![Desktop](documentation/responsiveness/desktop-profile.png) | Works as expected |
+| Home | ![Mobile](documentation/responsiveness/mobile-home.png) | ![Tablet](documentation/responsiveness/tablet-home.png) | ![Desktop](documentation/responsiveness/desktop-home.png) | Works as expected |
+| Products | ![Mobile](documentation/responsiveness/mobile-products.png) | ![Tablet](documentation/responsiveness/tablet-products.png) | ![Desktop](documentation/responsiveness/desktop-products.png) | Works as expected |
+| Product Details | ![Mobile](documentation/responsiveness/mobile-product-details.png) | ![Tablet](documentation/responsiveness/tablet-product-details.png) | ![Desktop](documentation/responsiveness/desktop-product-details.png) | Works as expected |
+| Bag | ![Mobile](documentation/responsiveness/mobile-bag.png) | ![Tablet](documentation/responsiveness/tablet-bag.png) | ![Desktop](documentation/responsiveness/desktop-bag.png) | Works as expected |
+| Checkout | ![Mobile](documentation/responsiveness/mobile-checkout.png) | ![Tablet](documentation/responsiveness/tablet-checkout.png) | ![Desktop](documentation/responsiveness/desktop-checkout.png) | Works as expected |
+| Checkout Success | ![Mobile](documentation/responsiveness/mobile-checkout-success.png) | ![Tablet](documentation/responsiveness/tablet-checkout-success.png) | ![Desktop](documentation/responsiveness/desktop-checkout-success.png) | Works as expected |
+| Add Product | ![Mobile](documentation/responsiveness/mobile-add-product.png) | ![Tablet](documentation/responsiveness/tablet-add-product.png) | ![Desktop](documentation/responsiveness/desktop-add-product.png) | Works as expected |
+| Edit Product | ![Mobile](documentation/responsiveness/mobile-edit-product.png) | ![Tablet](documentation/responsiveness/tablet-edit-product.png) | ![Desktop](documentation/responsiveness/desktop-edit-product.png) | Works as expected |
+| Newsletter | ![Mobile](documentation/responsiveness/mobile-newsletter.png) | ![Tablet](documentation/responsiveness/tablet-newsletter.png) | ![Desktop](documentation/responsiveness/desktop-newsletter.png) | Works as expected |
+| Contact | ![Mobile](documentation/responsiveness/mobile-contact.png) | ![Tablet](documentation/responsiveness/tablet-contact.png) | ![Desktop](documentation/responsiveness/desktop-contact.png) | Works as expected |
+| 404 | ![Mobile](documentation/responsiveness/mobile-404.png) | ![Tablet](documentation/responsiveness/tablet-404.png) | ![Desktop](documentation/responsiveness/desktop-404.png) | Works as expected |
 
 
 ## Browser Compatibility
@@ -106,6 +106,18 @@ I've tested my deployed project on multiple browsers to check for compatibility 
 | Newsletter | ![screenshot](documentation/browsers/chrome-newsletter.png) | ![screenshot](documentation/browsers/firefox-newsletter.png) | ![screenshot](documentation/browsers/safari-newsletter.png) | Works as expected |
 | Contact | ![screenshot](documentation/browsers/chrome-contact.png) | ![screenshot](documentation/browsers/firefox-contact.png) | ![screenshot](documentation/browsers/safari-contact.png) | Works as expected |
 | 404 | ![screenshot](documentation/browsers/chrome-404.png) | ![screenshot](documentation/browsers/firefox-404.png) | ![screenshot](documentation/browsers/safari-404.png) | Works as expected |
+
+
+## Lighthouse Audit
+
+I've tested my deployed project using the Lighthouse Audit tool to check for any major issues. Some warnings are outside of my control, and mobile results tend to be lower than desktop.
+
+| Page | Mobile | Desktop |
+| --- | --- | --- |
+| Profile | ![screenshot](documentation/lighthouse/mobile-profile.png) | ![screenshot](documentation/lighthouse/desktop-profile.png) |
+| Home | ![screenshot](documentation/lighthouse/mobile-home.png) | ![screenshot](documentation/lighthouse/desktop-home.png) |
+| Products | ![screenshot](documentation/lighthouse/mobile-products.png) | ![screenshot](documentation/lighthouse/desktop-products.png) |
+| 404 | ![screenshot](documentation/lighthouse/mobile-404.png) | ![screenshot](documentation/lighthouse/desktop-404.png) |
 
 
 ## Defensive Programming
