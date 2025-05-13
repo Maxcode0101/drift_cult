@@ -58,5 +58,6 @@ I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-val
 | core | [emails.py](https://github.com/Maxcode0101/drift_cult/blob/main/core/emails.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Maxcode0101/drift_cult/main/core/emails.py) | ![screenshot](documentation/validation/py-core-emails.png) | No issues after linting. |
 | core | [signals.py](https://github.com/Maxcode0101/drift_cult/blob/main/core/signals.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Maxcode0101/drift_cult/main/core/signals.py) | ![screenshot](documentation/validation/py-core-signals.png) | Clean after fixes |
 | core | [urls.py](https://github.com/Maxcode0101/drift_cult/blob/main/core/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Maxcode0101/drift_cult/main/core/urls.py) | ![screenshot](documentation/validation/py-core-urls.png) | No issues after formatting |
+| drift_cult | [urls.py](https://github.com/Maxcode0101/drift_cult/blob/main/drift_cult/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Maxcode0101/drift_cult/main/drift_cult/urls.py) | ![screenshot](documentation/validation/py-drift_cult-urls.png) | PEP8 compliant |
 
 
