@@ -255,32 +255,19 @@ Each user story was labeled using the **MoSCoW prioritization** method:
 
 ### Prioritization Breakdown with Screenshots
 
-| Priority     | Features | Screenshots |
-|--------------|----------|-------------|
-| ✅ **Must Have** |  
-– User Authentication & Authorization  
-– Product Browsing & Search  
-– Shopping Cart & Checkout  
-– Payment Processing with Stripe  
-– Mobile-Friendly & Responsive Design |  
-![1](documentation/readme/agile/1_user_authentication_and_authorization.png)  
-![2](documentation/readme/agile/2_product_browsing_and_search.png)  
-![3](documentation/readme/agile/3_shopping_cart_and_checkout.png)  
-![4](documentation/readme/agile/4_payment_processing.png)  
-![8](documentation/readme/agile/8_responsive_design.png) |
-| 🟠 **Should Have** |  
-– Order Management & History  
-– Admin Dashboard for Product & Order Management |  
-![5](documentation/readme/agile/5_order_management.png)  
-![6](documentation/readme/agile/6_admin_dashboard.png) |
-| 🟡 **Could Have** |  
-– SEO & Marketing Features |  
-![7](documentation/readme/agile/7_seo_and_marketing.png) |
-| 🚫 **Won’t Have** |  
-– Wishlist Feature  
-– Reviews Model  
-– Discount Code Usage |  
-![9](documentation/readme/agile/9_wishlist.png) |
+### Prioritization Breakdown with Screenshots
+
+| Priority | Features | Screenshots |
+|----------|----------|-------------|
+| ✅ **Must Have** | – User Authentication & Authorization | ![1](documentation/readme/agile/1_user_authentication_and_authorization.png) |
+| ✅ **Must Have** | – Product Browsing & Search | ![2](documentation/readme/agile/2_product_browsing_and_search.png) |
+| ✅ **Must Have** | – Shopping Cart & Checkout | ![3](documentation/readme/agile/3_shopping_cart_and_checkout.png) |
+| ✅ **Must Have** | – Payment Processing with Stripe | ![4](documentation/readme/agile/4_payment_processing.png) |
+| ✅ **Must Have** | – Mobile-Friendly & Responsive Design | ![8](documentation/readme/agile/8_responsive_design.png) |
+| 🟠 **Should Have** | – Order Management & History | ![5](documentation/readme/agile/5_order_management.png) |
+| 🟠 **Should Have** | – Admin Dashboard for Product & Order Management | ![6](documentation/readme/agile/6_admin_dashboard.png) |
+| 🟡 **Could Have** | – SEO & Marketing Features | ![7](documentation/readme/agile/7_seo_and_marketing.png) |
+| 🚫 **Won’t Have** | – Wishlist Feature | ![9](documentation/readme/agile/9_wishlist.png) |
 
 
 ## Ecommerce Business Model
