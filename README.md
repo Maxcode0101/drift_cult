@@ -221,6 +221,9 @@ The Drift Cult database schema is composed of multiple interrelated models to su
 All models use Django best practices for relationships (`ForeignKey`, `OneToOneField`, etc.), and were designed for maintainability, scalability, and ease of use in the admin and frontend.
 
 
+---
+
+
 ## Agile Development Process
 
 ### GitHub Projects
@@ -230,7 +233,6 @@ All models use Django best practices for relationships (`ForeignKey`, `OneToOneF
 📌 **Board screenshot:**  
 ![GitHub Projects Kanban](documentation/readme/agile/kanban.png)
 
----
 
 ### GitHub Issues
 
@@ -240,7 +242,19 @@ All models use Django best practices for relationships (`ForeignKey`, `OneToOneF
 | ---- | ---------- |
 | [Closed Issues](https://www.github.com/Maxcode0101/drift_cult/issues?q=is%3Aissue+is%3Aclosed) | ![screenshot](documentation/readme/agile/gh-issues-closed.png) |
 
----
+
+### GitHub Milestones
+
+Milestones were used to group and track progress across related user stories. Each milestone had a due date, goal, and set of assigned issues. All milestones were closed at 100% completion.
+
+| Milestone | Goal | Screenshot |
+|----------|------|------------|
+| **Milestone 1: MVP Project Setup & Core Features**<br>(Due: April 7, 2025) | Set up core user auth, basic product browsing, and responsive layout | ![Milestone 1](/Users/maximiliankaening/Documents/vscode-projects/drift_cult/documentation/readme/agile/milestone_1.png) |
+| **Milestone 2: Shopping & Payments**<br>(Due: April 21, 2025) | Implement shopping cart, Stripe checkout, and payment logic | ![Milestone 2](/Users/maximiliankaening/Documents/vscode-projects/drift_cult/documentation/readme/agile/milestone_2.png) |
+| **Milestone 3: Order Management & Admin Panel**<br>(Due: May 1, 2025) | Build user order history and admin product/order tools | ![Milestone 3](/Users/maximiliankaening/Documents/vscode-projects/drift_cult/documentation/readme/agile/milestone_3.png) |
+| **Milestone 4: Marketing & Content Strategy**<br>(Due: May 7, 2025) | SEO, wishlist, and finalize site experience | ![Milestone 4](/Users/maximiliankaening/Documents/vscode-projects/drift_cult/documentation/readme/agile/milestone_4.png) |
+| **Final Deployment & Launch**<br>(Due: May 13, 2025) | Final fixes, polish, and launch preparations | ![Milestone 5](/Users/maximiliankaening/Documents/vscode-projects/drift_cult/documentation/readme/agile/milestone_5.png) |
+
 
 ### MoSCoW Prioritization
 
@@ -252,8 +266,6 @@ Each user story was labeled using the **MoSCoW prioritization** method:
 - 🟠 **Should Have**: important but not essential. (*~20% of stories*)
 - 🟡 **Could Have**: optional enhancements. (*the rest ~20% of stories*)
 - 🚫 **Won’t Have**: explicitly excluded from the current scope.
-
-### Prioritization Breakdown with Screenshots
 
 ### Prioritization Breakdown with Screenshots
 
@@ -269,6 +281,7 @@ Each user story was labeled using the **MoSCoW prioritization** method:
 | 🟡 **Could Have** | – SEO & Marketing Features | ![7](documentation/readme/agile/7_seo_and_marketing.png) |
 | 🚫 **Won’t Have** | – Wishlist Feature | ![9](documentation/readme/agile/9_wishlist.png) |
 
+---
 
 ## Ecommerce Business Model
 
