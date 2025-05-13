@@ -86,6 +86,28 @@ I've tested my deployed project to check for responsiveness issues.
 | 404 | ![screenshot](documentation/responsiveness/mobile-404.png) | ![screenshot](documentation/responsiveness/tablet-404.png) | ![screenshot](documentation/responsiveness/desktop-404.png) | Works as expected |
 
 
+## Browser Compatibility
+
+I've tested my deployed project on multiple browsers to check for compatibility issues.
+
+| Page | Chrome | Firefox | Safari | Notes |
+| --- | --- | --- | --- | --- |
+| Register | ![screenshot](documentation/browsers/chrome-register.png) | ![screenshot](documentation/browsers/firefox-register.png) | ![screenshot](documentation/browsers/safari-register.png) | Works as expected |
+| Login | ![screenshot](documentation/browsers/chrome-login.png) | ![screenshot](documentation/browsers/firefox-login.png) | ![screenshot](documentation/browsers/safari-login.png) | Works as expected |
+| Profile | ![screenshot](documentation/browsers/chrome-profile.png) | ![screenshot](documentation/browsers/firefox-profile.png) | ![screenshot](documentation/browsers/safari-profile.png) | Works as expected |
+| Home | ![screenshot](documentation/browsers/chrome-home.png) | ![screenshot](documentation/browsers/firefox-home.png) | ![screenshot](documentation/browsers/safari-home.png) | Works as expected |
+| Products | ![screenshot](documentation/browsers/chrome-products.png) | ![screenshot](documentation/browsers/firefox-products.png) | ![screenshot](documentation/browsers/safari-products.png) | Works as expected |
+| Product Details | ![screenshot](documentation/browsers/chrome-product-details.png) | ![screenshot](documentation/browsers/firefox-product-details.png) | ![screenshot](documentation/browsers/safari-product-details.png) | Works as expected |
+| Bag | ![screenshot](documentation/browsers/chrome-bag.png) | ![screenshot](documentation/browsers/firefox-bag.png) | ![screenshot](documentation/browsers/safari-bag.png) | Works as expected |
+| Checkout | ![screenshot](documentation/browsers/chrome-checkout.png) | ![screenshot](documentation/browsers/firefox-checkout.png) | ![screenshot](documentation/browsers/safari-checkout.png) | Works as expected |
+| Checkout Success | ![screenshot](documentation/browsers/chrome-checkout-success.png) | ![screenshot](documentation/browsers/firefox-checkout-success.png) | ![screenshot](documentation/browsers/safari-checkout-success.png) | Works as expected |
+| Add Product | ![screenshot](documentation/browsers/chrome-add-product.png) | ![screenshot](documentation/browsers/firefox-add-product.png) | ![screenshot](documentation/browsers/safari-add-product.png) | Works as expected |
+| Edit Product | ![screenshot](documentation/browsers/chrome-edit-product.png) | ![screenshot](documentation/browsers/firefox-edit-product.png) | ![screenshot](documentation/browsers/safari-edit-product.png) | Works as expected |
+| Newsletter | ![screenshot](documentation/browsers/chrome-newsletter.png) | ![screenshot](documentation/browsers/firefox-newsletter.png) | ![screenshot](documentation/browsers/safari-newsletter.png) | Works as expected |
+| Contact | ![screenshot](documentation/browsers/chrome-contact.png) | ![screenshot](documentation/browsers/firefox-contact.png) | ![screenshot](documentation/browsers/safari-contact.png) | Works as expected |
+| 404 | ![screenshot](documentation/browsers/chrome-404.png) | ![screenshot](documentation/browsers/firefox-404.png) | ![screenshot](documentation/browsers/safari-404.png) | Works as expected |
+
+
 ## Defensive Programming
 
 Defensive programming was manually tested with the below user acceptance testing:
@@ -112,30 +134,21 @@ Defensive programming was manually tested with the below user acceptance testing
 
 ## Bugs
 
-[![GitHub issue custom search](https://img.shields.io/github/issues-search?query=repo%3AMaxcode0101%2Fdrift_cult%20label%3Abug&label=bugs)](https://www.github.com/Maxcode0101/drift_cult/issues?q=is%3Aissue+is%3Aclosed+label%3Abug)
-
-I've used [GitHub Issues](https://www.github.com/Maxcode0101/drift_cult/issues) to track and manage bugs and issues during the development stages of my project.
-
-All previously closed/fixed bugs can be tracked [here](https://www.github.com/Maxcode0101/drift_cult/issues?q=is%3Aissue+is%3Aclosed+label%3Abug).
-
-![screenshot](documentation/bugs/gh-issues-closed.png)
-
-
 ---
-
 
 ### Fixed Bugs
 
-| Description | 
-| Checkout order confirmation displayed incorrect product data, totals, and sometimes a 0.00€ amount due to broken cart clearing and session logic after payment. | 
-| Stripe webhook wasn't updating orders as paid or sending confirmation emails because `core/views.py` wasn't correctly wired and order ID wasn't passed to metadata. | 
-| HTML meta tag duplication caused W3C validation errors (`<meta name="description">` appeared twice when extra_meta was used without overriding base.html). | 
-| `admin_order_detail.html` had an invalid `for` attribute in a `<label>` that didn't match any visible input ID, causing a validation error. |
-| Form controls in `update_cart_quantity` and `product_form` were not correctly validated for min values, leading to bad cart behavior. | 
-| Newsletter signup email handler had two duplicate view definitions causing a silent override. This broke email notifications until fixed. |
-| Python files had multiple PEP8 errors including long lines, missing newlines, and incorrect comment spacing. These were fixed using the PEP8 CI validator. | 
-| Sitemap.xml returned a 500 error due to unordered Product queryset in `ProductSitemap`. |
-| `robots.txt` and `404.html` were accidentally deleted during a full file overwrite. This was recovered from Git and restored to working state. | 
+- **Order confirmation bug**: After checkout, the onsite order confirmation page displayed the wrong items, total price, or 0.00€. This was caused by cart/session logic breaking after payment. Fixed by rewriting cart clearing and order rendering logic.
+- **Stripe webhook integration**: Webhooks were not marking orders as paid or sending confirmation emails. This was caused by misconfigured routing and missing metadata. Fixed by moving webhook to `core/views.py` and ensuring `order_id` was passed in session metadata.
+- **Meta tag duplication**: Pages that used `{% block extra_meta %}` were causing HTML validation errors due to duplicate `<meta name="description">`. Fixed by removing the static description from `base.html`.
+- **Invalid label for attribute**: `admin_order_detail.html` had a `<label>` with a `for="status"` attribute that didn’t match any input ID. Fixed by adding the correct `id="status"` to the `<select>`.
+- **Newsletter signup AJAX**: There were two duplicate views named `newsletter_signup_ajax` which caused the actual email to not send. One was removed and the logic was consolidated.
+- **Session/cart inconsistencies**: Deleting a product that was in someone's cart led to session errors. Fixed by checking for existence before rendering cart items.
+- **PEP8 issues**: Long lines, missing blank lines, and spacing inconsistencies across Python files were flagged by the CI linter. These were all fixed manually using bracket wrapping and comment spacing.
+- **Sitemap 500 error**: The `ProductSitemap` used an unordered queryset, which caused a server error. Adding `.order_by('id')` resolved the issue.
+- **Robots.txt and 404.html deletion**: During a full file overwrite, essential files were accidentally removed. Recovered from Git history and restored.
+- **Product image fallback**: Locally, missing product images caused broken pages due to empty `/media/` folder. Fixed by implementing a fallback to `/static/images/placeholder.png`.
+
 ---
 
 ### Unfixed Bugs
@@ -144,18 +157,17 @@ All previously closed/fixed bugs can be tracked [here](https://www.github.com/Ma
 
 Any remaining open issues can be tracked [here](https://www.github.com/Maxcode0101/drift_cult/issues).
 
-![screenshot](documentation/bugs/gh-issues-open.png)
-
 ---
 
 ### Known Issues
 
-| Issue | Screenshot |
+| Issue | Notes |
 | --- | --- |
-| On devices smaller than 375px, the page starts to have horizontal `overflow-x` scrolling. | ![screenshot](documentation/issues/overflow.png) |
-| When validating HTML with a semantic `<section>` element, the validator warns about lacking a header `h2-h6`. This is acceptable. | ![screenshot](documentation/issues/section-header.png) |
-| Validation errors on "signup.html" coming from the Django Allauth package. | ![screenshot](documentation/issues/allauth.png) |
-| With a known order-number, users can brute-force "checkout_success.html" and see potentially sensitive information. | ![screenshot](documentation/issues/checkout-success.png) |
+| Horizontal scrolling on <375px devices | Affects very small screens; CSS fix was not prioritized. |
+| `<section>` element W3C warning | Missing heading (`h2-h6`) warning appears during validation, but is semantically acceptable in this context. |
+| Django Allauth HTML validation errors | Signup/login templates generated by Allauth fail W3C checks, but the logic is functional. |
+| Checkout success page can be brute-forced | If someone knows a valid order number, they can potentially access the success page URL. |
+| Deleted products still exist in cart session | If a product is removed from the database but is in someone's cart, it causes a crash. |
 
 
 > [!IMPORTANT]
