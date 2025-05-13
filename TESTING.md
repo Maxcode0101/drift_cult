@@ -15,10 +15,6 @@
 | store | [faq.html](https://github.com/Maxcode0101/drift_cult/blob/main/core/templates/core/faq.html) | [https://driftcult.art/faq/](https://driftcult.art/faq/) | ![screenshot](documentation/validation/html-core-faq.png) | ✅ Validated |
 | store | [returns.html](https://github.com/Maxcode0101/drift_cult/blob/main/core/templates/core/returns.html) | [https://driftcult.art/returns/](https://driftcult.art/returns/) | ![screenshot](documentation/validation/html-core-returns.png) | ✅ Validated |
 | store | [404.html](https://github.com/Maxcode0101/drift_cult/blob/main/store/templates/404.html) | [https://driftcult.art/thispagedoesnotexist/](https://driftcult.art/thispagedoesnotexist/) | ![screenshot](documentation/validation/html-store-404.png) | ✅ Validated |
-
-
-| Directory | File | URL | Screenshot | Notes |
-| --- | --- | --- | --- | --- |
 | store | [cart.html](https://github.com/Maxcode0101/drift_cult/blob/main/store/templates/store/cart.html) | [https://driftcult.art/cart/](https://driftcult.art/cart/) | ![screenshot](documentation/validation/html-store-cart.png) | Auth required. ✅ Validated |
 | store | [checkout.html](https://github.com/Maxcode0101/drift_cult/blob/main/store/templates/store/checkout.html) | [https://driftcult.art/checkout/](https://driftcult.art/checkout/) | ![screenshot](documentation/validation/html-store-checkout.png) | Auth required. ✅ Validated |
 | store | [order_confirmation.html](https://github.com/Maxcode0101/drift_cult/blob/main/store/templates/store/order_confirmation.html) | [https://driftcult.art/checkout/success/](https://driftcult.art/checkout/success/) | ![screenshot](documentation/validation/html-store-order_confirmation.png) | Auth required. ✅ Validated |
