@@ -16,7 +16,7 @@ From a technical perspective, Drift Cult incorporates user authentication via Al
 
 Drift Cult reflects both a technical implementation of best practices and a brand-driven digital experience that connects directly with its target audience.
 
-![screenshot](documentation/mockup.png)
+![screenshot](documentation/readme/mockup.png)
 
 source: [drift_cult amiresponsive](https://ui.dev/amiresponsive?url=https://driftcult.art)
 
