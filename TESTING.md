@@ -86,3 +86,77 @@ I've tested my deployed project to check for responsiveness issues.
 | 404 | ![screenshot](documentation/responsiveness/mobile-404.png) | ![screenshot](documentation/responsiveness/tablet-404.png) | ![screenshot](documentation/responsiveness/desktop-404.png) | Works as expected |
 
 
+## Defensive Programming
+
+Defensive programming was manually tested with the below user acceptance testing:
+
+| Page | Expectation | Test | Result | Screenshot |
+| --- | --- | --- | --- | --- |
+| Products | Feature is expected to allow users to browse products without registration. | Opened product pages as a guest user. | Products were fully accessible without requiring registration. | ![screenshot](documentation/defensive/products.png) |
+| | Feature is expected to sort products by category. | Tested sorting options for category (T-Shirts) | Sorting worked correctly for all options. | ![screenshot](documentation/defensive/sorting.png) |
+| | Feature is expected to show detailed product information. | Clicked on individual products to view details. | Product details (description, price, image) were displayed correctly. | ![screenshot](documentation/defensive/product-details.png) |
+| Shopping Cart | Feature is expected to allow customers to add items to the cart with quantity controls. | Added products to the cart and adjusted quantities. | Items were added successfully, and quantities updated as expected. | ![screenshot](documentation/defensive/add-to-cart.png) |
+| | Feature is expected to allow customers to view and manage their cart. | Opened the cart page and edited cart contents. | Cart contents were displayed, updated, and removed correctly. | ![screenshot](documentation/defensive/manage-cart.png) |
+| Checkout | Feature is expected to display cart items, grand total, and input fields for checkout. | Proceeded to checkout with items in the cart. | Checkout page displayed cart items, total, and input fields as expected. | ![screenshot](documentation/defensive/checkout.png) |
+| | Feature is expected to allow secure payment via Stripe. | Entered valid card details using Stripe at checkout. | Payment was processed securely, and an order confirmation page was displayed. | ![screenshot](documentation/defensive/stripe-payment.png) |
+| | Feature is expected to send a confirmation email after purchase. | Completed a purchase and checked email inbox. | Confirmation email was received with order details. | ![screenshot](documentation/defensive/confirmation-email.png) |
+| | Feature is expected to display an order confirmation page with an order number. | Completed a purchase. | Order confirmation page displayed successfully with an order number. | ![screenshot](documentation/defensive/order-confirmation.png) |
+| Account Management | Feature is expected to allow returning customers to log in and view past orders. | Logged in as a returning customer and accessed order history. | Past orders were displayed correctly in the account section. | ![screenshot](documentation/defensive/order-history.png) |
+| Admin Features | Feature is expected to allow the site owner to create new products. | Created new products with valid data (name, price, description, image, category). | Products were added successfully and displayed on the site. | ![screenshot](documentation/defensive/create-product.png) |
+| | Feature is expected to allow the site owner to update product details. | Edited product details as an admin user. | Product updates were saved and displayed correctly. | ![screenshot](documentation/defensive/update-product.png) |
+| | Feature is expected to allow the site owner to delete products. | Deleted a product from the inventory. | Product was removed successfully from the site, after being prompted to confirm first. | ![screenshot](documentation/defensive/delete-product.png) |
+| Orders | Feature is expected to allow the site owner to view all orders placed. | Accessed the orders dashboard as an admin user. | All orders were displayed correctly. | ![screenshot](documentation/defensive/view-orders.png) |
+| Newsletter | Feature is expected to allow users to sign up for the newsletter. | Submitted valid email addresses for newsletter registration. | Email addresses were successfully added to the newsletter list. | ![screenshot](documentation/defensive/newsletter.png) |
+| 404 Error Page | Feature is expected to display a 404 error page for non-existent pages. | Navigated to an invalid URL (e.g., `/test`). | A custom 404 error page was displayed as expected. | ![screenshot](documentation/defensive/404.png) |
+
+
+## Bugs
+
+[![GitHub issue custom search](https://img.shields.io/github/issues-search?query=repo%3AMaxcode0101%2Fdrift_cult%20label%3Abug&label=bugs)](https://www.github.com/Maxcode0101/drift_cult/issues?q=is%3Aissue+is%3Aclosed+label%3Abug)
+
+I've used [GitHub Issues](https://www.github.com/Maxcode0101/drift_cult/issues) to track and manage bugs and issues during the development stages of my project.
+
+All previously closed/fixed bugs can be tracked [here](https://www.github.com/Maxcode0101/drift_cult/issues?q=is%3Aissue+is%3Aclosed+label%3Abug).
+
+![screenshot](documentation/bugs/gh-issues-closed.png)
+
+
+---
+
+
+### Fixed Bugs
+
+| Description | 
+| Checkout order confirmation displayed incorrect product data, totals, and sometimes a 0.00€ amount due to broken cart clearing and session logic after payment. | 
+| Stripe webhook wasn't updating orders as paid or sending confirmation emails because `core/views.py` wasn't correctly wired and order ID wasn't passed to metadata. | 
+| HTML meta tag duplication caused W3C validation errors (`<meta name="description">` appeared twice when extra_meta was used without overriding base.html). | 
+| `admin_order_detail.html` had an invalid `for` attribute in a `<label>` that didn't match any visible input ID, causing a validation error. |
+| Form controls in `update_cart_quantity` and `product_form` were not correctly validated for min values, leading to bad cart behavior. | 
+| Newsletter signup email handler had two duplicate view definitions causing a silent override. This broke email notifications until fixed. |
+| Python files had multiple PEP8 errors including long lines, missing newlines, and incorrect comment spacing. These were fixed using the PEP8 CI validator. | 
+| Sitemap.xml returned a 500 error due to unordered Product queryset in `ProductSitemap`. |
+| `robots.txt` and `404.html` were accidentally deleted during a full file overwrite. This was recovered from Git and restored to working state. | 
+---
+
+### Unfixed Bugs
+
+[![GitHub issues](https://img.shields.io/github/issues/Maxcode0101/drift_cult)](https://www.github.com/Maxcode0101/drift_cult/issues)
+
+Any remaining open issues can be tracked [here](https://www.github.com/Maxcode0101/drift_cult/issues).
+
+![screenshot](documentation/bugs/gh-issues-open.png)
+
+---
+
+### Known Issues
+
+| Issue | Screenshot |
+| --- | --- |
+| On devices smaller than 375px, the page starts to have horizontal `overflow-x` scrolling. | ![screenshot](documentation/issues/overflow.png) |
+| When validating HTML with a semantic `<section>` element, the validator warns about lacking a header `h2-h6`. This is acceptable. | ![screenshot](documentation/issues/section-header.png) |
+| Validation errors on "signup.html" coming from the Django Allauth package. | ![screenshot](documentation/issues/allauth.png) |
+| With a known order-number, users can brute-force "checkout_success.html" and see potentially sensitive information. | ![screenshot](documentation/issues/checkout-success.png) |
+
+
+> [!IMPORTANT]
+> There are no remaining bugs that I am aware of, though, even after thorough testing, I cannot rule out the possibility.
