@@ -19,16 +19,20 @@ def test_email(request):
         from_email="Drift Cult <admin@driftcult.art>",
         recipient_list=["maximilian.kaening@gmail.com"],
         html_message=(
+            """
             "<div style="font-family: Arial, sans-serif; padding: 20px;">"
             "<h2 style="color: #111;">SMTP is LIVE 💥</h2>"
             "<p>Your Django project is now sending email via"
-            "<strong>admin@driftcult.art</strong> using Namecheap Pro Mail SMTP.</p>"
+            "<strong>admin@driftcult.</strong>"
+            "using Namecheap Pro Mail SMTP.</p>"
             "<p>This confirms your SMTP setup is working 100%.</p>"
-            "<p style="margin-top: 30px;">– Drift Cult Tech</p>"
+            "<p style="margin-top: 30px;">🚀 Drift Cult Tech</p>"
             "</div>"
+            """
         )
     )
     return HttpResponse("✅ Test email sent! Check your inbox.")
+
 
 @csrf_exempt
 def stripe_webhook(request):
@@ -37,14 +41,16 @@ def stripe_webhook(request):
     endpoint_secret = settings.STRIPE_WEBHOOK_SECRET
 
     try:
-        event = stripe.Webhook.construct_event(payload, sig_header, endpoint_secret)
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, endpoint_secret)
     except (ValueError, stripe.error.SignatureVerificationError):
         return HttpResponse(status=400)
 
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
         order_id = session.get('metadata', {}).get('order_id')
-        customer_email = session.get('customer_email') or session.get('customer_details', {}).get('email')
+        customer_email = session.get('customer_email') or session.get(
+            'customer_details', {}).get('email')
 
         order = Order.objects.filter(id=order_id).first()
         user = User.objects.filter(email=customer_email).first()
@@ -135,10 +141,14 @@ Message:
                 ["admin@driftcult.art"],
                 fail_silently=False,
             )
-            messages.success(request, "Thanks for reaching out! We’ll get back to you soon.")
+            messages.success(
+                request, "Thanks for reaching out! We’ll get back to you soon."
+                )
             return redirect('contact')
         except Exception:
-            messages.error(request, "Something went wrong while sending your message. Please try again.")
+            messages.error(
+                request, "Something went wrong while sending your message."
+                "Please try again.")
             return redirect('contact')
 
     return render(request, "core/contact.html")
@@ -156,19 +166,25 @@ def faq_view(request):
         },
         {
             "question": "What payment methods do you accept?",
-            "answer": "We accept all major credit cards. That’s it. No Klarna, no crypto. Just cards."
+            "answer": "We accept all major credit cards."
+            "That’s it. No Klarna, no crypto. Just cards."
         },
         {
             "question": "Do you provide size charts?",
-            "answer": "Nope. We don’t do cookie-cutter sizing. Email us at <a href='mailto:service@driftcult.art'>service@driftcult.art</a> and we’ll help you pick the right fit."
+            "answer": "Nope. We don’t do cookie-cutter sizing."
+            "Email us at <a href='mailto:service@driftcult.art'>"
+            "service@driftcult.art</a> and we’ll help you pick the right fit."
         },
         {
             "question": "Are your products unisex?",
-            "answer": "Some are, some aren’t. The product description will tell you. Either way — wear what feels right."
+            "answer": "Some are, some aren’t."
+            "The product description will tell you."
+            "Either way — wear what feels right."
         },
         {
             "question": "Do I need an account to place an order?",
-            "answer": "Yes. We’re a community, not a clearance bin. Log in, be part of it."
+            "answer": "Yes. We’re a community, not a clearance bin."
+            "Log in, be part of it."
         },
     ]
     return render(request, 'core/faq.html', {'faq_list': faq_list})
@@ -180,4 +196,3 @@ def terms_view(request):
 
 def returns_view(request):
     return render(request, 'core/returns.html')
-
