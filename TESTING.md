@@ -25,3 +25,20 @@
 | store | [add_product_sizes.html](https://github.com/Maxcode0101/drift_cult/blob/main/store/templates/store/add_product_sizes.html) | https://driftcult.art/store/product/black-classic-trunks/add-sizes/` | ![screenshot](documentation/validation/html-store-add_product_sizes.png) | Staff only. ✅ Validated |
 | store | [product_form.html](https://github.com/Maxcode0101/drift_cult/blob/main/store/templates/store/product_form.html) | [https://driftcult.art/store/admin-dashboard/add-product/](https://driftcult.art/store/admin-dashboard/add-product/) | ![screenshot](documentation/validation/html-store-product_form.png) | Staff only. ✅ Validated |
 | store | [product_confirm_delete.html](https://github.com/Maxcode0101/drift_cult/blob/main/store/templates/store/product_confirm_delete.html) | https://driftcult.art/store/admin-dashboard/delete-product/3/` | ![screenshot](documentation/validation/html-store-product_confirm_delete.png) | Staff only. ✅ Validated |
+
+
+### CSS
+
+I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator) to validate all of my CSS files.
+
+| Directory | File | URL | Screenshot | Notes |
+| --- | --- | --- | --- | --- |
+| static | [community.css](https://github.com/Maxcode0101/drift_cult/blob/main/static/css/community.css) | [Validate](https://jigsaw.w3.org/css-validator/validator?uri=https://driftcult.art/static/css/community.css) | ![screenshot](documentation/validation/css-static-community.png) | Valid – no errors |
+| store | [custom.css](https://github.com/Maxcode0101/drift_cult/blob/main/store/static/css/custom.css) | [Validate](https://jigsaw.w3.org/css-validator/validator?uri=https://driftcult.art/static/css/custom.css) | ![screenshot](documentation/validation/css-store-custom.png) | Valid – no errors |
+
+
+### JS
+
+| Directory | File | URL | Screenshot | Notes |
+| --- | --- | --- | --- | --- |
+| store | [newsletter.js](https://github.com/Maxcode0101/drift_cult/blob/main/store/static/js/newsletter.js) | N/A | ![screenshot](documentation/validation/js-store-newsletter.png) | Bootstrap flagged as undefined (expected) |
