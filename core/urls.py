@@ -18,7 +18,8 @@ urlpatterns = [
     path('contact/', contact_view, name='contact'),
     path("community/", community_view, name="community"),
     path("robots.txt", robots_txt, name="robots_txt"),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('sitemap.xml', sitemap, {
+        'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('faq/', views.faq_view, name='faq'),
     path('terms/', views.terms_view, name='terms'),
     path('returns/', views.returns_view, name='returns'),
