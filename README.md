@@ -192,7 +192,7 @@ The following pages were wireframed to cover core user interactions from browsin
 | [![badge](https://img.shields.io/badge/VSCode-grey?logo=visualstudiocode&logoColor=007ACC)](https://code.visualstudio.com) | Primary code editor |
 | [![badge](https://img.shields.io/badge/Lucidchart-grey?logo=lucidchart&logoColor=FF9900)](https://www.lucidchart.com) | ERD and system diagram creation |
 | [![badge](https://img.shields.io/badge/Markdown_Builder-grey?logo=markdown&logoColor=000000)](https://markdown.2bn.dev) | README and TESTING file generation |
-| [![badge](https://img.shields.io/badge/ChatGPT-grey?logo=openai&logoColor=75A99C)](https://chat.openai.com) | Debugging, planning, and markdown structure support |
+| [![badge](https://img.shields.io/badge/ChatGPT-grey?logo=openai&logoColor=75A99C)](https://chat.openai.com) | Debugging, planning, and logic support |
 | [![badge](https://img.shields.io/badge/StackOverflow-grey?logo=stackoverflow&logoColor=F58025)](https://stackoverflow.com) | Problem solving and community support |
 
 
@@ -212,6 +212,9 @@ The Drift Cult database schema is composed of multiple interrelated models to su
 - **Order**: Placed by a user, holds status and total pricing information.
 - **OrderItem**: Line item within an order, linked to product and size at the time of purchase.
 - **Payment**: One-to-one relationship with `Order`, storing amount, method, and timestamp.
+
+#### Future Entities
+
 - **DiscountCode**: Optional discount logic supporting both percentage and fixed-value coupons.
 - **Review**: User-submitted product ratings and comments.
 - **Wishlist**: User-specific saved products for future interest.
@@ -401,6 +404,7 @@ os.environ.setdefault("PRO_MAIL_PASSWORD", "")
 | [Stripe](https://stripe.com) | Payment integration |
 | [ChatGPT](https://chat.openai.com) | Content and code assistance |
 | [Namecheap Pro Mail](https://www.namecheap.com/hosting/email/) | Sending transactional emails (e.g., order confirmations) |
+| [Termly](https://termly.io) | Privacy Compliance Solutions for Websites, Apps, and Business (e.g., Privacy / Terms & Conditions) |
 
 ### Media
 
@@ -412,6 +416,7 @@ os.environ.setdefault("PRO_MAIL_PASSWORD", "")
 
 ## Acknowledgements
 
-- Thanks to [Code Institute](https://codeinstitute.net) and mentor [Tim Nelson](https://github.com/TravelTimN)
+- I would like to thank my Code Institute mentor, [Tim Nelson](https://www.github.com/TravelTimN) for the support throughout the development of this project.
+- I would like to thank the [Code Institute](https://codeinstitute.net) Tutor Team for their assistance with troubleshooting and debugging some project issues.
 - The CI Slack community helped with debugging and guidance
 - Gratitude to my personal support system throughout development
