@@ -21,7 +21,7 @@
     {% csrf_token %}
     <div class="form-group">
       <label for="status">Change Status:</label>
-      <select name="status" class="form-control w-auto d-inline-block ml-2">
+      <select name="status" id="status" class="form-control w-auto d-inline-block ml-2">
         {% for key, label in status_choices %}
           <option value="{{ key }}" {% if order.status == key %}selected{% endif %}>{{ label }}</option>
         {% endfor %}
