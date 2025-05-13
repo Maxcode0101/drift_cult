@@ -49,4 +49,6 @@ I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-val
 | Directory | File | URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- |
 | core | [views.py](https://github.com/Maxcode0101/drift_cult/blob/main/core/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Maxcode0101/drift_cult/main/core/views.py) | ![screenshot](documentation/validation/py-core-views.png) | All PEP8 issues fixed including E501 line lengths and html_message formatting |
+| store | [views.py](https://github.com/Maxcode0101/drift_cult/blob/main/store/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Maxcode0101/drift_cult/main/store/views.py) | ![screenshot](documentation/validation/py-store-views.png) | All issues fixed – clean validation |
+
 
