@@ -141,14 +141,13 @@ The following pages were wireframed to cover core user interactions from browsin
 | Product Management (Admin) | Add, edit, or delete products via the admin interface. | ![screenshot](documentation/readme/features/product-management.png) |
 | Newsletter Modal | AJAX-based modal for newsletter signup on homepage. | ![screenshot](documentation/readme/features/modal.png) |
 | Contact Form | Users can send a message via a contact form. | ![screenshot](documentation/readme/features/contact.png) |
-| FAQ Page | Site-wide FAQ accordion page to answer common questions. | ![screenshot](documentation/readme/features/faqs.png) |
+| FAQ Page | FAQ accordion page to answer common questions. | ![screenshot](documentation/readme/features/faqs.png) |
 | 404 Page | Branded 404 page for invalid or broken links. | ![screenshot](documentation/readme/features/404.png) |
 | SEO Metadata | Each page includes SEO meta tags (title, description, OG/Twitter). | ![screenshot](documentation/readme/features/seo.png) |
 | Marketing Footer | Social media links and newsletter form displayed in footer. | ![screenshot](documentation/readme/features/Footer.png) |
 | Facebook Mockup | Social media promotion example with a branded post. | ![screenshot](documentation/readme/features/facebook-mockup.png) |
-| Facebook Integration | Connect social media accounts for sharing and login. | ![screenshot](documentation/readme/features/Facebook.png) |
 | Stripe Integration | Stripe payment integration for smooth checkout processing. | ![screenshot](documentation/readme/features/stripe.png) |
-| User Feedback Messages | Feedback messages on user actions (e.g., adding/removing items). | ![screenshot](documentation/readme/features/user-feedback.png) |
+| User Feedback Messages | Feedback messages on user actions (e.g., newsletter-signup). | ![screenshot](documentation/readme/features/user-feedback.png) |
 | View Bag | Users can view and manage their shopping cart. | ![screenshot](documentation/readme/features/view-bag.png) |
 
 ### Future Features
