@@ -53,5 +53,8 @@ I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-val
 | store | [models.py](https://github.com/Maxcode0101/drift_cult/blob/main/store/models.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Maxcode0101/drift_cult/main/store/models.py) | ![screenshot](documentation/validation/py-store-models.png) | No issues found |
 | store | [forms.py](https://github.com/Maxcode0101/drift_cult/blob/main/store/forms.py) | ✅ No issues after fixing PEP8 warnings | ![screenshot](documentation/validation/py-store-forms.png) | - |
 | store | [admin.py](https://github.com/Maxcode0101/drift_cult/blob/main/store/admin.py) | https://pep8ci.herokuapp.com/ | ![screenshot](documentation/validation/pep8-store-admin.png) | No PEP8 errors |
+| store | [context_processors.py](https://github.com/Maxcode0101/drift_cult/blob/main/store/context_processors.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Maxcode0101/drift_cult/main/store/context_processors.py) | ![screenshot](documentation/validation/py-store-context_processors.png) | No errors after refactoring |
+| store | [forms.py](https://github.com/Maxcode0101/drift_cult/blob/main/store/forms.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Maxcode0101/drift_cult/main/
+| core | [emails.py](https://github.com/Maxcode0101/drift_cult/blob/main/core/emails.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Maxcode0101/drift_cult/main/core/emails.py) | ![screenshot](documentation/validation/py-core-emails.png) | No issues after linting. |
 
 

@@ -1,6 +1,7 @@
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 
+
 def send_registration_email(to_email, username):
     subject = "Welcome to Drift Cult 🌊"
     from_email = "Drift Cult <admin@driftcult.art>"
