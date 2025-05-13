@@ -345,36 +345,370 @@ A custom domain (`driftcult.art`) was purchased via [Namecheap](https://www.name
 
 All environment variables — including AWS, Stripe, Namecheap Pro Mail, and Django secret keys — were configured in Heroku Config Vars.
 
-There are no differences between the local development version and the deployed production version.
+### Heroku Deployment
 
+This project uses [Heroku](https://www.heroku.com), a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
+
+Deployment steps are as follows, after account setup:
+
+- Select **New** in the top-right corner of your Heroku Dashboard, and select **Create new app** from the dropdown menu.
+- Your app name must be unique, and then choose a region closest to you (EU or USA), then finally, click **Create App**.
+- From the new app **Settings**, click **Reveal Config Vars**, and set your environment variables to match your private `env.py` file.
+
+
+Heroku needs some additional files in order to deploy properly.
+
+- [requirements.txt](requirements.txt)
+- [Procfile](Procfile)
+
+You can install this project's **[requirements.txt](requirements.txt)** (*where applicable*) using:
+
+- `pip3 install -r requirements.txt`
+
+If you have your own packages that have been installed, then the requirements file needs updated using:
+
+- `pip3 freeze --local > requirements.txt`
+
+The **[Procfile](Procfile)** can be created with the following command:
+
+- `echo web: gunicorn app_name.wsgi > Procfile`
+- *replace `app_name` with the name of your primary Django app name; the folder where `settings.py` is located*
+
+For Heroku deployment, follow these steps to connect your own GitHub repository to the newly created app:
+
+Either (*recommended*):
+
+- Select **Automatic Deployment** from the Heroku app.
+
+Or:
+
+- In the Terminal/CLI, connect to Heroku using this command: `heroku login -i`
+- Set the remote for Heroku: `heroku git:remote -a app_name` (*replace `app_name` with your app name*)
+- After performing the standard Git `add`, `commit`, and `push` to GitHub, you can now type:
+	- `git push heroku main`
+
+The project should now be connected and deployed to Heroku!
+
+### PostgreSQL
+
+This project uses a [Code Institute PostgreSQL Database](https://dbs.ci-dbs.net) for the Relational Database with Django.
+
+> [!CAUTION]
+> - PostgreSQL databases by Code Institute are only available to CI Students.
+> - You must acquire your own PostgreSQL database through some other method if you plan to clone/fork this repository.
+> - Code Institute students are allowed a maximum of 8 databases.
+> - Databases are subject to deletion after 18 months.
+
+To obtain my own Postgres Database from Code Institute, I followed these steps:
+
+- Submitted my email address to the CI PostgreSQL Database link above.
+- An email was sent to me with my new Postgres Database.
+- The Database connection string will resemble something like this:
+    - `postgres://<db_username>:<db_password>@<db_host_url>/<db_name>`
+- You can use the above URL with Django; simply paste it into your `env.py` file and Heroku Config Vars as `DATABASE_URL`.
+
+### Amazon AWS
+
+This project uses [AWS](https://aws.amazon.com) to store media and static files online, due to the fact that Heroku doesn't persist this type of data.
+
+Once you've created an AWS account and logged-in, follow these series of steps to get your project connected. Make sure you're on the **AWS Management Console** page.
+
+#### S3 Bucket
+
+- Search for **S3**.
+- Create a new bucket, give it a name (e.g. matching your Heroku app name), and choose the region closest to you.
+- Uncheck **Block all public access**, and acknowledge that the bucket will be public (*required* for it to work on Heroku).
+- From **Object Ownership**, make sure to have **ACLs enabled**, and **Bucket owner preferred** selected.
+- From the **Properties** tab, turn on static website hosting, and type `index.html` and `error.html` in their respective fields, then click **Save**.
+- From the **Permissions** tab, paste in the following CORS configuration:
+
+	```shell
+	[
+		{
+			"AllowedHeaders": [
+				"Authorization"
+			],
+			"AllowedMethods": [
+				"GET"
+			],
+			"AllowedOrigins": [
+				"*"
+			],
+			"ExposeHeaders": []
+		}
+	]
+	```
+
+- Copy your **ARN** string.
+- From the **Bucket Policy** tab, select the **Policy Generator** link, and use the following steps:
+	- Policy Type: **S3 Bucket Policy**
+	- Effect: **Allow**
+	- Principal: `*`
+	- Actions: **GetObject**
+	- Amazon Resource Name (ARN): **paste-your-ARN-here**
+	- Click **Add Statement**
+	- Click **Generate Policy**
+	- Copy the entire Policy, and paste it into the **Bucket Policy Editor**
+
+		```shell
+		{
+			"Id": "Policy1234567890",
+			"Version": "2012-10-17",
+			"Statement": [
+				{
+					"Sid": "Stmt1234567890",
+					"Action": [
+						"s3:GetObject"
+					],
+					"Effect": "Allow",
+					"Resource": "arn:aws:s3:::your-bucket-name/*"
+					"Principal": "*",
+				}
+			]
+		}
+		```
+
+	- Before you click "Save", add `/*` to the end of the Resource key in the Bucket Policy Editor (*like above*).
+	- Click **Save**.
+- From the **Access Control List (ACL)** section, click "Edit" and enable **List** for **Everyone (public access)**, and accept the warning box.
+	- If the edit button is disabled, you need to change the **Object Ownership** section above to **ACLs enabled** (*mentioned above*).
+
+#### IAM
+
+Back on the AWS Services Menu, search for and open **IAM** (Identity and Access Management). Once on the IAM page, follow these steps:
+
+- From **User Groups**, click **Create New Group**.
+	- Suggested Name: `group-drift_cult` (*group + the project name*)
+- Tags are optional, but you must click it to get to the **review policy** page.
+- From **User Groups**, select your newly created group, and go to the **Permissions** tab.
+- Open the **Add Permissions** dropdown, and click **Attach Policies**.
+- Select the policy, then click **Add Permissions** at the bottom when finished.
+- From the **JSON** tab, select the **Import Managed Policy** link.
+	- Search for **S3**, select the `AmazonS3FullAccess` policy, and then **Import**.
+	- You'll need your ARN from the S3 Bucket copied again, which is pasted into "Resources" key on the Policy.
+
+		```shell
+		{
+			"Version": "2012-10-17",
+			"Statement": [
+				{
+					"Effect": "Allow",
+					"Action": "s3:*",
+					"Resource": [
+						"arn:aws:s3:::your-bucket-name",
+						"arn:aws:s3:::your-bucket-name/*"
+					]
+				}
+			]
+		}
+		```
+	
+	- Click **Review Policy**.
+	- Suggested Name: `policy-drift_cult` (*policy + the project name*)
+	- Provide a description:
+		- "Access to S3 Bucket for drift_cult static files."
+	- Click **Create Policy**.
+- From **User Groups**, click your "group-drift_cult".
+- Click **Attach Policy**.
+- Search for the policy you've just created ("policy-drift_cult") and select it, then **Attach Policy**.
+- From **User Groups**, click **Add User**.
+	- Suggested Name: `user-drift_cult` (*user + the project name*)
+- For "Select AWS Access Type", select **Programmatic Access**.
+- Select the group to add your new user to: `group-drift_cult`
+- Tags are optional, but you must click it to get to the **review user** page.
+- Click **Create User** once done.
+- You should see a button to **Download .csv**, so click it to save a copy on your system.
+	- **IMPORTANT**: once you pass this page, you cannot come back to download it again, so do it immediately!
+	- This contains the user's **Access key ID** and **Secret access key**.
+	- `AWS_ACCESS_KEY_ID` = **Access key ID**
+	- `AWS_SECRET_ACCESS_KEY` = **Secret access key**
+
+#### Final AWS Setup
+
+- If Heroku Config Vars has `DISABLE_COLLECTSTATIC` still, this can be removed now, so that AWS will handle the static files.
+- Back within **S3**, create a new folder called: `media`.
+- Select any existing media images for your project to prepare them for being uploaded into the new folder.
+- Under **Manage Public Permissions**, select **Grant public read access to this object(s)**.
+- No further settings are required, so click **Upload**.
+
+### Stripe API
+
+This project uses [Stripe](https://stripe.com) to handle the ecommerce payments.
+
+Once you've created a Stripe account and logged-in, follow these series of steps to get your project connected.
+
+- From your Stripe dashboard, click to expand the "Get your test API keys".
+- You'll have two keys here:
+	- `STRIPE_PUBLIC_KEY` = Publishable Key (starts with **pk**)
+	- `STRIPE_SECRET_KEY` = Secret Key (starts with **sk**)
+
+As a backup, in case users prematurely close the purchase-order page during payment, we can include Stripe Webhooks.
+
+- From your Stripe dashboard, click **Developers**, and select **Webhooks**.
+- From there, click **Add Endpoint**.
+	- `https://drift-cult-9f60af6d7463.herokuapp.com/checkout/wh/`
+- Click **receive all events**.
+- Click **Add Endpoint** to complete the process.
+- You'll have a new key here:
+	- `STRIPE_WH_SECRET` = Signing Secret (Wehbook) Key (starts with **wh**)
+
+
+### Namecheap Pro Mail (SMTP)
+
+This project uses **[Namecheap Pro Mail](https://www.namecheap.com/hosting/email/professional-business-email/)** to handle email delivery for user registrations, order confirmations, and newsletters.
+
+Once you’ve purchased or activated your Pro Mail trial through Namecheap and connected it to your domain (e.g. `driftcult.art`), follow these steps to configure it for Django:
+
+---
+
+#### ✅ 1. Configure DNS Records
+
+Log in to your [Namecheap Dashboard](https://www.namecheap.com/myaccount/login/), then:
+
+- Go to **Domain List > Manage** next to your domain.
+- Under the **Advanced DNS** tab, add the following required records:
+
+| Type | Host | Value |
+|------|------|-------|
+| **MX** | `@` | `mail.privateemail.com` (Priority: 10) |
+| **TXT** | `@` | `v=spf1 include:spf.privateemail.com ~all` |
+| **CNAME** | `autodiscover` | `autodiscover.privateemail.com` |
+| **CNAME** | `mail` | `privateemail.com` |
+
+✅ *Make sure the existing MX and TXT records do not conflict. DNS changes can take up to 24–48h to fully propagate.*
+
+---
+
+#### ✅ 2. Create Mailboxes & Aliases
+
+- In **Private Email > Manage Mailboxes**, create a mailbox like `admin@yourdomain.com`.
+- Optionally, create aliases (e.g. `noreply@yourdomain.com`, `service@yourdomain.com`) and forward them to your primary inbox.
+
+---
+
+#### ✅ 3. Update `settings.py` in Django
+
+Add the following configuration for SMTP:
+
+```python
+# settings.py
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_SSL = True
+EMAIL_PORT = 465
+EMAIL_HOST = 'mail.privateemail.com'
+EMAIL_HOST_USER = 'noreply@driftcult.art'  # or any created mailbox
+EMAIL_HOST_PASSWORD = os.environ.get("PRO_MAIL_PASSWORD")
+DEFAULT_FROM_EMAIL = "Drift Cult <noreply@driftcult.art>"
+
+
+### WhiteNoise
+
+This project uses the [WhiteNoise](https://whitenoise.readthedocs.io/en/latest/) to aid with static files temporarily hosted on the live Heroku site.
+
+To include WhiteNoise in your own projects:
+
+- Install the latest WhiteNoise package:
+    - `pip install whitenoise`
+- Update the `requirements.txt` file with the newly installed package:
+    - `pip freeze --local > requirements.txt`
+- Edit your `settings.py` file and add WhiteNoise to the `MIDDLEWARE` list, above all other middleware (apart from Django’s "SecurityMiddleware"):
+
+```python
+# settings.py
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # any additional middleware
+]
+```
+
+
+### Local Development
+
+This project can be cloned or forked in order to make a local copy on your own system.
+
+For either method, you will need to install any applicable packages found within the [requirements.txt](requirements.txt) file.
+
+- `pip3 install -r requirements.txt`.
+
+You will need to create a new file called `env.py` at the root-level, and include the same environment variables listed above from the Heroku deployment steps.
 
 ### Environment Variables
 
 The following environment variables are used in `env.py` for local development and are set in Heroku Config Vars for production:
 
 ```python
-os.environ.setdefault('SECRET_KEY', '')
+os.environ.setdefault('SECRET_KEY', 'user-inserts-own')
 
 # AWS S3 Config
-os.environ.setdefault('AWS_STORAGE_BUCKET_NAME', '')
-os.environ.setdefault('AWS_S3_REGION_NAME', '')
-os.environ.setdefault('AWS_ACCESS_KEY_ID', '')
-os.environ.setdefault('AWS_SECRET_ACCESS_KEY', '')
+os.environ.setdefault('AWS_STORAGE_BUCKET_NAME', 'user-inserts-own')
+os.environ.setdefault('AWS_S3_REGION_NAME', 'user-inserts-own')
+os.environ.setdefault('AWS_ACCESS_KEY_ID', 'user-inserts-own')
+os.environ.setdefault('AWS_SECRET_ACCESS_KEY', 'user-inserts-own')
 
 # Stripe Config
-os.environ.setdefault('STRIPE_PUBLIC_KEY', '')
-os.environ.setdefault('STRIPE_SECRET_KEY', '')
-os.environ.setdefault("STRIPE_WEBHOOK_SECRET", "")
+os.environ.setdefault('STRIPE_PUBLIC_KEY', 'user-inserts-own')
+os.environ.setdefault('STRIPE_SECRET_KEY', 'user-inserts-own')
+os.environ.setdefault("STRIPE_WEBHOOK_SECRET", "user-inserts-own")
 
 # Database Config
-os.environ.setdefault('DATABASE_URL', '')
+os.environ.setdefault('DATABASE_URL', 'user-inserts-own')
 
 # Deployment Config
 os.environ.setdefault('DEVELOPMENT', 'True')
 os.environ.setdefault('DEBUG', 'True')
 
 # Email Config Resend
-os.environ.setdefault("PRO_MAIL_PASSWORD", "")
+os.environ.setdefault("PRO_MAIL_PASSWORD", "user-inserts-own")
+
+Once the project is cloned or forked, in order to run it locally, you'll need to follow these steps:
+
+- Start the Django app: `python3 manage.py runserver`
+- Stop the app once it's loaded: `CTRL+C` (*Windows/Linux*) or `⌘+C` (*Mac*)
+- Make any necessary migrations: `python3 manage.py makemigrations --dry-run` then `python3 manage.py makemigrations`
+- Migrate the data to the database: `python3 manage.py migrate --plan` then `python3 manage.py migrate`
+- Create a superuser: `python3 manage.py createsuperuser`
+- Load fixtures (*if applicable*): `python3 manage.py loaddata file-name.json` (*repeat for each file*)
+- Everything should be ready now, so run the Django app again: `python3 manage.py runserver`
+
+If you'd like to backup your database models, use the following command for each model you'd like to create a fixture for:
+
+- `python3 manage.py dumpdata your-model > your-model.json`
+- *repeat this action for each model you wish to backup*
+- **NOTE**: You should never make a backup of the default *admin* or *users* data with confidential information.
+
+#### Cloning
+
+You can clone the repository by following these steps:
+
+1. Go to the [GitHub repository](https://www.github.com/Maxcode0101/drift_cult).
+2. Locate and click on the green "Code" button at the very top, above the commits and files.
+3. Select whether you prefer to clone using "HTTPS", "SSH", or "GitHub CLI", and click the "copy" button to copy the URL to your clipboard.
+4. Open "Git Bash" or "Terminal".
+5. Change the current working directory to the location where you want the cloned directory.
+6. In your IDE Terminal, type the following command to clone the repository:
+	- `git clone https://www.github.com/Maxcode0101/drift_cult.git`
+7. Press "Enter" to create your local clone.
+
+Alternatively, if using Gitpod, you can click below to create your own workspace using this repository.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://www.github.com/Maxcode0101/drift_cult)
+
+**Please Note**: in order to directly open the project in Gitpod, you should have the browser extension installed. A tutorial on how to do that can be found [here](https://www.gitpod.io/docs/configure/user-settings/browser-extension).
+
+#### Forking
+
+By forking the GitHub Repository, you make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original owner's repository. You can fork this repository by using the following steps:
+
+1. Log in to GitHub and locate the [GitHub Repository](https://www.github.com/Maxcode0101/drift_cult).
+2. At the top of the Repository, just below the "Settings" button on the menu, locate and click the "Fork" Button.
+3. Once clicked, you should now have a copy of the original repository in your own GitHub account!
+
+### Local VS Deployment
+
+There are no remaining major differences between the local version when compared to the deployed version online.
 
 ---
 
